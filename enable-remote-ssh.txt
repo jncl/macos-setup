@@ -1,0 +1,9 @@
+# To enable remote SSH access on machine
+# open a terminal window and type:
+sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
+
+# To set timezone to GMT
+sudo systemsetup -settimezone GMT
+
+# To accept XCode licence
+sudo xcodebuild -license

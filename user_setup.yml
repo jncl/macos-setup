@@ -1,0 +1,22 @@
+---
+
+dockitems_to_remove:
+  - Launchpad
+  - Maps
+  - Photos
+  - Reminders
+  - Notes
+  - TV
+  - Podcasts
+  - News
+  - Downloads
+
+dockitems_to_persist:
+  - name: Screen Sharing
+    path: "/System/Library/CoreServices/Applications/Screen Sharing.app"
+    pos: 10
+  - name: TextMate
+    path: "/Applications/TextMate.app"
+    pos: 11
+
+#wallpaper_file: cross.jpg

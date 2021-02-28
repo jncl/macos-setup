@@ -1,0 +1,23 @@
+---
+- name: Remove all crap from Dock
+  ansible.builtin.shell: /usr/local/bin/dockutil --remove '{{ item }}'
+  ignore_errors: true
+  loop: "{{ dockitems_to_remove }}"
+
+- name: Check if items in dock exist
+  ansible.builtin.shell: /usr/local/bin/dockutil --find '{{ item.name }}' || /usr/local/bin/dockutil --add '{{ item.path }}'
+  loop: "{{ dockitems_to_persist }}"
+
+- name: Fix order
+  ansible.builtin.shell: /usr/local/bin/dockutil --move '{{ item.name }}' --position {{ item.pos }}
+  loop: "{{ dockitems_to_persist }}"
+
+- name: Hide the Dock
+  ansible.builtin.shell: defaults write com.apple.dock autohide -bool true
+
+- name: Resize the Dock
+  ansible.builtin.shell: defaults write com.apple.dock tilesize -int 50
+
+- name: Restart the Dock
+  become: yes
+  ansible.builtin.shell: killall Dock

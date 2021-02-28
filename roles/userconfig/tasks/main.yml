@@ -1,0 +1,35 @@
+---
+
+- name: Configure UI
+  block:
+  # become: yes
+    - name: Modify the Dock
+      ansible.builtin.include_tasks: modify-dock.yml
+      tags: dock
+
+- name: Configure Finder
+  block:
+  become: yes
+    - name: Config Sidebar
+      - remove tags
+      - remove recents
+
+    - name: Config View(s)
+      - Path bar
+      - Status Bar
+      - Tabs
+
+# - name: Configure Apps
+#   block:
+#   become: yes
+#     - name: Copy TextMate Bundles
+#
+#     - name: Setup Dropbox & 1Password
+#
+#     - name: Setup iTerm2
+#
+#     - name: Setup MenuMeters
+#
+#
+#     - name: Set Wallpaper options
+#

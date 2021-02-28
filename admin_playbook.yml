@@ -1,0 +1,14 @@
+---
+- hosts: all
+
+  vars_files:
+    - admin_setup.yml
+
+  roles:
+    - role: geerlingguy.homebrew
+      when: homebrew_cask_apps
+      tags: homebrew
+    - role: geerlingguy.mas
+      when: mas_installed_apps
+      tags: mas
+    - adminconfig

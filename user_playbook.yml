@@ -1,0 +1,8 @@
+---
+- hosts: all
+
+  vars_files:
+    - user_setup.yml
+
+  roles:
+    - userconfig

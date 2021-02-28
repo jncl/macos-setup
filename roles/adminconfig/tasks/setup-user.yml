@@ -1,0 +1,24 @@
+---
+
+- name: Create User
+  become: yes
+  ansible.builtin.user:
+    name: jonhogg
+    comment: Jon Hogg
+    password: "mac_user_pw"
+    group: staff
+    state: present
+    shell: /bin/zsh
+    generate_ssh_key: true
+    ssh_key_type: "rsa"
+    ssh_key_bits: 2048
+    ssh_key_file: .ssh/id_rsa
+
+- name: Add User to sudoers
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/90_jonhogg
+    line: jonhogg ALL = (ALL) ALL
+    create: yes
+    mode: 0440
+    validate: /usr/sbin/visudo -cf %s
