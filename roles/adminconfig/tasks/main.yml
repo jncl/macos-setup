@@ -74,6 +74,7 @@
 
 - name: Setup some defaults
   include_tasks: set-defaults.yml
+  tags: osx
 
 - name: Setup User
   ansible.builtin.include_tasks: setup-user.yml

@@ -9,6 +9,12 @@
     group: staff
     state: present
     shell: /bin/zsh
+  register: result
+
+- name: Show User commmand output
+  ansible.builtin.debug:
+    var: result
+  # tags: debug
 
 - name: Add User to sudoers
   become: yes
