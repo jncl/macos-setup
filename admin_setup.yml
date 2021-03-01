@@ -103,23 +103,26 @@ osx_global_defaults:
   - { domain: NSGlobalDomain, key: NSAutomaticWindowAnimationsEnabled, type: bool, value: false } # Opening and closing windows and popovers
   - { domain: NSGlobalDomain, key: AppleKeyboardUIMode, type: int, value: 3 } # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
   - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: AutomaticCheckEnabled, type: int, value: 1 } #  Enable Automatic check for Software Updates
+  - { domain: /Library/Preferences/.GlobalPreferences, key: MultipleSessionEnabled, type: int, value: 1 } #  Enable Fast User Switching
 
-osx_local_defaults:
-  - { domain: com.apple.dock, key: launchanim, type: bool, value: true } # Don’t animate opening applications from the Dock
-  - { domain: com.apple.dock, key: autohide, type: bool, value: true } # Autohide the Dock
-  - { domain: com.apple.dock, key: autohide-delay, type: float, value: 0 } # Remove autohide delay
-  - { domain: com.apple.dock, key: tilesize, type: int, value: 50 } # Set dock tile size
-  - { domain: com.apple.dock, key: largesize, type: int, value: 85 } # Set dock tile large size
-  - { domain: com.apple.finder, key: FXEnableExtensionChangeWarning, type: bool, value: false } # Disable the warning when changing a file extension
-  - { domain: com.apple.finder, key: FXPreferredViewStyle, type: string, value: "clmv" } # Use column view in all Finder windows by default, other view modes: `icnv`, `Nlsv`, `Flwv
-  - { domain: com.apple.finder, key: WarnOnEmptyTrash, type: bool, value: false } # Disable the warning before emptying the Trash
-  - { domain: com.apple.finder, key: EmptyTrashSecurely, type: bool, value: true } # Empty trash securely
-  - { domain: com.apple.finder, key: QLEnableTextSelection, type: bool, value: true } # Allow text selection in the Quick Look window
-  - { domain: com.apple.dashboard, key: db-enabled-state, type: int, value: 1 } # Set dashboard state disabled
-  - { domain: com.apple.dashboard, key: mcx-disabled, type: bool, value: true } # Disable dashboard
-  - { domain: com.apple.LaunchServices, key: LSQuarantine, type: bool, value: false } # Disable the “Are you sure you want to open this application?” dialog
-  # - { domain: , key: , type: , value:  }
-  # - { domain: , key: , type: , value:  }
-  # - { domain: , key: , type: , value:  }
+- name: Include common defaults
+  include_vars: osx-local-defaults.yaml
 
-
+# osx_local_defaults:
+#   - { domain: com.apple.dock, key: launchanim, type: bool, value: true } # Don’t animate opening applications from the Dock
+#   - { domain: com.apple.dock, key: autohide, type: bool, value: true } # Autohide the Dock
+#   - { domain: com.apple.dock, key: autohide-delay, type: float, value: 0 } # Remove autohide delay
+#   - { domain: com.apple.dock, key: tilesize, type: int, value: 50 } # Set dock tile size
+#   - { domain: com.apple.dock, key: largesize, type: int, value: 85 } # Set dock tile large size
+#   - { domain: com.apple.finder, key: FXEnableExtensionChangeWarning, type: bool, value: false } # Disable the warning when changing a file extension
+#   - { domain: com.apple.finder, key: FXPreferredViewStyle, type: string, value: "clmv" } # Use column view in all Finder windows by default, other view modes: `icnv`, `Nlsv`, `Flwv
+#   - { domain: com.apple.finder, key: WarnOnEmptyTrash, type: bool, value: false } # Disable the warning before emptying the Trash
+#   - { domain: com.apple.finder, key: EmptyTrashSecurely, type: bool, value: true } # Empty trash securely
+#   - { domain: com.apple.finder, key: QLEnableTextSelection, type: bool, value: true } # Allow text selection in the Quick Look window
+#   - { domain: com.apple.finder, key: ShowPathbar, type: bool, value: true } # Show Path Bar
+#   - { domain: com.apple.finder, key: ShowStatusBar, type: bool, value: true } # Show Status Bar
+#   - { domain: com.apple.finder, key: ShowTabView, type: bool, value: true } # Show Tabs
+#   - { domain: com.apple.finder, key: ShowRecentTags, type: bool, value: false } # Show Recent Tags
+#   - { domain: com.apple.dashboard, key: db-enabled-state, type: int, value: 1 } # Set dashboard state disabled
+#   - { domain: com.apple.dashboard, key: mcx-disabled, type: bool, value: true } # Disable dashboard
+#   - { domain: com.apple.LaunchServices, key: LSQuarantine, type: bool, value: false } # Disable the “Are you sure you want to open this application?” dialog

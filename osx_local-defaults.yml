@@ -1,0 +1,25 @@
+---
+osx_local_defaults:
+  - { domain: com.apple.dock, key: launchanim, type: bool, value: true } # Don’t animate opening applications from the Dock
+  - { domain: com.apple.dock, key: autohide, type: bool, value: true } # Autohide the Dock
+  - { domain: com.apple.dock, key: autohide-delay, type: float, value: 0 } # Remove autohide delay
+  - { domain: com.apple.dock, key: tilesize, type: int, value: 50 } # Set dock tile size
+  - { domain: com.apple.dock, key: largesize, type: int, value: 85 } # Set dock tile large size
+  - { domain: com.apple.finder, key: FXEnableExtensionChangeWarning, type: bool, value: false } # Disable the warning when changing a file extension
+  - { domain: com.apple.finder, key: FXPreferredViewStyle, type: string, value: "clmv" } # Use column view in all Finder windows by default, other view modes: `icnv`, `Nlsv`, `Flwv
+  - { domain: com.apple.finder, key: WarnOnEmptyTrash, type: bool, value: false } # Disable the warning before emptying the Trash
+  - { domain: com.apple.finder, key: EmptyTrashSecurely, type: bool, value: true }
+  - { domain: com.apple.finder, key: QLEnableTextSelection, type: bool, value: true } # Allow text selection in the Quick Look window
+  - { domain: com.apple.finder, key: ShowPathbar, type: bool, value: true } # Show Path Bar
+  - { domain: com.apple.finder, key: ShowStatusBar, type: bool, value: true } # Show Status Bar
+  - { domain: com.apple.finder, key: ShowTabView, type: bool, value: true } # Show Tabs
+  - { domain: com.apple.finder, key: ShowRecentTags, type: bool, value: false } # Show Recent Tags
+  - { domain: com.apple.finder, key: ShowExternalHardDrivesOnDesktop, type: bool, value: true } # Show External Drives on Desktop
+  - { domain: com.apple.finder, key: ShowRemovableMediaOnDesktop, type: bool, value: true } # ShowMounted Servers on Desktop
+  - { domain: com.apple.finder, key: ShowHardDrivesOnDesktop, type: bool, value: false } # Show Hard Drives on Desktop
+  - { domain: com.apple.finder, key: ShowMountedServersOnDesktop, type: bool, value: false } # Show Mounted Servers on Desktop
+  - { domain: com.apple.finder, key: SidebarShowingiCloudDesktop, type: bool, value: false } # Don't Show iCloud on Desktop
+  - { domain: com.apple.finder, key: SidebariCloudDriveSectionDisclosedState, type: bool, value: false } # Don't Show iCloud in Sidebar
+  - { domain: com.apple.dashboard, key: db-enabled-state, type: int, value: 1 } # Set dashboard state disabled
+  - { domain: com.apple.dashboard, key: mcx-disabled, type: bool, value: true } # Disable dashboard
+  - { domain: com.apple.launchservices, key: LSQuarantine, type: bool, value: false } # Disable the “Are you sure you want to open this application?” dialog
