@@ -4,7 +4,7 @@
 
   vars_files:
     - admin_setup.yml
-    - osx-local-defaults.yaml
+    - osx-local-defaults.yml
 
   roles:
     - role: geerlingguy.homebrew
