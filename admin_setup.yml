@@ -118,9 +118,8 @@ osx_local_defaults:
   - { domain: com.apple.dashboard, key: db-enabled-state, type: int, value: 1 } # Set dashboard state disabled
   - { domain: com.apple.dashboard, key: mcx-disabled, type: bool, value: true } # Disable dashboard
   - { domain: com.apple.screensaver, host: currentHost, key: showClock, type: int, value: 1 } # Set Screensaver to Clock
-TIFF)
   - { domain: com.apple.desktopservices, key: DSDontWriteNetworkStores, type: bool, value: true } # Avoid creating .DS_Store files on network volumes
-  # - { domain: com.apple.LaunchServices, key: LSQuarantine, type: bool, value: false } # Disable the “Are you sure you want to open this application?” dialog
+  - { domain: com.apple.LaunchServices, key: LSQuarantine, type: bool, value: false } # Disable the “Are you sure you want to open this application?” dialog
   # - { domain: , key: , type: , value:  }
   # - { domain: , key: , type: , value:  }
   # - { domain: , key: , type: , value:  }
