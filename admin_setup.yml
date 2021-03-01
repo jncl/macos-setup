@@ -102,8 +102,7 @@ osx_global_defaults:
   - { domain: NSGlobalDomain, key: AppleShowScrollBars, type: string, value: "WhenScrolling" } # Show scrollbars only when scrolling
   - { domain: NSGlobalDomain, key: NSAutomaticWindowAnimationsEnabled, type: bool, value: false } # Opening and closing windows and popovers
   - { domain: NSGlobalDomain, key: AppleKeyboardUIMode, type: int, value: true } # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
-  - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: AutomaticCheckEnabled, type: int, value: 1 } #  Enable Automatic check for
-Software Updates
+  - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: AutomaticCheckEnabled, type: int, value: 1 } #  Enable Automatic check for Software Updates
 
 osx_local_defaults:
   - { domain: com.apple.dock, key: launchanim, type: bool, value: true } # Don’t animate opening applications from the Dock
