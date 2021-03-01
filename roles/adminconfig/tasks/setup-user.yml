@@ -9,10 +9,6 @@
     group: staff
     state: present
     shell: /bin/zsh
-    generate_ssh_key: true
-    ssh_key_type: "rsa"
-    ssh_key_bits: 2048
-    ssh_key_file: .ssh/id_rsa
 
 - name: Add User to sudoers
   become: yes
