@@ -47,7 +47,7 @@
 - name: Set ZSH as the default shell
   become: yes
   shell: chsh -s $(which zsh) {{ lookup('env', 'USER') }}
-  when: not result == "/bin/zsh"
+  when: not result.stdout == "/bin/zsh"
 
 - name: Modify the Dock
   include_tasks: modify-dock.yml

@@ -1,9 +1,4 @@
 ---
-homebrew_cask_apps_sudo:
-  - boinc
-  - virtualbox
-  - virtualbox-extension-pack
-  - zoom
 
 dockitems_to_remove:
   - Launchpad

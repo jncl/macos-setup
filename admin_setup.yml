@@ -42,6 +42,12 @@ homebrew_cask_apps:
   - vlc
   - 1password
 
+homebrew_cask_apps_sudo:
+  - boinc
+  - virtualbox
+  - virtualbox-extension-pack
+  - zoom
+
 homebrew_cask_apps_local:
   - cdpedia
   - dvdpedia

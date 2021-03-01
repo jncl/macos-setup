@@ -1,8 +1,30 @@
 ---
 
-# Update homebrew here as any subsequent updates will remove the locally copied files
-- name: Update brew
-  ansible.builtin.command: "brew update"
+- name: Install cask applications that require sudo
+  community.general.homebrew_cask:
+    name: "{{ item.name | default(item) }}"
+    state: present
+    install_options: "{{ item.install_options | default('appdir=' + homebrew_cask_appdir) }}"
+    accept_external_apps: "{{ homebrew_cask_accept_external_apps }}"
+    sudo_password: mac_admin_pw
+  loop: "{{ homebrew_cask_apps_sudo }}"
+  notify:
+    - Clear homebrew cache
+
+- name: Quit Zoom
+  ansible.builtin.shell: osascript -e 'quit app "zoom.us"'
+  ignore_errors: yes
+
+- name: Get login items
+  ansible.builtin.shell: osascript -e 'tell application "System Events" to get every login item'
+  register: result
+  
+- name: Display login items
+  ansible.builtin.debug:
+    var: result
+
+# - name: Remove login item(s)
+#   ansible.builtin.shell: osascript -e 'tell application "System Events" to delete login item "BOINC Manager"'
 
 - name: Copy Cask files
   ansible.builtin.copy:
