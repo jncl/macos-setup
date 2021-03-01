@@ -21,14 +21,33 @@
     global: yes
   with_items: "{{ npm_items }}"
 
+- name: Get current Timezone
+  become: yes
+  ansible.builtin.shell: systemsetup -gettimezone
+  register: result
+
+- name: Show current Timezone
+  ansible.builtin.debug:
+    var: result
+
 - name: Set Timezone
   become: yes
   community.general.timezone:
     name: "Europe/London"
+  when: not result.stdout == "Europe/London"
+
+- name: Get current Shell
+  ansible.builtin.shell: echo $SHELL
+  register: result
+
+- name: Show current Shell
+  ansible.builtin.debug:
+    var: result
 
 - name: Set ZSH as the default shell
   become: yes
   shell: chsh -s $(which zsh) {{ lookup('env', 'USER') }}
+  when: not result == "/bin/zsh"
 
 - name: Modify the Dock
   include_tasks: modify-dock.yml
