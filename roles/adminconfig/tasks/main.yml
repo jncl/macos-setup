@@ -16,10 +16,9 @@
   ansible.builtin.debug:
     var: result
 
-# - name: Remove login item(s)
-#   ansible.builtin.shell: osascript -e 'tell application "System Events" to delete login item "BOINC Manager"'
-
-
+- name: Remove login item(s)
+  ansible.builtin.shell: osascript -e 'tell application "System Events" to delete login item "BOINCManager"'
+  when: not result.stdout.find("BOINCManager") == -1
 
 # - name: Install Pip Libraries
 #   ansible.builtin.pip:
