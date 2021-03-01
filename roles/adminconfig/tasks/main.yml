@@ -6,6 +6,7 @@
 
 - name: Quit Zoom
   ansible.builtin.shell: osascript -e 'quit app "zoom.us"'
+  ignore_errors: yes
 
 - name: Get login items
   ansible.builtin.shell: osascript -e 'tell application "System Events" to get every login item'
