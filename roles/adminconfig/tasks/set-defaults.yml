@@ -8,7 +8,7 @@
     key: "{{ item.key }}"
     type: "{{ item.type }}"
     value: "{{ item.value }}"
-    state: "{{ item.state | default(omit) }}"
+    state: present
   loop: "{{ osx_global_defaults }}"
 
 - name: Set Local defaults
@@ -18,5 +18,5 @@
     key: "{{ item.key }}"
     type: "{{ item.type }}"
     value: "{{ item.value }}"
-    state: "{{ item.state | default(omit) }}"
+    state: present
   loop: "{{ osx_local_defaults }}"

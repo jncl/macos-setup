@@ -1,4 +1,5 @@
 ---
+
 osx_local_defaults:
   - { domain: com.apple.dock, key: launchanim, type: bool, value: true } # Don’t animate opening applications from the Dock
   - { domain: com.apple.dock, key: autohide, type: bool, value: true } # Autohide the Dock

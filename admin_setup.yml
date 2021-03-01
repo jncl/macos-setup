@@ -42,14 +42,6 @@ homebrew_cask_apps:
   - vlc
   - 1password
 
-admin_sudo_password : mac_admin_pw
-homebrew_cask_apps_sudo:
-  - boinc
-  ## - teamviewer
-  - virtualbox
-  - virtualbox-extension-pack
-  - zoom
-
 homebrew_cask_apps_local:
   - cdpedia
   - dvdpedia
@@ -94,13 +86,13 @@ dockitems_to_persist:
     pos: 4
 
 osx_global_defaults:
-  - { domain: NSGlobalDomain, key: NSNavPanelExpandedStateForSaveMode, type: bool, value: true, state: present }
-  - { domain: NSGlobalDomain, key: PMPrintingExpandedStateForPrint, type: bool, value: true, state: present } # Expand print panel
-  - { domain: NSGlobalDomain, key: NSDocumentSaveNewDocumentsToCloud, type: bool, value: false, state: present } # Save to disk (not to iCloud)
-  - { domain: NSGlobalDomain, key: AppleMeasurementUnits, type: string, value: Inches, state: present } # Set Measurements to Imperial
-  - { domain: NSGlobalDomain, key: com.apple.swipescrolldirection, type: bool, value: false, state: present } # Disable natural scrolling
-  - { domain: NSGlobalDomain, key: AppleShowScrollBars, type: string, value: "WhenScrolling", state: present } # Show scrollbars only when scrolling
-  - { domain: NSGlobalDomain, key: NSAutomaticWindowAnimationsEnabled, type: bool, value: false, state: present } # Opening and closing windows and popovers
-  - { domain: NSGlobalDomain, key: AppleKeyboardUIMode, type: int, value: 3, state: present } # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
-  - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: AutomaticCheckEnabled, type: int, value: 1, state: present } #  Enable Automatic check for Software Updates
-  - { domain: /Library/Preferences/.GlobalPreferences, key: MultipleSessionEnabled, type: int, value: 1, state: present } #  Enable Fast User Switching
+  - { domain: NSGlobalDomain, key: NSNavPanelExpandedStateForSaveMode, type: bool, value: true } # Expand Save panel
+  - { domain: NSGlobalDomain, key: PMPrintingExpandedStateForPrint, type: bool, value: true } # Expand Print panel
+  - { domain: NSGlobalDomain, key: NSDocumentSaveNewDocumentsToCloud, type: bool, value: false } # Save to disk (not to iCloud)
+  - { domain: NSGlobalDomain, key: AppleMeasurementUnits, type: string, value: "Inches" } # Set Measurements to Imperial
+  - { domain: NSGlobalDomain, key: com.apple.swipescrolldirection, type: bool, value: false } # Disable natural scrolling
+  - { domain: NSGlobalDomain, key: AppleShowScrollBars, type: string, value: "WhenScrolling" } # Show scrollbars only when scrolling
+  - { domain: NSGlobalDomain, key: NSAutomaticWindowAnimationsEnabled, type: bool, value: false } # Opening and closing windows and popovers
+  - { domain: NSGlobalDomain, key: AppleKeyboardUIMode, type: int, value: 3 } # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
+  - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: AutomaticCheckEnabled, type: int, value: 1 } #  Enable Automatic check for Software Updates
+  - { domain: /Library/Preferences/.GlobalPreferences, key: MultipleSessionEnabled, type: int, value: 1 } #  Enable Fast User Switching

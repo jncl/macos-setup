@@ -1,4 +1,19 @@
 ---
+  
+- name: Install cask applications that require sudo
+  community.general.homebrew_cask:
+    name: "{{ item.name | default(item) }}"
+    state: present
+    install_options: "{{ item.install_options | default('appdir=' + homebrew_cask_appdir) }}"
+    accept_external_apps: "{{ homebrew_cask_accept_external_apps }}"
+    sudo_password: mac_user_pw
+  loop: "{{ homebrew_cask_apps_sudo }}"
+  notify:
+    - Clear homebrew cache
+
+- name: Quit Zoom
+  ansible.builtin.shell: osascript -e 'quit app "zoom.us"'
+  ignore_errors: yes
 
 - name: Configure UI
   block:
@@ -7,29 +22,8 @@
       ansible.builtin.include_tasks: modify-dock.yml
       tags: dock
 
-- name: Setup some defaults
+- name: Setup user defaults
   include_tasks: set-defaults.yml
-
-# - name: Configure Finder
-#   block:
-#   become: yes
-#     - name: Config Sidebar
-#       - remove tags
-#       - remove recents
-#
-#     - name: Config View(s)
-#       - Path bar
-#       - Status Bar
-#       - Tabs
-
-
-
-
-
-
-
-
-
 
 
 # - name: Configure Apps

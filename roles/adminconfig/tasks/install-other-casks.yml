@@ -1,21 +1,9 @@
 ---
 
-- name: Install cask applications that require sudo
-  community.general.homebrew_cask:
-    name: "{{ item.name | default(item) }}"
-    state: present
-    install_options: "{{ item.install_options | default('appdir=' + homebrew_cask_appdir) }}"
-    accept_external_apps: "{{ homebrew_cask_accept_external_apps }}"
-    sudo_password: "{{ admin_sudo_password }}"
-  loop: "{{ homebrew_cask_apps_sudo }}"
-  notify:
-    - Clear homebrew cache
+# Update homebrew here as any subsequent updates will remove the locally copied files
+- name: Update brew
+  ansible.builtin.command: "brew update"
 
-- name: Quit Zoom
-  ansible.builtin.shell: osascript -e 'quit app "zoom.us"'
-  ignore_errors: yes
-
-# do the previous install before this one as any updates to homebrew will remove the locally copied files
 - name: Copy Cask files
   ansible.builtin.copy:
     src: "{{ item }}.rb"
@@ -24,7 +12,7 @@
   register: copy_casks
 
 - name: Install local cask applications
-  homebrew_cask:
+  community.general.homebrew_cask:
     name: "{{ item.name | default(item) }}"
     state: present
     install_options: "{{ item.install_options | default('appdir=' + homebrew_cask_appdir) }}"

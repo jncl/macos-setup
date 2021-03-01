@@ -4,22 +4,22 @@
   ansible.builtin.include_tasks: install-other-casks.yml
   tags: homebrew
 
-- name: Install Pip Libraries
-  ansible.builtin.pip:
-    name: "{{ item }}"
-    extra_args: "--ignore-installed"
-  with_items: "{{ pip_items }}"
-
-- name: Install Ruby Gems
-  community.general.gem:
-    name: "{{ item }}"
-  with_items: "{{ gem_items }}"
-
-- name: Install Node Packages
-  community.general.npm:
-    name: "{{ item }}"
-    global: yes
-  with_items: "{{ npm_items }}"
+# - name: Install Pip Libraries
+#   ansible.builtin.pip:
+#     name: "{{ item }}"
+#     extra_args: "--ignore-installed"
+#   with_items: "{{ pip_items }}"
+#
+# - name: Install Ruby Gems
+#   community.general.gem:
+#     name: "{{ item }}"
+#   with_items: "{{ gem_items }}"
+#
+# - name: Install Node Packages
+#   community.general.npm:
+#     name: "{{ item }}"
+#     global: yes
+#   with_items: "{{ npm_items }}"
 
 - name: Get current Timezone
   become: yes

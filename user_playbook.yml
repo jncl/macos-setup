@@ -6,4 +6,6 @@
     - osx-local-defaults.yml
 
   roles:
+    # - role: geerlingguy.homebrew
+    #   tags: homebrew
     - userconfig
