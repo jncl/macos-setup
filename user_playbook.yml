@@ -3,6 +3,7 @@
 
   vars_files:
     - user_setup.yml
-
+    - osx-local-defaults.yaml
+    
   roles:
     - userconfig

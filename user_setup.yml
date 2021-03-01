@@ -19,9 +19,6 @@ dockitems_to_persist:
     path: "/Applications/TextMate.app"
     pos: 11
 
-- name: Include common defaults
-  include_vars: osx-local-defaults.yaml
-
 osx_user_defaults:
   - { domain: com.apple.screencapture, key: location, type: string, value: "$HOME/Desktop" } # Save screenshots to the desktop
   - { domain: com.apple.screencapture, key: type, type: string, value: "png" } # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
