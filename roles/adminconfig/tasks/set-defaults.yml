@@ -9,7 +9,7 @@
     type: "{{ item.type }}"
     value: "{{ item.value }}"
     state: "{{ item.state | default(omit) }}"
-  loop: osx_global_defaults
+  loop: "{{ osx_global_defaults }}"
 
 - name: Set Local defaults
   community.general.osx_defaults:
@@ -19,4 +19,4 @@
     type: "{{ item.type }}"
     value: "{{ item.value }}"
     state: "{{ item.state | default(omit) }}"
-  loop: osx_local_defaults
+  loop: "{{ osx_local_defaults }}"

@@ -8,4 +8,4 @@
     type: "{{ item.type }}"
     value: "{{ item.value }}"
     state: "{{ item.state | default(omit) }}"
-  loop: osx_local_defaults
+  loop: "{{ osx_local_defaults }}"
