@@ -2,6 +2,7 @@
 
 - name: Install other casks
   ansible.builtin.include_tasks: install-other-casks.yml
+  tags: homebrew
 
 - name: Install Pip Libraries
   ansible.builtin.pip:
@@ -26,11 +27,12 @@
     name: "Europe/London"
 
 - name: Set ZSH as the default shell
-  become: yes
+  # become: yes
   shell: chsh -s $(which zsh) {{ lookup('env', 'USER') }}
 
 - name: Modify the Dock
   include_tasks: modify-dock.yml
+  tags: dock
 
 - name: Setup some defaults
   include_tasks: set-defaults.yml
