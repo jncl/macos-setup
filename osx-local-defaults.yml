@@ -5,7 +5,7 @@ osx_local_defaults:
   - { domain: com.apple.dock, key: autohide, type: bool, value: true } # Autohide the Dock
   - { domain: com.apple.dock, key: autohide-delay, type: float, value: 0 } # Remove autohide delay
   - { domain: com.apple.dock, key: tilesize, type: int, value: 50 } # Set dock tile size
-  - { domain: com.apple.dock, key: largesize, type: int, value: 85 } # Set dock tile large size
+  - { domain: com.apple.dock, key: largesize, type: float, value: 85 } # Set dock tile large size
   - { domain: com.apple.finder, key: FXEnableExtensionChangeWarning, type: bool, value: false } # Disable the warning when changing a file extension
   - { domain: com.apple.finder, key: FXPreferredViewStyle, type: string, value: "clmv" } # Use column view in all Finder windows by default, other view modes: `icnv`, `Nlsv`, `Flwv
   - { domain: com.apple.finder, key: WarnOnEmptyTrash, type: bool, value: false } # Disable the warning before emptying the Trash
