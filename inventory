@@ -1,7 +1,7 @@
 
 [allhosts]
-admin ansible_sudo_pass=mac_admin_pw
-user ansible_sudo_pass=mac_user_pw
+admin
+user
 macOSVM_a ansible_sudo_pass=mac_admin_pw
 macOSVM_j ansible_sudo_pass=mac_user_pw
 
