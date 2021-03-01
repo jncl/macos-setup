@@ -23,7 +23,7 @@ homebrew_cask_apps:
   - battle-net
   - caffeine
   - carbon-copy-cloner
-  - curseforge
+  # - curseforge
   - discord
   - dropbox
   - google-analytics-opt-out

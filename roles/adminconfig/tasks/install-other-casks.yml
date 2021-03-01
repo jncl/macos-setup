@@ -1,5 +1,17 @@
 ---
 
+- name: Install cask applications that require sudo
+  community.general.homebrew_cask:
+    name: "{{ item.name | default(item) }}"
+    state: present
+    install_options: "{{ item.install_options | default('appdir=' + homebrew_cask_appdir) }}"
+    accept_external_apps: "{{ homebrew_cask_accept_external_apps }}"
+    sudo_password: "{{ ansible_sudo_pass }}"
+  loop: "{{ homebrew_cask_apps_sudo }}"
+  notify:
+    - Clear homebrew cache
+
+# do the previous install before this one as any updates to homebrew will remove the locally copied files
 - name: Copy Cask files
   ansible.builtin.copy:
     src: "{{ item }}.rb"
@@ -14,16 +26,5 @@
     install_options: "{{ item.install_options | default('appdir=' + homebrew_cask_appdir) }}"
     accept_external_apps: "{{ homebrew_cask_accept_external_apps }}"
   loop: "{{ homebrew_cask_apps_local }}"
-  notify:
-    - Clear homebrew cache
-
-- name: Install cask applications that require sudo
-  community.general.homebrew_cask:
-    name: "{{ item.name | default(item) }}"
-    state: present
-    install_options: "{{ item.install_options | default('appdir=' + homebrew_cask_appdir) }}"
-    accept_external_apps: "{{ homebrew_cask_accept_external_apps }}"
-    sudo_password: "{{ ansible_sudo_pass }}"
-  loop: "{{ homebrew_cask_apps_sudo }}"
   notify:
     - Clear homebrew cache

@@ -8,10 +8,9 @@ macOSVM_j ansible_sudo_pass=mac_user_pw
 [allhosts:vars]
 ansible_python_interpreter=/usr/bin/python3
 
-
 [localhosts]
-admin ansible_sudo_pass=mac_admin_pw
-user ansible_user=jonhogg ansible_sudo_pass=mac_user_pw
+admin
+user
 
 [localhosts:vars]
 ansible_host=127.0.0.1

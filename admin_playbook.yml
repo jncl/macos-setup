@@ -1,5 +1,6 @@
 ---
 - hosts: all
+  connection: local
 
   vars_files:
     - admin_setup.yml
