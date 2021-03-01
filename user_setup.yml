@@ -19,4 +19,29 @@ dockitems_to_persist:
     path: "/Applications/TextMate.app"
     pos: 11
 
-#wallpaper_file: cross.jpg
+osx_local_defaults:
+  - { domain: com.apple.dock, key: launchanim, type: bool, value: true } # Don’t animate opening applications from the Dock
+  - { domain: com.apple.dock, key: autohide, type: bool, value: true } # Autohide the Dock
+  - { domain: com.apple.dock, key: autohide-delay, type: float, value: 0 } # Remove autohide delay
+  - { domain: com.apple.dock, key: tilesize, type: int, value: 50 } # Set dock tile size
+  - { domain: com.apple.dock, key: largesize, type: int, value: 85 } # Set dock tile large size
+  - { domain: com.apple.finder, key: FXEnableExtensionChangeWarning, type: bool, value: false } # Disable the warning when changing a file extension
+  - { domain: com.apple.finder, key: FXPreferredViewStyle, type: string, value: "clmv" } # Use column view in all Finder windows by default, other view modes: `icnv`, `Nlsv`, `Flwv
+  - { domain: com.apple.finder, key: WarnOnEmptyTrash, type: bool, value: false } # Disable the warning before emptying the Trash
+  - { domain: com.apple.finder, key: EmptyTrashSecurely, type: bool, value: true }
+  - { domain: com.apple.finder, key: QLEnableTextSelection, type: bool, value: true } # Allow text selection in the Quick Look window
+  - { domain: com.apple.dashboard, key: db-enabled-state, type: int, value: 1 } # Set dashboard state disabled
+  - { domain: com.apple.dashboard, key: mcx-disabled, type: bool, value: true } # Disable dashboard
+  - { domain: com.apple.screencapture, key: location, type: string, value: "$HOME/Desktop" } # Save screenshots to the desktop
+  - { domain: com.apple.screencapture, key: type, type: string, value: "png" } # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
+  - { domain: com.apple.screensaver, host: currentHost, key: showClock, type: int, value: 1 } # Set Screensaver to Clock
+  - { domain: com.apple.desktopservices, key: DSDontWriteNetworkStores, type: bool, value: true } # Avoid creating .DS_Store files on network volumes
+  - { domain: "com.apple.print.PrintingPrefs", key: "Quit When Finished", type: "boolean", value: true, state: present } # Quit Printer App After Print Jobs Complete
+  - { domain: com.apple.safari, key: IncludeInternalDebugMenu, type: bool, value: true, state: present } # Add Debug Menu to Safari
+  - { domain: com.apple.launchservices, key: LSQuarantine, type: bool, value: false } # Disable the “Are you sure you want to open this application?” dialog
+  - { domain: com.googlecode.iterm2, key: PromptOnQuit, type: bool, value: false } # Don’t display the annoying prompt when quitting iTerm
+  # - { domain: , key: , type: , value:  }
+  # - { domain: , key: , type: , value:  }
+  # - { domain: , key: , type: , value:  }
+
+

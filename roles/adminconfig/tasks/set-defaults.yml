@@ -1,0 +1,22 @@
+---
+# many settings from here: https://github.com/ricbra/dotfiles/blob/master/bin/setup_osx
+- name: Set Global defaults
+  become: yes
+    community.general.osx_defaults:
+      domain: "{{ item.domain }}"
+      host: "{{ item.host | default(omit) }}"
+      key: "{{ item.key }}"
+      type: "{{ item.type }}"
+      value: "{{ item.value }}"
+      state: "{{ item.state | default(omit) }}"
+    loop: osx_global_defaults
+
+- name: Set Local defaults
+  community.general.osx_defaults:
+    domain: "{{ item.domain }}"
+    host: "{{ item.host | default(omit) }}"
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
+    state: "{{ item.state | default(omit) }}"
+  loop: osx_local_defaults

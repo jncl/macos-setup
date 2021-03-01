@@ -12,9 +12,10 @@ The easiest way to install is to follow the following steps:
 7. Change into the repo directory
 8. Install the requirements
 9. Update roles/geerlingguy.mas/tasks/main.yml and prefix mas with '/usr/local/bin/'
-10. Run the osascript command to account for sandboxing ???
-11. Run the Admin playbook
-12. Run the User playbook
+10. Run the Admin playbook
+11. Logoff admin and logon as User
+12. Change directory to ansible scripts
+13. Run the User playbook
 
 Commands:
 
@@ -26,6 +27,6 @@ Commands:
      cd macos-setup
      ansible-galaxy install -r requirements.yml
 	 sed -i "" 's|: mas |: /usr/local/bin/mas |g' roles/geerlingguy.mas/tasks/main.yml
-     osascript -e 'tell application "Finder"' -e 'set _b to bounds of window of desktop' -e 'end tell'
      ansible-playbook admin_playbook.yml -i inventory -l admin
+	 cd ../Shared/macos-setup
      ansible-playbook user_playbook.yml -i inventory -l user

@@ -11,6 +11,10 @@
   notify:
     - Clear homebrew cache
 
+- name: Quit Zoom
+  ansible.builtin.shell: osascript -e 'quit app "zoom.us"'
+  ignore_errors: yes
+
 # do the previous install before this one as any updates to homebrew will remove the locally copied files
 - name: Copy Cask files
   ansible.builtin.copy:

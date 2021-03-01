@@ -12,12 +12,6 @@
   ansible.builtin.shell: /usr/local/bin/dockutil --move '{{ item.name }}' --position {{ item.pos }}
   loop: "{{ dockitems_to_persist }}"
 
-- name: Hide the Dock
-  ansible.builtin.shell: defaults write com.apple.dock autohide -bool true
-
-- name: Resize the Dock
-  ansible.builtin.shell: defaults write com.apple.dock tilesize -int 50
-
 - name: Restart the Dock
   become: yes
   ansible.builtin.shell: killall Dock
