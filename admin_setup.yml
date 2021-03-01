@@ -42,6 +42,7 @@ homebrew_cask_apps:
   - vlc
   - 1password
 
+admin_sudo_password : mac_admin_pw
 homebrew_cask_apps_sudo:
   - boinc
   ## - teamviewer
