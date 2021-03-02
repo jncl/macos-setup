@@ -1,7 +1,6 @@
 ---
 # many settings from here: https://github.com/ricbra/dotfiles/blob/master/bin/setup_osx
 - name: Set Global defaults
-  become: yes
   community.general.osx_defaults:
     domain: "{{ item.domain | default(omit) }}"
     host: "{{ item.host | default(omit) }}"
