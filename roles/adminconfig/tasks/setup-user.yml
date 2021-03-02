@@ -7,7 +7,7 @@
     comment: Jon Hogg
     password: "mac_user_pw"
     group: staff
-    update_password: on-create
+    update_password: on_create
   register: result
 
 - name: Show User commmand output
