@@ -90,15 +90,3 @@ dockitems_to_persist:
   - name: Terminal
     path: /System/Applications/Utilities/Terminal.app/
     pos: 4
-
-osx_global_defaults:
-  - { key: NSNavPanelExpandedStateForSaveMode, type: bool, value: true } # Expand Save panel
-  - { key: PMPrintingExpandedStateForPrint, type: bool, value: true } # Expand Print panel
-  - { key: NSDocumentSaveNewDocumentsToCloud, type: bool, value: false } # Save to disk (not to iCloud)
-  - { key: AppleMeasurementUnits, type: string, value: "Inches" } # Set Measurements to Imperial
-  - { key: com.apple.swipescrolldirection, type: bool, value: false } # Disable natural scrolling
-  - { key: AppleShowScrollBars, type: string, value: "WhenScrolling" } # Show scrollbars only when scrolling
-  - { key: NSAutomaticWindowAnimationsEnabled, type: bool, value: false } # Opening and closing windows and popovers
-  - { key: AppleKeyboardUIMode, type: int, value: 3 } # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
-  - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: AutomaticCheckEnabled, type: int, value: 1 } #  Enable Automatic check for Software Updates
-  - { domain: /Library/Preferences/.GlobalPreferences, key: MultipleSessionEnabled, type: int, value: 1 } #  Enable Fast User Switching

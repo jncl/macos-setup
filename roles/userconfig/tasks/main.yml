@@ -7,8 +7,15 @@
       ansible.builtin.include_tasks: modify-dock.yml
       tags: dock
 
-- name: Setup user defaults
-  include_tasks: set-defaults.yml
+- name: Set User defaults
+  community.general.osx_defaults:
+    domain: "{{ item.domain | default(omit) }}"
+    host: "{{ item.host | default(omit) }}"
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
+    state: present
+  loop: "{{ osx_user_defaults }}"
 
 
 # - name: Configure Apps

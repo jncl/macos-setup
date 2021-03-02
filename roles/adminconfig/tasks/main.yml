@@ -1,9 +1,5 @@
 ---
 
-- name: Install other casks
-  ansible.builtin.include_tasks: install-other-casks.yml
-  tags: homebrew
-
 - name: Quit Zoom
   ansible.builtin.shell: osascript -e 'quit app "zoom.us"'
   ignore_errors: yes
@@ -68,13 +64,21 @@
   shell: chsh -s $(which zsh) {{ lookup('env', 'USER') }}
   when: result.stdout.find("/bin/zsh") == -1
 
-- name: Modify the Dock
-  include_tasks: modify-dock.yml
-  tags: dock
-
-- name: Setup some defaults
-  include_tasks: set-defaults.yml
-  tags: osx
-
 - name: Setup User
-  ansible.builtin.include_tasks: setup-user.yml
+  become: yes
+  block:
+    - name: Create User
+      ansible.builtin.user:
+        name: jonhogg
+        comment: Jon Hogg
+        password: "mac_user_pw"
+        group: staff
+        update_password: on_create
+      register: result
+    - name: Add User to sudoers
+      ansible.builtin.lineinfile:
+        path: /etc/sudoers.d/90_jonhogg
+        line: jonhogg ALL = (ALL) ALL
+        create: yes
+        mode: 0440
+        validate: /usr/sbin/visudo -cf %s
