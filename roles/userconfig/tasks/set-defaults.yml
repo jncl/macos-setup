@@ -2,7 +2,7 @@
 # many settings from here: https://github.com/ricbra/dotfiles/blob/master/bin/setup_osx
 - name: Set Local defaults
   community.general.osx_defaults:
-    domain: "{{ item.domain }}"
+    domain: "{{ item.domain | default(omit) }}"
     host: "{{ item.host | default(omit) }}"
     key: "{{ item.key }}"
     type: "{{ item.type }}"
@@ -12,7 +12,7 @@
 
 - name: Set User defaults
   community.general.osx_defaults:
-    domain: "{{ item.domain }}"
+    domain: "{{ item.domain | default(omit) }}"
     host: "{{ item.host | default(omit) }}"
     key: "{{ item.key }}"
     type: "{{ item.type }}"

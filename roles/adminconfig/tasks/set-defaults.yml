@@ -3,7 +3,7 @@
 - name: Set Global defaults
   become: yes
   community.general.osx_defaults:
-    domain: "{{ item.domain }}"
+    domain: "{{ item.domain | default(omit) }}"
     host: "{{ item.host | default(omit) }}"
     key: "{{ item.key }}"
     type: "{{ item.type }}"
@@ -13,7 +13,7 @@
 
 - name: Set Local defaults
   community.general.osx_defaults:
-    domain: "{{ item.domain }}"
+    domain: "{{ item.domain | default(omit) }}"
     host: "{{ item.host | default(omit) }}"
     key: "{{ item.key }}"
     type: "{{ item.type }}"
