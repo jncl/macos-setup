@@ -11,7 +11,7 @@
 - name: Display login items
   ansible.builtin.debug:
     var: result
-  tags: debug
+  tags: [never, debug]
 
 - name: Remove login item(s)
   ansible.builtin.shell: osascript -e 'tell application "System Events" to delete login item "BOINCManager"'
@@ -42,7 +42,7 @@
 - name: Show current Timezone
   ansible.builtin.debug:
     var: result
-  tags: debug
+  tags: [never, debug]
 
 - name: Set Timezone
   become: yes
@@ -57,7 +57,7 @@
 - name: Show current Shell
   ansible.builtin.debug:
     var: result
-  tags: debug
+  tags: [never, debug]
 
 - name: Set ZSH as the default shell
   become: yes
