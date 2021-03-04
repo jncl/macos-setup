@@ -12,5 +12,5 @@
       tags: osx
     - ansible.builtin.include_tasks: tasks/user-config.yml
 
- handlers:
+  handlers:
     - ansible.builtin.import_tasks: handlers/main.yml
