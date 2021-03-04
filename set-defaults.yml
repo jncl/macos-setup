@@ -3,8 +3,8 @@
 # & here: https://ss64.com/osx/syntax-defaults.html
 
 - name: Set Global defaults that require sudo
+  become: yes
   block:
-    become: yes
     - ansible.builtin.command: softwareupdate --schedule OFF
     - community.general.osx_defaults:
         domain: "{{ item.domain | default(omit) }}"
