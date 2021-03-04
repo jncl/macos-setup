@@ -9,7 +9,7 @@
   tags: [never, debug]
 
 - name: Remove items from Dock
-  ansible.builtin.shell: /usr/local/bin/dockutil --remove '{{ item }} --allhomes'
+  ansible.builtin.shell: /usr/local/bin/dockutil --remove '{{ item }}' --allhomes
   ignore_errors: true
   loop: "{{ dockitems_to_remove }}"
   when: dockitems_to_remove

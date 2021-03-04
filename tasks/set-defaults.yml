@@ -4,18 +4,15 @@
 
 - name: Set Global defaults that require sudo
   become: yes
-  block:
-    # - ansible.builtin.command: softwareupdate --schedule OFF
-    - community.general.osx_defaults:
-        domain: "{{ item.domain | default(omit) }}"
-        host: "{{ item.host | default(omit) }}"
-        key: "{{ item.key }}"
-        type: "{{ item.type }}"
-        value: "{{ item.value }}"
-        array_add: "{{ item.array | default(omit) }}"
-        state: present
-      loop: "{{ osx_global_defaults_sudo }}"
-    # - ansible.builtin.command: softwareupdate --schedule ON
+  community.general.osx_defaults:
+    domain: "{{ item.domain | default(omit) }}"
+    host: "{{ item.host | default(omit) }}"
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
+    array_add: "{{ item.array | default(omit) }}"
+    state: present
+  loop: "{{ osx_global_defaults_sudo }}"
   when: osx_global_defaults_sudo is defined
 
 - name: Set Global defaults
