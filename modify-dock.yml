@@ -6,21 +6,20 @@
 - name: Show all Dock Items
   ansible.builtin.debug:
     var: result.stdout
-  tags: debug
+  tags: [never, debug]
 
 - name: Remove items from Dock
   ansible.builtin.shell: /usr/local/bin/dockutil --remove '{{ item }} --allhomes'
   ignore_errors: true
   loop: "{{ dockitems_to_remove }}"
+  when: dockitems_to_remove
+  notify: restart_dock
 
-- name: Check if items in dock exist
-  ansible.builtin.shell: /usr/local/bin/dockutil --find '{{ item.name }}' || /usr/local/bin/dockutil --add '{{ item.path }}'
-  loop: "{{ dockitems_to_persist }}"
-
-- name: Fix order
-  ansible.builtin.shell: /usr/local/bin/dockutil --move '{{ item.name }}' --position {{ item.pos }}
-  loop: "{{ dockitems_to_persist }}"
-
-# - name: Restart the Dock
-#   become: yes
-#   ansible.builtin.shell: killall Dock
+- name: Check if items exist in dock & Fix order
+  block:
+    - ansible.builtin.shell: /usr/local/bin/dockutil --find '{{ item.name }}' || /usr/local/bin/dockutil --add '{{ item.path }}'
+      loop: "{{ dockitems_to_persist }}"
+    - ansible.builtin.shell: /usr/local/bin/dockutil --move '{{ item.name }}' --position {{ item.pos }}
+      loop: "{{ dockitems_to_persist }}"
+  when: dockitems_to_persist
+  notify: restart_dock

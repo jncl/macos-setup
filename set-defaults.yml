@@ -41,6 +41,8 @@
     state: present
   loop: "{{ osx_local_defaults }}"
   when: osx_local_defaults is defined
+  notify:
+    [restart_controlcenter, restart_dock, restart_finder, restart_systemuiserver]
 
 - name: Set User defaults
   community.general.osx_defaults:
@@ -53,15 +55,3 @@
     state: present
   loop: "{{ osx_user_defaults }}"
   when: osx_user_defaults is defined
-
-- name: Restart ControlCenter
-  ansible.builtin.shell: killall ControlCenter
-
-- name: Restart Dock
-  ansible.builtin.shell: killall Dock
-
-- name: Restart Finder
-  ansible.builtin.shell: killall Finder
-
-- name: Restart SystemUIServer
-  ansible.builtin.shell: killall SystemUIServer
