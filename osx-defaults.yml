@@ -11,7 +11,7 @@ osx_global_defaults:
   - { key: AppleMeasurementUnits, type: string, value: "Inches" } # Set Measurements to Imperial
   - { key: AppleShowScrollBars, type: string, value: "WhenScrolling" } # Show scrollbars only when scrolling
   - { key: AppleKeyboardUIMode, type: int, value: 3 } # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
-  - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: AutomaticCheckEnabled, type: int, value: 1 } #  Enable Automatic check for Software Updates
+  # - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: AutomaticCheckEnabled, type: int, value: 1 } #  Enable Automatic check for Software Updates
   - { domain: /Library/Preferences/.GlobalPreferences, key: MultipleSessionEnabled, type: int, value: 1 } #  Enable Fast User Switching
 
 osx_local_defaults:
