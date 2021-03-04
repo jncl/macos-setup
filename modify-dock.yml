@@ -19,7 +19,8 @@
   block:
     - ansible.builtin.shell: /usr/local/bin/dockutil --find '{{ item.name }}' || /usr/local/bin/dockutil --add '{{ item.path }}'
       loop: "{{ dockitems_to_persist }}"
+      notify: restart_dock
     - ansible.builtin.shell: /usr/local/bin/dockutil --move '{{ item.name }}' --position {{ item.pos }}
       loop: "{{ dockitems_to_persist }}"
+      notify: restart_dock
   when: dockitems_to_persist
-  notify: restart_dock
