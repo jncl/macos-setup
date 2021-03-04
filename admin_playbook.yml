@@ -2,8 +2,8 @@
 - hosts: all
 
   vars_files:
-    - admin_setup.yml
-    - osx-defaults.yml
+    - vars/admin_setup.yml
+    - vars/osx-defaults.yml
 
   pre_tasks:
     - name: Modify MAS task
@@ -21,12 +21,15 @@
     - role: geerlingguy.mas
       when: mas_installed_apps
       tags: mas
- 
+
   tasks:
-    - ansible.builtin.include_tasks: install-other-casks.yml
+    - ansible.builtin.include_tasks: tasks/install-other-casks.yml
       tags: homebrew
-    - ansible.builtin.include_tasks: modify-dock.yml
+    - ansible.builtin.include_tasks: tasks/modify-dock.yml
       tags: dock
-    - ansible.builtin.include_tasks: set-defaults.yml
+    - ansible.builtin.include_tasks: tasks/set-defaults.yml
       tags: osx
-    - ansible.builtin.include_tasks: admin-config.yml
+    - ansible.builtin.include_tasks: tasks/admin-config.yml
+
+ handlers:
+    - ansible.builtin.import_tasks: handlers/main.yml

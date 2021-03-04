@@ -2,12 +2,15 @@
 - hosts: all
 
   vars_files:
-    - user_setup.yml
-    - osx-defaults.yml
+    - vars/user_setup.yml
+    - vars/osx-defaults.yml
 
   tasks:
-    - ansible.builtin.include_tasks: modify-dock.yml
+    - ansible.builtin.include_tasks: tasks/modify-dock.yml
       tags: dock
-    - ansible.builtin.include_tasks: set-defaults.yml
+    - ansible.builtin.include_tasks: tasks/set-defaults.yml
       tags: osx
-    - ansible.builtin.include_tasks: user-config.yml
+    - ansible.builtin.include_tasks: tasks/user-config.yml
+
+ handlers:
+    - ansible.builtin.import_tasks: handlers/main.yml
