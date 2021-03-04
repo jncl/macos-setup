@@ -9,4 +9,4 @@ sudo -H pip3 install -U ansible
 
 ansible-galaxy install -r requirements.yml
 
-caffeinate ansible-playbook admin_playbook.yml -i inventory -l localhost -K
+caffeinate ansible-playbook admin_playbook.yml -i inventory -l localhost
