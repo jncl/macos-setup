@@ -42,7 +42,7 @@
   loop: "{{ osx_local_defaults }}"
   when: osx_local_defaults is defined
   notify:
-    [restart_controlcenter, restart_dock, restart_finder, restart_systemuiserver]
+    ["restart controlcenter", "restart dock", "restart finder", "restart systemuiserver"]
 
 - name: Set User defaults
   community.general.osx_defaults:

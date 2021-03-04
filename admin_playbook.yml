@@ -5,6 +5,9 @@
     - vars/admin_setup.yml
     - vars/osx-defaults.yml
 
+  handlers:
+    - ansible.builtin.import_tasks: handlers/main.yml
+
   pre_tasks:
     - name: Modify MAS task
       delegate_to: localhost
@@ -30,6 +33,3 @@
     - ansible.builtin.include_tasks: tasks/set-defaults.yml
       tags: osx
     - ansible.builtin.include_tasks: tasks/admin-config.yml
-
-  handlers:
-    - ansible.builtin.import_tasks: handlers/main.yml

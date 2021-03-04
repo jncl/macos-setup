@@ -1,22 +1,22 @@
 ---
 # handlers for macos-setup
 
-- name: Restart the Dock
-  become: yes
-  ansible.builtin.shell: killall Dock
-  when: restart_dock
-
 - name: Restart ControlCenter
   become: yes
   ansible.builtin.shell: killall ControlCenter
-  when: restart_controlcenter
+  listen: "restart controlcenter"
+
+- name: Restart Dock
+  become: yes
+  ansible.builtin.shell: killall Dock
+  listen: "restart dock"
 
 - name: Restart Finder
   become: yes
   ansible.builtin.shell: killall Finder
-  when: restart_finder
+  listen: "restart finder"
 
 - name: Restart SystemUIServer
   become: yes
   ansible.builtin.shell: killall SystemUIServer
-  when: restart_systemuiserver
+  listen: "restart systemuiserver"

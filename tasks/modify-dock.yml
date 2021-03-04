@@ -13,14 +13,14 @@
   ignore_errors: true
   loop: "{{ dockitems_to_remove }}"
   when: dockitems_to_remove
-  notify: restart_dock
+  notify: "restart dock"
 
 - name: Check if items exist in dock & Fix order
   block:
     - ansible.builtin.shell: /usr/local/bin/dockutil --find '{{ item.name }}' || /usr/local/bin/dockutil --add '{{ item.path }}'
       loop: "{{ dockitems_to_persist }}"
-      notify: restart_dock
+      notify: "restart dock"
     - ansible.builtin.shell: /usr/local/bin/dockutil --move '{{ item.name }}' --position {{ item.pos }}
       loop: "{{ dockitems_to_persist }}"
-      notify: restart_dock
+      notify: "restart dock"
   when: dockitems_to_persist
