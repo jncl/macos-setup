@@ -4,7 +4,7 @@
 
 - name: Set Global defaults that require sudo
   block:
-  become: yes
+    become: yes
     - ansible.builtin.command: softwareupdate --schedule OFF
     - community.general.osx_defaults:
         domain: "{{ item.domain | default(omit) }}"
