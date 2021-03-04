@@ -1,6 +1,6 @@
 
 [allhosts]
-localhost
+localhost ansible_connection=local
 macOSVM_a
 macOSVM_j
 
