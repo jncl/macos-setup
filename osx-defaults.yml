@@ -1,18 +1,23 @@
 ---
 # many entries here from here: https://github.com/ricbra/dotfiles/blob/master/bin/setup_osx
 # & here: https://ss64.com/osx/syntax-defaults.html
+osx_global_defaults_sudo:
+  - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: AutomaticCheckEnabled, type: bool, value: true } #  Enable Automatic check for Software Updates
+  - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: AutomaticDownload, type: bool, value: true } #  Download updates automatically
+  - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: ConfigDataInstall, type: bool, value: true } #  Install system data file updates automatically
+  - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: CriticalUpdateInstall, type: bool, value: true } #  Install critical security updates automatically
+  - { domain: /Library/Preferences/.GlobalPreferences, key: MultipleSessionEnabled, type: bool, value: true } #  Enable Fast User Switching
+
 osx_global_defaults:
-  - { key: NSNavPanelExpandedStateForSaveMode, type: bool, value: true } # Expand Save panel
-  - { key: PMPrintingExpandedStateForPrint, type: bool, value: true } # Expand Print panel
-  - { key: NSDocumentSaveNewDocumentsToCloud, type: bool, value: false } # Save to disk (not to iCloud)
+  - { key: AppleKeyboardUIMode, type: int, value: 3 } # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
+  - { key: AppleMeasurementUnits, type: string, value: "Inches" } # Set Measurements to Imperial
   - { key: AppleShowAllExtensions, type: bool, value: true } # Show all filename extensions
+  - { key: AppleShowScrollBars, type: string, value: "WhenScrolling" } # Show scrollbars only when scrolling
   - { key: com.apple.swipescrolldirection, type: bool, value: false } # Disable natural scrolling
   - { key: NSAutomaticWindowAnimationsEnabled, type: bool, value: false } # Opening and closing windows and popovers
-  - { key: AppleMeasurementUnits, type: string, value: "Inches" } # Set Measurements to Imperial
-  - { key: AppleShowScrollBars, type: string, value: "WhenScrolling" } # Show scrollbars only when scrolling
-  - { key: AppleKeyboardUIMode, type: int, value: 3 } # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
-  # - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: AutomaticCheckEnabled, type: int, value: 1 } #  Enable Automatic check for Software Updates
-  - { domain: /Library/Preferences/.GlobalPreferences, key: MultipleSessionEnabled, type: int, value: 1 } #  Enable Fast User Switching
+  - { key: NSDocumentSaveNewDocumentsToCloud, type: bool, value: false } # Save to disk (not to iCloud)
+  - { key: NSNavPanelExpandedStateForSaveMode, type: bool, value: true } # Expand Save panel
+  - { key: PMPrintingExpandedStateForPrint, type: bool, value: true } # Expand Print panel
 
 osx_local_defaults:
   - { domain: com.apple.controlcenter, key: "NSStatusItem Visible UserSwitcher", type: bool, value: true } # Show FUS on MenuBar
@@ -50,3 +55,4 @@ osx_local_defaults:
   - { domain: "com.apple.print.PrintingPrefs", key: "Quit When Finished", type: "boolean", value: true } # Quit Printer App After Print Jobs Complete
   - { domain: com.apple.systemuiserver, key: "NSStatusItem Visible com.apple.menuextra.TimeMachine", type: bool, value: true } # Show TimeMachine on MenuBar
   - { domain: com.apple.systemuiserver, key: menuExtras, type: array, value: ["/System/Library/CoreServices/Menu Extras/TimeMachine.menu"], array: true } # Add TimeMachine menuExtra element
+  - { domain: com.apple.systemuiserver, key: menuExtras, type: array, value: ["/System/Library/CoreServices/Menu Extras/User.menu"], array: true } # Add FUS menuExtra element

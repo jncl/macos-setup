@@ -2,6 +2,22 @@
 # many settings from here: https://github.com/ricbra/dotfiles/blob/master/bin/setup_osx
 # & here: https://ss64.com/osx/syntax-defaults.html
 
+- name: Set Global defaults that require sudo
+  block:
+  become: yes
+    - ansible.builtin.command: softwareupdate --schedule OFF
+    - community.general.osx_defaults:
+        domain: "{{ item.domain | default(omit) }}"
+        host: "{{ item.host | default(omit) }}"
+        key: "{{ item.key }}"
+        type: "{{ item.type }}"
+        value: "{{ item.value }}"
+        array_add: "{{ item.array | default(omit) }}"
+        state: present
+      loop: "{{ osx_global_defaults_sudo }}"
+    - ansible.builtin.command: softwareupdate --schedule ON
+  when: osx_global_defaults_sudo is defined
+
 - name: Set Global defaults
   community.general.osx_defaults:
     domain: "{{ item.domain | default(omit) }}"
