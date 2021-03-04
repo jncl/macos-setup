@@ -21,6 +21,6 @@
   ansible.builtin.shell: /usr/local/bin/dockutil --move '{{ item.name }}' --position {{ item.pos }}
   loop: "{{ dockitems_to_persist }}"
 
-- name: Restart the Dock
-  become: yes
-  ansible.builtin.shell: killall Dock
+# - name: Restart the Dock
+#   become: yes
+#   ansible.builtin.shell: killall Dock
