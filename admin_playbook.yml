@@ -21,8 +21,7 @@
     - role: geerlingguy.mas
       when: mas_installed_apps
       tags: mas
-    - role: adminconfig
-
+ 
   tasks:
     - ansible.builtin.include_tasks: install-other-casks.yml
       tags: homebrew
@@ -30,3 +29,4 @@
       tags: dock
     - ansible.builtin.include_tasks: set-defaults.yml
       tags: osx
+    - ansible.builtin.include_tasks: admin-config.yml

@@ -5,11 +5,9 @@
     - user_setup.yml
     - osx-defaults.yml
 
-  roles:
-    - role: userconfig
-
   tasks:
     - ansible.builtin.include_tasks: modify-dock.yml
       tags: dock
     - ansible.builtin.include_tasks: set-defaults.yml
       tags: osx
+    - ansible.builtin.include_tasks: user-config.yml
