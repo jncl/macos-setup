@@ -34,6 +34,9 @@
 #     global: yes
 #   with_items: "{{ npm_items }}"
 
+- name: Signout of the App Store
+  ansible.builtin.command: /usr/local/bin/mas signout
+
 - name: Get current Timezone
   become: yes
   ansible.builtin.shell: systemsetup -gettimezone
