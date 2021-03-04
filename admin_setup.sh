@@ -17,7 +17,7 @@ sudo -H pip3 install -U pip
 sudo -H pip3 install -U ansible
 
 # Install playbook pre-requisites
-ansible-galaxy install -r requirements.yml
+ansible-galaxy install -r requirements.yml 2>/dev/null
 
 # Run playbook without sleeping
 caffeinate ansible-playbook admin_playbook.yml -i inventory -l localhost $@

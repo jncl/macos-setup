@@ -5,9 +5,10 @@
 osx_global_defaults_sudo:
   - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: AutomaticCheckEnabled, type: bool, value: true } #  Enable Automatic check for Software Updates
   - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: AutomaticDownload, type: bool, value: true } #  Download updates automatically
-  - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: AutomaticallyInstallMacOSUpdates, type: bool, value: true } #  Install macOS updates automatically
+  - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: AutomaticallyInstallMacOSUpdates, type: bool, value: true } #  Install macOS updates automatically (Restarting if required)
   - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: ConfigDataInstall, type: bool, value: true } #  Install system data file updates automatically
   - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: CriticalUpdateInstall, type: bool, value: true } #  Install critical security updates automatically
+  - { domain: /Library/Preferences/com.apple.commerce, key: AutoUpdate, type: bool, value: true } #  Install app updates automatically
   - { domain: /Library/Preferences/.GlobalPreferences, key: MultipleSessionEnabled, type: bool, value: true } #  Enable Fast User Switching
 
 osx_global_defaults:
