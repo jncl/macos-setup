@@ -5,6 +5,15 @@
     - admin_setup.yml
     - osx-defaults.yml
 
+  pre_tasks:
+    - name: Modify MAS task
+      delegate_to: localhost
+      ansible.builtin.replace:
+        path: "{{ lookup('env', 'PWD') }}/roles/geerlingguy.mas/tasks/main.yml"
+        regexp: \s([']?)(mas)\s
+        replace: ' \1/usr/local/bin/\2 '
+      tags: always
+
   roles:
     - role: geerlingguy.homebrew
       when: homebrew_cask_apps
@@ -12,10 +21,12 @@
     - role: geerlingguy.mas
       when: mas_installed_apps
       tags: mas
-    - adminconfig
+    - role: adminconfig
 
   tasks:
-    - install-other-casks.yml
-    - modify-dock.yml
-    - set-defaults.yml
-    
+    - ansible.builtin.include_tasks: install-other-casks.yml
+      tags: homebrew
+    - ansible.builtin.include_tasks: modify-dock.yml
+      tags: dock
+    - ansible.builtin.include_tasks: set-defaults.yml
+      tags: osx

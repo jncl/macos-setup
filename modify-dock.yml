@@ -1,6 +1,15 @@
 ---
-- name: Remove all crap from Dock
-  ansible.builtin.shell: /usr/local/bin/dockutil --remove '{{ item }}'
+- name: List all Dock items
+  ansible.builtin.shell: /usr/local/bin/dockutil --list
+  register: result
+
+- name: Show all Dock Items
+  ansible.builtin.debug:
+    var: result.stdout
+  tags: debug
+
+- name: Remove items from Dock
+  ansible.builtin.shell: /usr/local/bin/dockutil --remove '{{ item }} --allhomes'
   ignore_errors: true
   loop: "{{ dockitems_to_remove }}"
 

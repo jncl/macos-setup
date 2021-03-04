@@ -53,12 +53,12 @@ homebrew_cask_apps_local:
   - dvdpedia
 
 mas_installed_apps:
-  - { id: 444425546, name: "BarTunes" }
-  - { id: 1381004916, name: "Discovery - DNS-SD Browser" }
+  # - { id: 444425546, name: "BarTunes" }
+  # - { id: 1381004916, name: "Discovery - DNS-SD Browser" }
   - { id: 1014850245, name: "MONIT (2.0.2)" }
   - { id: 823766827, name: "OneDrive" }
   - { id: 425424353, name: "The Unarchiver" }
-  - { id: 497799835, name: "Xcode" }
+  # - { id: 497799835, name: "Xcode" }
 
 pip_items: []
 
@@ -82,9 +82,6 @@ dockitems_to_remove:
   - Podcasts
   - News
   - Downloads
-  - Terminal
-  - Activity Monitor
-  - Zoom
 
 dockitems_to_persist:
   - name: Terminal

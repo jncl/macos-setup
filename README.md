@@ -19,7 +19,8 @@ The easiest way to install is to follow the following steps:
 
 Commands:
 
-     xcode-select --install
+     Login as Administrator
+	 xcode-select --install
      sudo -H pip3 install -U pip
      sudo -H pip3 install -U ansible
      cd ../Shared
@@ -27,6 +28,7 @@ Commands:
      cd macos-setup
      ansible-galaxy install -r requirements.yml
 	 sed -i "" 's|: mas |: /usr/local/bin/mas |g' roles/geerlingguy.mas/tasks/main.yml
-     ansible-playbook admin_playbook.yml -i inventory -l admin
+     ansible-playbook admin_playbook.yml -i inventory -l localhost -kK
+	 Login as User
 	 cd ../Shared/macos-setup
-     ansible-playbook user_playbook.yml -i inventory -l user
+     ansible-playbook user_playbook.yml -i inventory -l localhost -kK
