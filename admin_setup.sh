@@ -7,17 +7,14 @@
 
 export EDITOR=nano
 
-# Set Sudo timeout to unlimited for admin user
-echo "Defaults timestamp_timeout=-1" | sudo tee /etc/sudoers.d/admin
+# Set Sudo timeout for admin user
+echo "Defaults timestamp_timeout=30" | sudo tee /etc/sudoers.d/admin
 sudo visudo -cf /etc/sudoers.d/admin
 
 # Upgrade to latest pip, required to prevent cryptography from failing to build when installing ansible
 sudo -H pip3 install -U pip
 # Install ansible
 sudo -H pip3 install -U ansible
-
-# # Reset Sudo Password Timeout to prevent playbook from hanging
-# sudo -k
 
 # Install playbook pre-requisites
 ansible-galaxy install -r requirements.yml
