@@ -20,7 +20,7 @@ sudo -H pip3 install -U ansible
 ansible-galaxy install -r requirements.yml
 
 # Run playbook without sleeping
-caffeinate ansible-playbook admin_playbook.yml -i inventory -l localhost
+caffeinate ansible-playbook admin_playbook.yml -i inventory -l localhost $@
 
 # Remove sudo timeout for admin
 sudo rm /etc/sudoers.d/admin
