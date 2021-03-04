@@ -58,7 +58,7 @@ mas_installed_apps:
   - { id: 1014850245, name: "MONIT (2.0.2)" }
   - { id: 823766827, name: "OneDrive" }
   - { id: 425424353, name: "The Unarchiver" }
-  # - { id: 497799835, name: "Xcode" }
+  - { id: 497799835, name: "Xcode" }
 
 pip_items: []
 
