@@ -6,5 +6,4 @@ macOSVM_j
 
 [allhosts:vars]
 ansible_python_interpreter=/usr/bin/python3
-ansible_become_user=admin
 ansible_become_pass=mac_admin_pw
