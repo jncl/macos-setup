@@ -30,11 +30,11 @@ else
 fi
 echo "$hb_path" | sudo tee "/etc/paths.d/30-homebrew"
 
-# Apply path updates
-eval $(/usr/libexec/path_helper)
-
 # Install ansible
 ./install_ansible.sh
+
+# Apply path updates (homebrew & ansible)
+eval $(/usr/libexec/path_helper)
 
 # Install playbook pre-requisites
 ansible-galaxy collection install geerlingguy.mac -p ./collections
