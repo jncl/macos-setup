@@ -1,0 +1,37 @@
+---
+- block:
+  - name: Create User
+    become: yes
+    ansible.builtin.user:
+      name: "{{ user_abbr }}"
+      comment: "{{ user_name }}"
+      password: "{{ user_pw }}"
+      group:
+        - staff
+      shell: "/bin/zsh"
+      state: present
+    register: result
+  - name: Add User to sudoers
+    become: yes
+    ansible.builtin.lineinfile:
+      path: "/etc/sudoers.d/90_{{ user_abbr }}"
+      line: "{{ user_abbr }} ALL = (ALL) ALL"
+      create: yes
+      mode: 0440
+      state: present
+      validate: /usr/sbin/visudo -cf %s
+  - name: Add User picture
+    become: true
+    ansible.builtin.shell:
+      cmd: |
+        tmp="$(mktemp)"
+        printf "0x0A 0x5C 0x3A 0x2C dsRecTypeStandard:Users 2 dsAttrTypeStandard:RecordName base64:dsAttrTypeStandard:JPEGPhoto\n%s:%s" "{{ item.name }}" "$(base64 "{{ item.image }}")" > "$tmp"
+        dscl . delete /Users/{{ item.name }} JPEGPhoto
+        dscl . delete /Users/{{ item.name }} Picture
+        dsimport "$tmp" /Local/Default M
+        rc=$?
+        rm "$tmp"
+        exit $rc
+    with_items:
+      - name: "{{ user_abbr }}"
+        image: "/Library/User Pictures/Sports/Target.png"

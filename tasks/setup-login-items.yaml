@@ -1,0 +1,54 @@
+---
+- block:
+  - name: Get login items
+    ansible.builtin.script: files/loginitems-ls.scpt
+    register: result
+    changed_when: result.stdout | length > 2
+    tags: [never, debug]
+  - name: Display login items [1]
+    ansible.builtin.debug:
+      var: result
+    tags: [never, debug]
+  - name: Remove Apps from Login items
+    ansible.builtin.script: files/loginitems-rm.scpt "{{ item }}"
+    with_items:
+      - "Google Drive"
+      # - "Safari"
+    register: result
+    changed_when: result.stdout | length > 2
+  - name: Display remove output
+    ansible.builtin.debug:
+      var: result
+    tags: [never, debug]
+  - name: Add Apps to Login items
+    ansible.builtin.script: files/loginitems-add.scpt "{{ item.name }}" "{{ item.path + '/' + item.name + '.app' }}" false Application
+    with_items:
+      - name: Mail
+        path: /System/Applications
+      - name: Safari
+        path: /Applications
+      - name: Start Utility Apps
+        path: $HOME/Applications
+      - name: Start Cloud Apps
+        path: $HOME/Applications
+    register: result
+    changed_when: result.stdout is not search("login item exists")
+    tags: always
+  - name: Display add output
+    ansible.builtin.debug:
+      var: result
+    tags: [never, debug]
+  - name: Get login items
+    ansible.builtin.script: files/loginitems-ls.scpt
+    register: result
+    changed_when: result.stdout | length > 2
+    tags: [never, debug]
+  - name: Display login items [2]
+    ansible.builtin.debug:
+      var: result
+    tags: [never, debug]
+
+
+- block:
+  - name: Change login picture
+    ansible.builtin.script: files/user-picture.scpt "/Library/User Pictures/Sports/Target.png"

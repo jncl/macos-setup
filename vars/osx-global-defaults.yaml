@@ -1,0 +1,27 @@
+---
+# many entries from here: https://github.com/ricbra/dotfiles/blob/master/bin/setup_osx
+# & here: https://ss64.com/osx/syntax-defaults.html
+# & here: https://github.com/feffi/ansible-macos-finder/blob/master/tasks/configure.yml
+
+osx_global_defaults_sudo:
+  - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: AutomaticCheckEnabled, type: bool, value: true, description: "Enable Automatic check for Software Updates" }
+  - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: AutomaticDownload, type: bool, value: true, description: "Download updates automatically" }
+  - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: AutomaticallyInstallMacOSUpdates, type: bool, value: true, description: "Install macOS updates automatically (Restarting if required)" }
+  - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: ConfigDataInstall, type: bool, value: true, description: "Install system data file updates automatically" }
+  - { domain: /Library/Preferences/com.apple.SoftwareUpdate, key: CriticalUpdateInstall, type: bool, value: true, description: "Install critical security updates automatically" }
+  - { domain: /Library/Preferences/com.apple.commerce, key: AutoUpdate, type: bool, value: true, description: "Install app updates automatically" }
+  - { domain: /Library/Preferences/.GlobalPreferences, key: MultipleSessionEnabled, type: bool, value: true, description: "Enable Fast User Switching" }
+
+osx_global_defaults:
+  - { key: AppleKeyboardUIMode, type: int, value: 3, description: "Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)" }
+  - { key: AppleMeasurementUnits, type: string, value: "Inches", description: "Set Measurements to Imperial" }
+  - { key: AppleMetricUnits, type: bool, value: false, description: "Unset Metric Units" }
+  - { key: AppleShowAllExtensions, type: bool, value: true, description: "Show all filename extensions" }
+  - { key: AppleShowScrollBars, type: string, value: "WhenScrolling", description: "Show scrollbars only when scrolling" }
+  - { key: NSAutomaticWindowAnimationsEnabled, type: bool, value: false, description: "Opening and closing windows and popovers" }
+  - { key: NSDocumentSaveNewDocumentsToCloud, type: bool, value: false, description: "Save to disk (not to iCloud)" }
+  - { key: NSNavPanelExpandedStateForSaveMode, type: bool, value: true, description: "Expand Save panel" }
+  - { key: PMPrintingExpandedStateForPrint, type: bool, value: true, description: "Expand Print panel" }
+  - { key: com.apple.swipescrolldirection, type: bool, value: false, description: "Disable natural scrolling" }
+  - { key: com.apple.keyboard.fnState, type: bool, value: true, description: "Use F1, F2, etc. keys, as standard function keys" }
+    # AppleFirstWeekday = { gregorian = 1; }; Set First DoW to Sunday

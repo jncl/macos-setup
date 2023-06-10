@@ -1,0 +1,43 @@
+---
+- block:
+  - name: Hide directories
+    ansible.builtin.command: "chflags hidden ~/{{ item | ansible.builtin.quote }}"
+    loop:
+      - Documents
+      - Movies
+      - Music
+      - Pictures
+  - name: Remove links to CloudStorage entries
+    ansible.builtin.file:
+      path: "$HOME/{{ item }}"
+      state: absent
+    loop:
+      - "Dropbox"
+      - "Google Drive"
+      - "OneDrive"
+      
+- block:
+  - name: Create media directory links in $HOME
+    ansible.builtin.file:
+      src: "/Volumes/Mac_Media/{{ item }}"
+      path: "$HOME/My-{{ item }}"
+      state: link
+      force: yes
+      follow: no
+    loop:
+      - Movies
+      - Music
+      - Pictures
+    when: ansible_model is search("iMac")
+  tags: media
+  
+- block:
+  - name: Create games directory link in $HOME
+    ansible.builtin.file:
+      src: "/Volumes/Games"
+      path: "$HOME/Games"
+      state: link
+      force: yes
+      follow: no
+  when: ansible_model is search("iMac")
+  tags: games

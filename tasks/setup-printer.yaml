@@ -1,0 +1,7 @@
+---
+- block:
+  - name: Remove Printer
+    ansible.builtin.shell: lpadmin -x "Canon_iP4200___hc4server"
+    ignore_errors: true
+  - name: Add Printer, Enable and accept jobs on the printer
+    ansible.builtin.shell: lpadmin -m everywhere -p "Canon_iP4200___hc4server" -D "Canon iP4200 @ hc4server" -L "Breakfast Room" -v $(ippfind | head -1) -o printer-is-shared=false -E

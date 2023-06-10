@@ -1,0 +1,24 @@
+---
+- block:
+  - name: List all Dock items
+    ansible.builtin.shell: /usr/local/bin/dockutil --list
+    register: result
+  - name: Show all Dock Items
+    ansible.builtin.debug:
+      var: result.stdout
+    tags: [never, debug]
+  - name: Remove items from Dock
+    ansible.builtin.shell: /usr/local/bin/dockutil --remove '{{ item }}' --allhomes
+    ignore_errors: true
+    loop: "{{ dockitems_to_remove }}"
+    when: dockitems_to_remove
+    notify: "restart dock"
+  - name: Check if items exist in dock & Fix order
+    block:
+      - ansible.builtin.shell: /usr/local/bin/dockutil --find '{{ item.name }}' || /usr/local/bin/dockutil --add '{{ item.path }}'
+        loop: "{{ dockitems_to_persist }}"
+        notify: "restart dock"
+      - ansible.builtin.shell: /usr/local/bin/dockutil --move '{{ item.name }}' --position {{ item.pos }}
+        loop: "{{ dockitems_to_persist }}"
+        notify: "restart dock"
+    when: dockitems_to_persist

@@ -1,0 +1,18 @@
+---
+- block:
+  - name: Recursively change ownership of macos-setup repo
+    become: yes
+    ansible.builtin.file:
+      path: /Users/Shared/macos-setup
+      state: directory
+      recurse: yes
+      owner: jonhogg
+      group: staff
+  - name: Recursively change ownership of Homebrew directories
+    become: yes
+    ansible.builtin.file:
+      path: /opt/homebrew
+      state: directory
+      recurse: yes
+      owner: jonhogg
+      group: staff

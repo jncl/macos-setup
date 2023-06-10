@@ -1,0 +1,5 @@
+---
+# collections:
+#   - name: geerlingguy.mac
+
+# N.B. this collection is installed in the bootstrap script so that it is available for all users

@@ -1,0 +1,8 @@
+
+[allhosts]
+localhost ansible_connection=local
+macOSVM_a
+macOSVM_j
+
+[allhosts:vars]
+ansible_python_interpreter=/usr/bin/python3

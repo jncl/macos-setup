@@ -1,0 +1,47 @@
+---
+- block:
+  - name: Create Developer WoW dir
+    ansible.builtin.file:
+      path: $HOME/Developer/WoW
+      state: directory
+  - name: Clone Developer repos
+    ansible.builtin.git:
+      repo: "https://github.com/jncl/{{ item }}"
+      dest: $HOME/Developer/WoW/{{ item }}
+    with_items:
+      - BasicBrokers
+      - Cork
+      - devnull
+      - Miscellany
+      - Skinner
+      - Spew
+      - VendorBait
+  tags: wow
+
+- block:
+  - name: Create Developer App dirs
+    ansible.builtin.file:
+      path: $HOME/Developer/Apps
+      state: directory
+  - name: Clone Developer repos
+    ansible.builtin.git:
+      repo: "https://github.com/jncl/{{ item }}"
+      dest: $HOME/Developer/Apps/{{ item }}
+    with_items:
+      - AutoRefreshPageNoPrefs
+      - ShowTorrentLinks
+  tags: apps
+
+- block:
+  - name: Clone ansible repo
+    ansible.builtin.git:
+      repo: "https://github.com/jncl/ansible"
+      dest: $HOME/Developer/ansible
+  - name: Create link in $HOME
+    ansible.builtin.file:
+      src: $HOME/Developer/ansible
+      path: $HOME/ansible
+      state: link
+      force: yes
+      follow: no
+  tags: ansible

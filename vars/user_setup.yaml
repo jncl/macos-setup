@@ -1,0 +1,68 @@
+---
+computer_hostname: "{{ 'Hedgehog2' if ansible_model is search('MacBookPro6,1') else 'Hedgehog3' if ansible_model is search('iMac18,3') else 'Hedgehog4' if ansible_model is search('iMac') else 'Hedgehog5' }}"
+
+user_abbr: "jonhogg"
+ 
+# Set keyboard_id to internal or external keyboard
+keyboard_id: "{{ '1452-567-0' if ansible_model is search('MacBookPro') else '1452-592-0' if ansible_model is search('iMac18,3') else 'alt_handler_id-95' }}"
+
+db_prefix: "$HOME/Library/CloudStorage/Dropbox"
+
+homebrew_taps:
+  - gromgit/fuse
+  
+homebrew_installed_packages:
+  - lua51
+  - sshfs-mac
+
+homebrew_cask_apps:
+  - apptrap
+  - battle-net
+  - dropbox
+  - google-drive
+  - macfuse
+  - pibar
+  
+ mas_installed_apps:
+  - { id: 823766827, name: "OneDrive" }
+
+# TODO: clone qlstephen repo and add entries to the LSItemContentTypes of the plist file to support .toc files
+# use 'mdls  -name kMDItemContentType <filename>' to view file info and add the returned string, 'dyn.*' to the plist file
+# more info here: https://github.com/whomwah/qlstephen/issues/23
+
+dockitems_remove:
+  - Launchpad
+  - Maps
+  - Photos
+  - Calendar
+  - Contacts
+  - Reminders
+  - Notes
+  - Freeform
+  - TV
+  - Music
+  - Podcasts
+  - News
+  - Keynote
+  - Numbers
+  - Pages
+  - Downloads
+
+dockitems_persist:
+  - name: Screen Sharing
+    path: "/System/Library/CoreServices/Applications/Screen Sharing.app"
+  - name: TextMate
+    path: "/Applications/TextMate.app"
+
+osx_user_defaults:
+  - { domain: com.apple.mail, key: PreferPlainText, type: bool, value: true, description: "Force all Mail messages to display as plain text" }
+  - { domain: com.apple.mail, key: SuppressAddressHistory, type: bool, value: true, description: "Disable tracking of Previous Recipients" }
+  - { domain: com.apple.mail, key: SendWindowsFriendlyAttachments, type: bool, value: true, description: "Send Windows friendly attachments" }
+  - { domain: com.apple.safari, key: IncludeInternalDebugMenu, type: bool, value: true, description: "Add Debug Menu to Safari" }
+  - { domain: com.apple.screencapture, key: location, type: string, value: "~/Desktop", description: "Save screenshots to the desktop" }
+  - { domain: com.apple.screencapture, key: type, type: string, value: "png", description: "Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)" }
+  - { domain: com.googlecode.iterm2, key: PromptOnQuit, type: bool, value: false, description: "Don’t display the annoying prompt when quitting iTerm2" }
+
+# TODO:
+# Enable Full Keyboard Access in Accessiblity settings, change Appearance Auto Delay to 5 seconds (N.B. causes issues with changing tabs in Safari on MBPi5)
+# Disable Caps Lock key

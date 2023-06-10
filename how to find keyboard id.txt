@@ -1,0 +1,31 @@
+# for Karabiner DriverKit VirtualHIDKeyboard 1.6.0
+"com.apple.keyboard.modifiermapping.5824-10203-0" =     (
+			{
+		HIDKeyboardModifierMappingDst = 30064771072;
+		HIDKeyboardModifierMappingSrc = 30064771129;
+	}
+);
+# for "Magic Karabiner with Touch ID and Numeric Keypad"
+"com.apple.keyboard.modifiermapping.alt_handler_id-95" =     (
+            {
+        HIDKeyboardModifierMappingDst = 30064771072;
+        HIDKeyboardModifierMappingSrc = 30064771129;
+    }
+);
+	
+	
+ioreg.xml
+find using "Magic Keyboard with Touch ID and Numeric Keypad"
+	
++-o AppleHIDKeyboardEventDriverV2  <class AppleHIDKeyboardEventDriverV2, id 0x100005351, registered, matched, active, busy 0 (1 ms), retain 8>
+{
+"alt_handler_id" = 0x5f (95)
+}
+
+find using "org_pqrs_Karabiner_DriverKit_VirtualHIDKeyboard"
+
+"VendorID" = 0x16c0 (5824)
+"ProductID" = 0x27db (10203)
+"LocationID" = 0x0 (0)
+
+-k IOBluetoothHCIController
