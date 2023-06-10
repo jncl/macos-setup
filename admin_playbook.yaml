@@ -10,8 +10,6 @@
       prompt: Enter password for user {{ user_name }}
       confirm: yes
       private: yes
-      # encrypt: sha512_crypt
-      # salt_size: 7
 
   vars_files:
     - vars/osx-global-defaults.yaml
@@ -34,7 +32,7 @@
 
   tasks:
     - ansible.builtin.include_tasks: tasks/install-other-casks.yaml
-      tags: homebrew
+      tags: casks
     - ansible.builtin.include_tasks: tasks/set-defaults.yaml
       tags: defaults
     - ansible.builtin.include_tasks: tasks/admin-config.yaml
