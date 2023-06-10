@@ -6,9 +6,9 @@
       name: "{{ user_abbr }}"
       comment: "{{ user_name }}"
       password: "{{ user_pw }}"
-      group:
-        - staff
-      shell: "/bin/zsh"
+      shell: '/bin/zsh'
+      group: 'staff'
+      append: yes
       state: present
     register: result
   - name: Add User to sudoers
