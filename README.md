@@ -15,4 +15,4 @@ The easiest way to install is to follow the following steps:
 
 ## Usage:
 
-	`zsh -c "$(curl -fsSL 'https://raw.githubusercontent.com/jncl/macos-setup/master/bootstrap.sh')"`
+	zsh -c "$(curl -fsSL 'https://raw.githubusercontent.com/jncl/macos-setup/master/bootstrap.sh')"
