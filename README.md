@@ -8,6 +8,7 @@ The easiest way to install is to follow the following steps:
 	- Open a Terminal window
 	- Copy the Usage: command
 	- Paste the command just copied
+	- Restart
 	
 - Login as User
 	- Change to the [setup directory](/Users/Shared/macos-setup)
