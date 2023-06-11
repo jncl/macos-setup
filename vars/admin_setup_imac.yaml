@@ -70,7 +70,7 @@ homebrew_cask_apps:
   # - zoom
 
 homebrew_cask_apps_local:
-  - 1password@7.9.6
+  - 1password@7.9.10
   - cdpedia
   - dvdpedia
   - mdrp@9.1.1
@@ -81,6 +81,7 @@ mas_installed_apps:
   # - { id: 1014850245, name: "MONIT (2.0.2)" } # doesn't work on macOS 11.0 +
   - { id: 425424353, name: "The Unarchiver" }
   - { id: 523620159, name: "CleanMyDrive 2" }
+  - { id: 823766827, name: "OneDrive" }
   # - { id: 497799835, name: "Xcode" } # takes a long time to install, so install later
 
 pip_items: 
