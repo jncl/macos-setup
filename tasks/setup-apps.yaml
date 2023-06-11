@@ -8,7 +8,7 @@
       state: link
       force: yes
       follow: no
-     loop:
+    loop:
       - com.bombich.ccc.plist
       - com.bombich.cccdashboard.plist
       - com.clipy-app.Clipy.plist
@@ -33,7 +33,7 @@
       state: link
       force: yes
       follow: no
-     loop:
+    loop:
       - com.bruji.cdpedia.plist
       - com.bruji.dvdpedia.plist
     when: ansible_model is search("iMac")
