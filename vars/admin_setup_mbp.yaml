@@ -39,7 +39,7 @@ homebrew_cask_apps:
   - vlc
 
 homebrew_cask_apps_local:
-  - 1password@7.9.6
+  - 1password@7.9.10
 #  - mdrp@9.1.1
 
 mas_installed_apps:
