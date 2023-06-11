@@ -6,13 +6,13 @@
       path: /Users/Shared/macos-setup
       state: directory
       recurse: yes
-      owner: jonhogg
+      owner: "{{ user_abbr }}"
       group: staff
   - name: Recursively change ownership of Homebrew directories
     become: yes
     ansible.builtin.file:
-      path: /opt/homebrew
+      path: "{{ hb_dir }}"
       state: directory
       recurse: yes
-      owner: jonhogg
+      owner: "{{ user_abbr }}"
       group: staff
