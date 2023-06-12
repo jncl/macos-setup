@@ -8,7 +8,7 @@
         src: "{{ db_prefix }}/OSX/Preferences/{{ item }}"
         path: "$HOME/Library/Preferences/{{ item }}"
         state: link
-        # force: true
+        force: true
         # follow: false
       loop:
         - com.bombich.ccc.plist
@@ -31,14 +31,14 @@
     - name: Create link for iTerm AutoLaunch script directory
       ansible.builtin.file:
         src: "{{ db_prefix }}/OSX/Library Links/Application Support/iTerm2/Scripts"
-        path: "$HOME/Library/Application Support/iTerm2"
+        path: "$HOME/Library/Application Support/iTerm2/Scripts"
         state: link
         # force: true
         # follow: false
     - name: Create link for TextMate bundle directory
       ansible.builtin.file:
         src: "{{ db_prefix }}/OSX/Library Links/Application Support/TextMate/Pristine Copy"
-        dest: "$HOME/Library/Application Support/TextMate"
+        dest: "$HOME/Library/Application Support/TextMate/Pristine Copy"
         state: link
         # force: true
         # follow: false
@@ -49,7 +49,7 @@
     - name: Make links for Preference files (iMac)
       ansible.builtin.file:
         src: "{{ db_prefix }}/OSX/Preferences/{{ item }}"
-        path: "$HOME/Library/Preferences"
+        path: "$HOME/Library/Preferences/{{ item }}"
         state: link
         # force: true
         # follow: false
@@ -59,7 +59,7 @@
     - name: Create links for Library Application Support directories (iMac)
       ansible.builtin.file:
         src: "{{ db_prefix }}/OSX/Library Links/Application Support/{{ item }}"
-        path: "$HOME/Library/Application Support/"
+        path: "$HOME/Library/Application Support/{{ item }}"
         state: link
         # force: true
         # follow: false
