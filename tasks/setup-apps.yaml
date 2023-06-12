@@ -6,10 +6,10 @@
     - name: Make links for Preference files
       ansible.builtin.file:
         src: "{{ db_prefix }}/OSX/Preferences/{{ item }}"
-        path: "$HOME/Library/Preferences/{{ item }}"
+        path: "$HOME/Library/Preferences"
         state: link
-        force: true
-        follow: false
+        # force: true
+        # follow: false
       loop:
         - com.bombich.ccc.plist
         - com.bombich.cccdashboard.plist
@@ -33,15 +33,15 @@
         src: "{{ db_prefix }}/OSX/Library Links/Application Support/iTerm2/Scripts"
         path: "$HOME/Library/Application Support/iTerm2"
         state: link
-        force: true
-        follow: false
+        # force: true
+        # follow: false
     - name: Create link for TextMate bundle directory
       ansible.builtin.file:
         src: "{{ db_prefix }}/OSX/Library Links/Application Support/TextMate/Pristine Copy"
         dest: "$HOME/Library/Application Support/TextMate"
         state: link
-        force: true
-        follow: false
+        # force: true
+        # follow: false
 
 - name: Create links for Apps & Preferences (iMac only)
   when: ansible_model is search("iMac")
@@ -51,8 +51,8 @@
         src: "{{ db_prefix }}/OSX/Preferences/{{ item }}"
         path: "$HOME/Library/Preferences"
         state: link
-        force: true
-        follow: false
+        # force: true
+        # follow: false
       loop:
         - com.bruji.cdpedia.plist
         - com.bruji.dvdpedia.plist
@@ -61,8 +61,8 @@
         src: "{{ db_prefix }}/OSX/Library Links/Application Support/{{ item }}"
         path: "$HOME/Library/Application Support/"
         state: link
-        force: true
-        follow: false
+        # force: true
+        # follow: false
       loop:
         - CDPedia
         - DVDpedia
