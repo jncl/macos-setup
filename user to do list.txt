@@ -1,0 +1,34 @@
+
+# Find out how to
+  # Setup Spaces/Desktops
+     # defaults read com.apple.dock
+     # defaults read com.apple.spaces
+     # ~/Library/Preferences/com.apple.spaces.plist
+  # Setup Wallpaper for each space/desktop
+    # osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/Users/davidwalsh/Downloads/pubg-background.jpg"'
+
+  # Setup Karabiner-Elements to use caps-lock key as f19 for Hammerspoon
+
+  # Apply licences in 1Password for Moom, Name-Mangler & MDRP v9
+
+  # Enable Mail rules & Junk filtering
+
+  # Enable Safari Extension in ~/Applications
+
+  # Setup Music App and 'Add To Library' from My-Music
+
+  # Export/Import existing CCC tasks
+
+  # Configure:
+    # - moom
+    # - pibar
+    # - stats
+
+  # Enable AppTrap via it's Preference Pane
+
+  # Disable all Siri Suggestions for Apps
+
+  # Accessibility, Enable Use scroll gesture with modifier keys to zoom: ^Control
+
+  # Keyboard prefs, Disable most shortcuts
+  # Keyboard prefs, Enable Use keyboard navigation to move focus berween controls
