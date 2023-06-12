@@ -1,73 +1,77 @@
 ---
-- block:
-  - name: Remove .config directory if it exists
-    ansible.builtin.file:
-      path: $HOME/.config
-      state: absent
-  - name: Create links for $HOME directory dot files & dirs
-    ansible.builtin.file:
-      src: "{{ db_prefix }}/config/dot{{ item }}"
-      path: "$HOME/{{ item }}"
-      state: link
-      force: yes
-      follow: no
-    loop:
-      - .zshrc
-      - .zshenv
-      - .zsh_profile
-      - .zsh_aliases
-      - .zsh_functions
-      - .tmux.master
-      - .tmux.shared
-      - .tm_properties
-      - .gitconfig
-      - .gitignore_global
-      - .ansible.cfg
-      - .ssh
-      - .hammerspoon
-      - .config
-  - name: Create directory links in $HOME
-    ansible.builtin.file:
-      src: "{{ db_prefix }}/OSX/{{ item }}"
-      path: "$HOME/{{ item  if item is not search('Documents') else 'My-' + item }}"
-      state: link
-      force: yes
-      follow: no
-    loop:
-      - bin
-      - Applications
-      - Documents
+
+- name: Create links in $HOME
   tags: home
+  block:
+    - name: Remove .config directory if it exists
+      ansible.builtin.file:
+        path: $HOME/.config
+        state: absent
+    - name: Create links for $HOME directory dot files & dirs
+      ansible.builtin.file:
+        src: "{{ db_prefix }}/config/dot{{ item }}"
+        path: "$HOME/{{ item }}"
+        state: link
+        force: true
+        follow: false
+      loop:
+        - .zshrc
+        - .zshenv
+        - .zsh_profile
+        - .zsh_aliases
+        - .zsh_functions
+        - .tmux.master
+        - .tmux.shared
+        - .tm_properties
+        - .gitconfig
+        - .gitignore_global
+        - .ansible.cfg
+        - .ssh
+        - .hammerspoon
+        - .config
+    - name: Create directory links in $HOME
+      ansible.builtin.file:
+        src: "{{ db_prefix }}/OSX/{{ item }}"
+        path: "$HOME/{{ item if item is not search('Documents') else 'My-' + item }}"
+        state: link
+        force: true
+        follow: false
+      loop:
+        - bin
+        - Applications
+        - Documents
 
-- block:
-  - name: Create link for Developer dot file
-    ansible.builtin.file:
-      src: "{{ db_prefix }}/config/Developer/WoW/dot.luacheckrc"
-      path: "$HOME/Developer/WoW/.luacheckrc"
-      state: link
-      force: yes
-  - name: Create link for Developer directories dot file
-    ansible.builtin.file:
-      src: "{{ db_prefix }}/config/{{ item }}/dot.tm_properties"
-      path: "$HOME/{{ item }}/.tm_properties"
-      state: link
-      force: yes
-      follow: no
-    loop:
-      - Developer
-      - Developer/WoW
-      - Developer/WoW/Skinner
+- name: Create Developer links
   tags: dev
+  block:
+    - name: Create link for Developer dot file
+      ansible.builtin.file:
+        src: "{{ db_prefix }}/config/Developer/WoW/dot.luacheckrc"
+        path: "$HOME/Developer/WoW/.luacheckrc"
+        state: link
+        force: true
+    - name: Create link for Developer directories dot file
+      ansible.builtin.file:
+        src: "{{ db_prefix }}/config/{{ item }}/dot.tm_properties"
+        path: "$HOME/{{ item }}/.tm_properties"
+        state: link
+        force: true
+        follow: false
+      loop:
+        - Developer
+        - Developer/WoW
+        - Developer/WoW/Skinner
 
-- block:
-  - name: Create links for Library directories
-    ansible.builtin.file:
-      src: "{{ db_prefix }}/OSX/Library Create/{{ item }}"
-      path: "$HOME/Library/{{ item }}"
-      state: link
-      force: yes
-      follow: no
-    loop:
-      - "PDF Services"
-    tags: [ dirs, never ]
+- name: Create Library links
   tags: libs
+  block:
+    - name: Create links for Library directories
+      ansible.builtin.file:
+        src: "{{ db_prefix }}/OSX/Library Create/{{ item }}"
+        path: "$HOME/Library/{{ item }}"
+        state: link
+        force: true
+        follow: false
+      loop:
+        - "PDF Services"
+      tags: [ dirs, never ]

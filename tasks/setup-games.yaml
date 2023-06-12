@@ -1,13 +1,15 @@
 ---
-- block:
-  - name: Battle.net
-    ansible.builtin.pause:
-      prompt: "Attach Games SSD, then run {{ hb_prefix }}/Caskroom/battle-net/latest/Battle.net-Setup.app/Contents/MacOS/Battle.net-Setup"
-  - name: Create link for Games directory dot file
-    ansible.builtin.file:
-      src: "{{ db_prefix }}/config/Games/dot.tm_properties"
-      path: "$HOME/Games/.tm_properties"
-      state: link
-      force: yes
-      follow: no
+
+- name: Setup Games links
   tags: games
+  block:
+    - name: Battle.net
+      ansible.builtin.pause:
+        prompt: "Attach Games SSD, then run {{ hb_prefix }}/Caskroom/battle-net/latest/Battle.net-Setup.app/Contents/MacOS/Battle.net-Setup"
+    - name: Create link for Games directory dot file
+      ansible.builtin.file:
+        src: "{{ db_prefix }}/config/Games/dot.tm_properties"
+        path: "$HOME/Games/.tm_properties"
+        state: link
+        force: true
+        follow: false

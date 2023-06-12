@@ -1,23 +1,24 @@
 ---
-- block:
-  - name: Remove All Finder Favourites
-    ansible.builtin.command: "mysides remove all"
-  - name: Add items to Finder Favourites
-    ansible.builtin.command: "mysides add {{ item }} file:///{{ item + '/' }}"
-    with_items:
-      - Applications
-  - name: Append Finder Favourites
-    ansible.builtin.command: "mysides add {{ item }} file:///Users/{{ user_abbr }}/{{ item + '/' if item is not search(user_abbr) else '' }}"
-    with_items:
-      - "{{ user_abbr }}"
-      - Desktop
-      - Developer
-      - Downloads
-      - My-Documents
-      - Developer/ansible
-  tags: always
 
-- block:
-  - name: Add Textmate to Finder Toolbar
-    ansible.builtin.script: files/add-tm2-findertoolbar.sh
+- name: Update Finder
+  tags: always
+  block:
+    - name: Remove All Finder Favourites
+      ansible.builtin.command: "mysides remove all"
+    - name: Add items to Finder Favourites
+      ansible.builtin.command: "mysides add {{ item }} file:///{{ item + '/' }}"
+      with_items:
+        - Applications
+    - name: Append Finder Favourites
+      ansible.builtin.command: "mysides add {{ item }} file:///Users/{{ user_abbr }}/{{ item + '/' if item is not search(user_abbr) else '' }}"
+      with_items:
+        - "{{ user_abbr }}"
+        - Desktop
+        - Developer
+        - Downloads
+        - My-Documents
+        - Developer/ansible
+
+- name: Add Textmate to Finder Toolbar
+  ansible.builtin.script: files/add-tm2-findertoolbar.sh
   tags: always

@@ -2,51 +2,52 @@
 # many settings from here: https://github.com/ricbra/dotfiles/blob/master/bin/setup_osx
 # & here: https://ss64.com/osx/syntax-defaults.html
 
-- block:
-  - name: Set Global defaults that require sudo
-    become: yes
-    community.general.osx_defaults:
-      domain: "{{ item.domain | default(omit) }}"
-      host: "{{ item.host | default(omit) }}"
-      key: "{{ item.key }}"
-      type: "{{ item.type }}"
-      value: "{{ item.value }}"
-      array_add: "{{ item.array | default(omit) }}"
-      state: present
-    loop: "{{ osx_global_defaults_sudo }}"
-    when: osx_global_defaults_sudo is defined
-  - name: Set Global defaults
-    community.general.osx_defaults:
-      domain: "{{ item.domain | default(omit) }}"
-      host: "{{ item.host | default(omit) }}"
-      key: "{{ item.key }}"
-      type: "{{ item.type }}"
-      value: "{{ item.value }}"
-      array_add: "{{ item.array | default(omit) }}"
-      state: present
-    loop: "{{ osx_global_defaults }}"
-    when: osx_global_defaults is defined
-  - name: Set Local defaults
-    community.general.osx_defaults:
-      domain: "{{ item.domain | default(omit) }}"
-      host: "{{ item.host | default(omit) }}"
-      key: "{{ item.key }}"
-      type: "{{ item.type }}"
-      value: "{{ item.value }}"
-      array_add: "{{ item.array | default(omit) }}"
-      state: present
-    loop: "{{ osx_local_defaults }}"
-    when: osx_local_defaults is defined
-    notify:
-      ["restart controlcenter", "restart dock", "restart finder", "restart systemuiserver"]
-  - name: Set User defaults
-    community.general.osx_defaults:
-      domain: "{{ item.domain | default(omit) }}"
-      host: "{{ item.host | default(omit) }}"
-      key: "{{ item.key }}"
-      type: "{{ item.type }}"
-      value: "{{ item.value }}"
-      array_add: "{{ item.array | default(omit) }}"
-      state: present
-    loop: "{{ osx_user_defaults }}"
-    when: osx_user_defaults is defined
+- name: Change default settings
+  block:
+    - name: Set Global defaults that require sudo
+      become: true
+      community.general.osx_defaults:
+        domain: "{{ item.domain | default(omit) }}"
+        host: "{{ item.host | default(omit) }}"
+        key: "{{ item.key }}"
+        type: "{{ item.type }}"
+        value: "{{ item.value }}"
+        array_add: "{{ item.array | default(omit) }}"
+        state: present
+      loop: "{{ osx_global_defaults_sudo }}"
+      when: osx_global_defaults_sudo is defined
+    - name: Set Global defaults
+      community.general.osx_defaults:
+        domain: "{{ item.domain | default(omit) }}"
+        host: "{{ item.host | default(omit) }}"
+        key: "{{ item.key }}"
+        type: "{{ item.type }}"
+        value: "{{ item.value }}"
+        array_add: "{{ item.array | default(omit) }}"
+        state: present
+      loop: "{{ osx_global_defaults }}"
+      when: osx_global_defaults is defined
+    - name: Set Local defaults
+      community.general.osx_defaults:
+        domain: "{{ item.domain | default(omit) }}"
+        host: "{{ item.host | default(omit) }}"
+        key: "{{ item.key }}"
+        type: "{{ item.type }}"
+        value: "{{ item.value }}"
+        array_add: "{{ item.array | default(omit) }}"
+        state: present
+      loop: "{{ osx_local_defaults }}"
+      when: osx_local_defaults is defined
+      notify:
+        [ "restart controlcenter", "restart dock", "restart finder", "restart systemuiserver" ]
+    - name: Set User defaults
+      community.general.osx_defaults:
+        domain: "{{ item.domain | default(omit) }}"
+        host: "{{ item.host | default(omit) }}"
+        key: "{{ item.key }}"
+        type: "{{ item.type }}"
+        value: "{{ item.value }}"
+        array_add: "{{ item.array | default(omit) }}"
+        state: present
+      loop: "{{ osx_user_defaults }}"
+      when: osx_user_defaults is defined

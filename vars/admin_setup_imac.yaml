@@ -1,4 +1,5 @@
 ---
+
 # Disable sudden motion sensor (not useful on SSD/Flash drives)
 sudden_motion_sensor: false
 
@@ -50,7 +51,7 @@ homebrew_cask_apps:
   - tiddly
   - tor-browser
   - vlc
-  
+
   # quicklook apps and plugins
   # - item: glance-chamburr # All in One QL plugin
   #   install_options: "--no-quarantine"
@@ -84,12 +85,12 @@ mas_installed_apps:
   - { id: 823766827, name: "OneDrive" }
   # - { id: 497799835, name: "Xcode" } # takes a long time to install, so install later
 
-pip_items: 
+pip_items:
   - pexpect
 
-gem_items: []
+gem_items: [ ]
 
-npm_items: []
+npm_items: [ ]
 
 dockitems_remove:
   - Launchpad

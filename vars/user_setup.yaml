@@ -2,7 +2,7 @@
 computer_hostname: "{{ 'Hedgehog2' if ansible_model is search('MacBookPro6,1') else 'Hedgehog3' if ansible_model is search('iMac18,3') else 'Hedgehog4' if ansible_model is search('iMac') else 'Hedgehog5' }}"
 
 user_abbr: "jonhogg"
- 
+
 # Set keyboard_id to internal or external keyboard
 keyboard_id: "{{ '1452-567-0' if ansible_model is search('MacBookPro') else '1452-592-0' if ansible_model is search('iMac18,3') else 'alt_handler_id-95' }}"
 
@@ -10,7 +10,7 @@ db_prefix: "$HOME/Library/CloudStorage/Dropbox"
 
 homebrew_taps:
   - gromgit/fuse
-  
+
 homebrew_installed_packages:
   - lua51
   - sshfs-mac
@@ -22,7 +22,7 @@ homebrew_cask_apps:
   - google-drive
   - macfuse
   - pibar
-  
+
 mas_installed_apps:
   - { id: 823766827, name: "OneDrive" }
 

@@ -4,44 +4,46 @@
   ansible.builtin.command: mas signout
 
 - name: Quit Zoom
-  ansible.builtin.shell: osascript -e 'quit app "zoom.us"'
-  ignore_errors: yes
+  ansible.builtin.command: osascript -e 'if application "zoom.us" is running then quit app "zoom.us"'
 
-- block:
-  - name: Get login items
-    ansible.builtin.shell: osascript -e 'tell application "System Events" to get every login item'
-    register: result
-  - name: Display login items
-    ansible.builtin.debug:
-      var: result
-    tags: [never, debug]
-  - name: Remove login item(s)
-    ansible.builtin.shell: osascript -e 'tell application "System Events" to delete login item "BOINCManager"'
-    when: not result.stdout.find("BOINCManager") == -1
-  
-- block:
-  - name: Get current Timezone
-    ansible.builtin.shell: systemsetup -gettimezone
-    register: result
-  - name: Show current Timezone
-    ansible.builtin.debug:
-      var: result
-    tags: [never, debug]
-  - name: Set Timezone
-    become: yes
-    community.general.timezone:
-      name: "Europe/London"
-    when: result.stdout.find("Europe/London") == -1
+- name: Update login Items
+  block:
+    - name: Get login items
+      ansible.builtin.command: osascript -e 'tell application "System Events" to get every login item'
+      register: result
+    - name: Display login items
+      ansible.builtin.debug:
+        var: result
+      tags: [ never, debug ]
+    - name: Remove login item(s)
+      ansible.builtin.command: osascript -e 'tell application "System Events" to delete login item "BOINCManager"'
+      when: not result.stdout.find("BOINCManager") == -1
 
-- block:
-  - name: Get current Shell
-    ansible.builtin.shell: echo $SHELL
-    register: result
-  - name: Show current Shell
-    ansible.builtin.debug:
-      var: result
-    tags: [never, debug]
-  - name: Set ZSH as the default shell
-    become: yes
-    ansible.builtin.shell: chsh -s $(which zsh) {{ lookup('env', 'USER') }}
-    when: result.stdout.find("/bin/zsh") == -1
+- name: Update Timezone
+  block:
+    - name: Get current Timezone
+      ansible.builtin.command: systemsetup -gettimezone
+      register: result
+    - name: Show current Timezone
+      ansible.builtin.debug:
+        var: result
+      tags: [ never, debug ]
+    - name: Set Timezone
+      become: true
+      community.general.timezone:
+        name: "Europe/London"
+      when: result.stdout.find("Europe/London") == -1
+
+- name: Update Shell
+  block:
+    - name: Get current Shell
+      ansible.builtin.command: echo $SHELL
+      register: result
+    - name: Show current Shell
+      ansible.builtin.debug:
+        var: result
+      tags: [ never, debug ]
+    - name: Set ZSH as the default shell
+      become: true
+      ansible.builtin.shell: chsh -s $(which zsh) {{ lookup('env', 'USER') }}
+      when: result.stdout.find("/bin/zsh") == -1

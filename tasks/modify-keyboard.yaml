@@ -1,12 +1,12 @@
 ---
+
 # Only works after user logs out
-- block:
-  - name: Update Keyboard modifier keys # (Map Caps Lock to 'No Action')
-    ansible.builtin.command: |
-      defaults -currentHost write -g com.apple.keyboard.modifiermapping.{{ keyboard_id }} -array
-        '<dict>
-          <key>HIDKeyboardModifierMappingDst</key>
-          <integer>30064771072</integer>
-          <key>HIDKeyboardModifierMappingSrc</key>
-          <real>30064771129</real>
-        </dict>'
+- name: Update Keyboard modifier keys - Map Caps Lock to 'No Action'
+  ansible.builtin.command: |
+    defaults -currentHost write -g com.apple.keyboard.modifiermapping.{{ keyboard_id }} -array
+      '<dict>
+        <key>HIDKeyboardModifierMappingDst</key>
+        <integer>30064771072</integer>
+        <key>HIDKeyboardModifierMappingSrc</key>
+        <real>30064771129</real>
+      </dict>'

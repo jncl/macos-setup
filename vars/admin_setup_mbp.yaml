@@ -1,15 +1,16 @@
 ---
+
 # Disable sudden motion sensor (not useful on SSD/Flash drives)
 sudden_motion_sensor: false
 
-computer_hostname: "{{ 'Hedgehog2' if ansible_model is search('MacBookPro6,1') else 'Hedgehog3' if ansible_model is search('iMac18,3') else 'Hedgehog4' if ansible_model is search('iMac') else 'Hedgehog5' }}"
+computer_hostname: "{{ 'Hedgehog4' if ansible_model is search('iMac') else 'Hedgehog5' }}"
 
-hb_dir: "{{ '/opt/homebrew' if ansible_model is search('iMac21,1') else '/usr/local' }}"
+hb_dir: "{{ '/opt/homebrew' if ansible_model is search('iMac') else '/usr/local' }}"
 hb_prefix: "{{ hb_dir }}/Homebrew"
 
 # setup variables for MacBook Pro
 homebrew_installed_packages:
-#  - cdrdao
+  # - cdrdao
   - ffmpeg
   - fswatch
   - git
@@ -47,11 +48,13 @@ mas_installed_apps:
   - { id: 523620159, name: "CleanMyDrive 2" }
   - { id: 823766827, name: "OneDrive" }
 
-pip_items: [pexpect]
+pip_items:
+  - pexpect
+  - ansible-lint
 
-gem_items: []
+gem_items: [ ]
 
-npm_items: []
+npm_items: [ ]
 
 dockitems_remove:
   - Launchpad

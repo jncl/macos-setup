@@ -1,65 +1,68 @@
---- tasks for setting up Applications
+---
+# tasks for setting up Applications
 
-- block:
-  - name: Make links for Preference files
-    ansible.builtin.file:
-      src: "{{ db_prefix }}/OSX/Preferences/{{ item }}"
-      dest: "$HOME/Library/Preferences"
-      state: link
-      force: yes
-      follow: no
-    loop:
-      - com.bombich.ccc.plist
-      - com.bombich.cccdashboard.plist
-      - com.clipy-app.Clipy.plist
-      - com.googlecode.iterm2.plist
-      - com.macromates.TextMate.plist
-      - com.manytricks.Moom.plist
-      - com.manytricks.NameMangler.plist
-      - com.mothersruin.SuspiciousPackage.plist
-      - com.mothersruin.SuspiciousPackageApp.plist
-      - com.tiddlywiki.plist
-      - com.torusknot.SourceTreeNotMAS.plist
-      - eu.exelban.Stats.plist
-      - org.hammerspoon.Hammerspoon.plist
-      - org.pqrs.Karabiner-Elements.Preferences.plist
-      - org.pqrs.Karabiner-Menu.plist
-      - org.torproject.torbrowser.plist
-      - org.videolan.vlc.plist
-  - name: Create link for iTerm AutoLaunch script directory
-    ansible.builtin.file:
-      src: "{{ db_prefix }}/OSX/Library Links/Application Support/iTerm2/Scripts"
-      dest: "$HOME/Library/Application Support/iTerm2"
-      state: link
-      force: yes
-      follow: no
-  - name: Create link for TextMate bundle directory
-    ansible.builtin.file:
-      src: "{{ db_prefix }}/OSX/Library Links/Application Support/TextMate/Pristine Copy"
-      dest: "$HOME/Library/Application Support/TextMate"
-      state: link
-      force: yes
-      follow: no
+- name: Create links for App preferences, iTerm & TextMAte
+  block:
+    - name: Make links for Preference files
+      ansible.builtin.file:
+        src: "{{ db_prefix }}/OSX/Preferences/{{ item }}"
+        path: "$HOME/Library/Preferences"
+        state: link
+        force: true
+        follow: false
+      loop:
+        - com.bombich.ccc.plist
+        - com.bombich.cccdashboard.plist
+        - com.clipy-app.Clipy.plist
+        - com.googlecode.iterm2.plist
+        - com.macromates.TextMate.plist
+        - com.manytricks.Moom.plist
+        - com.manytricks.NameMangler.plist
+        - com.mothersruin.SuspiciousPackage.plist
+        - com.mothersruin.SuspiciousPackageApp.plist
+        - com.tiddlywiki.plist
+        - com.torusknot.SourceTreeNotMAS.plist
+        - eu.exelban.Stats.plist
+        - org.hammerspoon.Hammerspoon.plist
+        - org.pqrs.Karabiner-Elements.Preferences.plist
+        - org.pqrs.Karabiner-Menu.plist
+        - org.torproject.torbrowser.plist
+        - org.videolan.vlc.plist
+    - name: Create link for iTerm AutoLaunch script directory
+      ansible.builtin.file:
+        src: "{{ db_prefix }}/OSX/Library Links/Application Support/iTerm2/Scripts"
+        path: "$HOME/Library/Application Support/iTerm2"
+        state: link
+        force: true
+        follow: false
+    - name: Create link for TextMate bundle directory
+      ansible.builtin.file:
+        src: "{{ db_prefix }}/OSX/Library Links/Application Support/TextMate/Pristine Copy"
+        dest: "$HOME/Library/Application Support/TextMate"
+        state: link
+        force: true
+        follow: false
 
-- block:
-  - name: Make links for Preference files (iMac)
-    ansible.builtin.file:
-      src: "{{ db_prefix }}/OSX/Preferences/{{ item }}"
-      dest: "$HOME/Library/Preferences"
-      state: link
-      force: yes
-      follow: no
-    loop:
-      - com.bruji.cdpedia.plist
-      - com.bruji.dvdpedia.plist
-  - name: Create links for Library Application Support directories (iMac)
-    ansible.builtin.file:
-      src: "{{ db_prefix }}/OSX/Library Links/Application Support/{{ item }}"
-      dest: "$HOME/Library/Application Support/"
-      state: link
-      force: yes
-      follow: no
-    loop:
-      - CDPedia
-      - DVDpedia
+- name: Create links for Apps & Preferences (iMac only)
   when: ansible_model is search("iMac")
+  block:
+    - name: Make links for Preference files (iMac)
+      ansible.builtin.file:
+        src: "{{ db_prefix }}/OSX/Preferences/{{ item }}"
+        path: "$HOME/Library/Preferences"
+        state: link
+        force: true
+        follow: false
+      loop:
+        - com.bruji.cdpedia.plist
+        - com.bruji.dvdpedia.plist
+    - name: Create links for Library Application Support directories (iMac)
+      ansible.builtin.file:
+        src: "{{ db_prefix }}/OSX/Library Links/Application Support/{{ item }}"
+        path: "$HOME/Library/Application Support/"
+        state: link
+        force: true
+        follow: false
+      loop:
+        - CDPedia
+        - DVDpedia

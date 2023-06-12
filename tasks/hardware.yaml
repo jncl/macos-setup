@@ -1,6 +1,8 @@
 ---
-- name: "Set sudden motion sensor mode to {{ sudden_motion_sensor }}"
-  become: yes
-  ansible.builtin.command: "pmset -a sms {{ sudden_motion_sensor | ternary(1, 0) }}"
+# tasks for hardware
+
+- name: Set sudden motion sensor mode to {{ sudden_motion_sensor }}
+  become: true
+  ansible.builtin.command: pmset -a sms {{ sudden_motion_sensor | ansible.builtin.ternary(1, 0) }}
   when: sudden_motion_sensor is defined
   tags: always

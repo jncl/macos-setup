@@ -1,15 +1,16 @@
 ---
-- block:
-  - name: Create link for Library LaunchAgents file
-    ansible.builtin.file:
-      src: "{{ db_prefix }}/OSX/Library Links/LaunchAgents/net.strangled.{{ computer_hostname|lower }}.fswatch-SharedFuncs-lua.plist"
-      path: "$HOME/Library/LaunchAgents/net.strangled.{{ computer_hostname|lower }}.fswatch-SharedFuncs-lua.plist"
-      state: link
-      force: yes
-      follow: no
-  - name: Reload LaunchAgent
-    community.general.launchd:
-      name: net.strangled.{{ computer_hostname|lower }}.fswatch-SharedFuncs-lua
-      state: reloaded
+
+- name: Setup Launch Agent(s)
   tags: always
-  
+  block:
+    - name: Create link for Library LaunchAgents file
+      ansible.builtin.file:
+        src: "{{ db_prefix }}/OSX/Library Links/LaunchAgents/net.strangled.{{ computer_hostname | ansible.builtin.lower }}.fswatch-SharedFuncs-lua.plist"
+        path: "$HOME/Library/LaunchAgents/net.strangled.{{ computer_hostname | ansible.builtin.lower }}.fswatch-SharedFuncs-lua.plist"
+        state: link
+        force: true
+        follow: false
+    - name: Reload LaunchAgent
+      community.general.launchd:
+        name: net.strangled.{{ computer_hostname | ansible.builtin.lower }}.fswatch-SharedFuncs-lua
+        state: reloaded

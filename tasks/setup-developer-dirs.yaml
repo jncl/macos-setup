@@ -1,47 +1,53 @@
 ---
-- block:
-  - name: Create Developer WoW dir
-    ansible.builtin.file:
-      path: $HOME/Developer/WoW
-      state: directory
-  - name: Clone Developer repos
-    ansible.builtin.git:
-      repo: "https://github.com/jncl/{{ item }}"
-      dest: $HOME/Developer/WoW/{{ item }}
-    with_items:
-      - BasicBrokers
-      - Cork
-      - devnull
-      - Miscellany
-      - Skinner
-      - Spew
-      - VendorBait
+
+- name: Create WoW directories & repos
   tags: wow
+  block:
+    - name: Create Developer WoW dir
+      ansible.builtin.file:
+        path: $HOME/Developer/WoW
+        mode: 0755
+        state: directory
+    - name: Clone Developer repos
+      ansible.builtin.git:
+        repo: "https://github.com/jncl/{{ item }}"
+        dest: $HOME/Developer/WoW/{{ item }}
+      with_items:
+        - BasicBrokers
+        - Cork
+        - devnull
+        - Miscellany
+        - Skinner
+        - Spew
+        - VendorBait
 
-- block:
-  - name: Create Developer App dirs
-    ansible.builtin.file:
-      path: $HOME/Developer/Apps
-      state: directory
-  - name: Clone Developer repos
-    ansible.builtin.git:
-      repo: "https://github.com/jncl/{{ item }}"
-      dest: $HOME/Developer/Apps/{{ item }}
-    with_items:
-      - AutoRefreshPageNoPrefs
-      - ShowTorrentLinks
+- name: Create App directories & repos
   tags: apps
+  block:
+    - name: Create Developer App dirs
+      ansible.builtin.file:
+        path: $HOME/Developer/Apps
+        mode: 0755
+        state: directory
+    - name: Clone Developer repos
+      ansible.builtin.git:
+        repo: "https://github.com/jncl/{{ item }}"
+        dest: $HOME/Developer/Apps/{{ item }}
+      with_items:
+        - AutoRefreshPageNoPrefs
+        - ShowTorrentLinks
 
-- block:
-  - name: Clone ansible repo
-    ansible.builtin.git:
-      repo: "https://github.com/jncl/ansible"
-      dest: $HOME/Developer/ansible
-  - name: Create link in $HOME
-    ansible.builtin.file:
-      src: $HOME/Developer/ansible
-      path: $HOME/ansible
-      state: link
-      force: yes
-      follow: no
+- name: Create ansible directory & repo
   tags: ansible
+  block:
+    - name: Clone ansible repo
+      ansible.builtin.git:
+        repo: "https://github.com/jncl/ansible"
+        dest: $HOME/Developer/ansible
+    - name: Create link in $HOME
+      ansible.builtin.file:
+        src: $HOME/Developer/ansible
+        path: $HOME/ansible
+        state: link
+        force: true
+        follow: false

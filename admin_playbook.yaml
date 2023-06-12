@@ -1,11 +1,17 @@
 ---
+
 - hosts: all
 
   vars:
     user_name: "Jon Hogg"
     user_abbr: "jonhogg"
+    mas_email: "jonhogg@mac.com"
 
   vars_prompt:
+    - name: mas_password
+      prompt: Enter password for Apple ID {{ mas_email }}
+      confirm: yes
+      private: yes
     - name: user_pw
       prompt: Enter password for user {{ user_name }}
       confirm: yes

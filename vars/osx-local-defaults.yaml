@@ -1,4 +1,5 @@
 ---
+
 # many entries from here: https://github.com/ricbra/dotfiles/blob/master/bin/setup_osx
 # & here: https://ss64.com/osx/syntax-defaults.html
 # & here: https://github.com/feffi/ansible-macos-finder/blob/master/tasks/configure.yml
@@ -32,7 +33,7 @@ osx_local_defaults:
   - { domain: com.apple.finder, key: QLHidePanelOnDeactivate, type: bool, value: true, description: "Hide QuickLook on deactivation or application switch" }
   - { domain: com.apple.finder, key: ShowPathbar, type: bool, value: true, description: "Show path in Path Bar" }
   - { domain: com.apple.finder, key: ShowStatusBar, type: bool, value: true, description: "Show Status Bar in Finder" }
-  - { domain: com.apple.finder, key: ShowTabView, type: bool, value: true,  description: "Show Tabs" }
+  - { domain: com.apple.finder, key: ShowTabView, type: bool, value: true, description: "Show Tabs" }
   - { domain: com.apple.finder, key: ShowRecentTags, type: bool, value: false, description: "Don't Show Recent Tags" }
   - { domain: com.apple.finder, key: ShowExternalHardDrivesOnDesktop, type: bool, value: true, description: "Show External Drives on Desktop" }
   - { domain: com.apple.finder, key: ShowRemovableMediaOnDesktop, type: bool, value: true, description: "Show Removable Media on Desktop" }
