@@ -6,7 +6,7 @@
     - name: Make links for Preference files
       ansible.builtin.file:
         src: "{{ db_prefix }}/OSX/Preferences/{{ item }}"
-        path: "$HOME/Library/Preferences"
+        path: "$HOME/Library/Preferences/{{ item }}"
         state: link
         # force: true
         # follow: false
