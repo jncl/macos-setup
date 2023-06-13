@@ -9,7 +9,7 @@
         path: "$HOME/Library/Preferences/{{ item }}"
         state: link
         force: true
-        # follow: false
+        mode: '0644'
       loop:
         - com.bombich.ccc.plist
         - com.bombich.cccdashboard.plist
@@ -28,20 +28,33 @@
         - org.pqrs.Karabiner-Menu.plist
         - org.torproject.torbrowser.plist
         - org.videolan.vlc.plist
-    - name: Create link for iTerm AutoLaunch script directory
-      ansible.builtin.file:
-        src: "{{ db_prefix }}/OSX/Library Links/Application Support/iTerm2/Scripts"
-        path: "$HOME/Library/Application Support/iTerm2/Scripts"
-        state: link
-        # force: true
-        # follow: false
-    - name: Create link for TextMate bundle directory
-      ansible.builtin.file:
-        src: "{{ db_prefix }}/OSX/Library Links/Application Support/TextMate/Pristine Copy"
-        dest: "$HOME/Library/Application Support/TextMate/Pristine Copy"
-        state: link
-        # force: true
-        # follow: false
+    - name: Create iTerm2 Scripts directory link
+      block:
+        - name: Create  parent directory if it doesn't exist
+          ansible.builtin.file:
+            path: "$HOME/Library/Application Support/iTerm2"
+            state: directory
+            mode: '0755'
+        - name: Create link to iTerm Scripts directory
+          ansible.builtin.file:
+            src: "{{ db_prefix }}/OSX/Library Links/Application Support/iTerm2/Scripts"
+            path: "$HOME/Library/Application Support/iTerm2/Scripts"
+            state: link
+            force: true
+            mode: '0755'
+    - name: Create TextMate Pristine Copy directory link
+      block:
+        - name: Create  parent directory if it doesn't exist
+          ansible.builtin.file:
+            path: "$HOME/Library/Application Support/TextMate"
+            state: directory
+            mode: '0755'
+        - name: Create link for TextMate bundle directory
+          ansible.builtin.file:
+            src: "{{ db_prefix }}/OSX/Library Links/Application Support/TextMate/Pristine Copy"
+            dest: "$HOME/Library/Application Support/TextMate/Pristine Copy"
+            state: link
+            mode: '0755'
 
 - name: Create links for Apps & Preferences (iMac only)
   when: ansible_model is search("iMac")
@@ -51,8 +64,6 @@
         src: "{{ db_prefix }}/OSX/Preferences/{{ item }}"
         path: "$HOME/Library/Preferences/{{ item }}"
         state: link
-        # force: true
-        # follow: false
       loop:
         - com.bruji.cdpedia.plist
         - com.bruji.dvdpedia.plist
@@ -61,8 +72,6 @@
         src: "{{ db_prefix }}/OSX/Library Links/Application Support/{{ item }}"
         path: "$HOME/Library/Application Support/{{ item }}"
         state: link
-        # force: true
-        # follow: false
       loop:
         - CDPedia
         - DVDpedia
