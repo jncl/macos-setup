@@ -1,5 +1,6 @@
 ---
-# collections:
-#   - name: geerlingguy.mac
+# N.B. these collections are installed in the bootstrap script so that it is available for all users
 
-# N.B. this collection is installed in the bootstrap script so that it is available for all users
+collections:
+  - name: ansible.posix
+  - name: geerlingguy.mac

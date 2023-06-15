@@ -19,10 +19,13 @@ osx_global_defaults:
   - { key: AppleMetricUnits, type: bool, value: false, description: "Unset Metric Units" }
   - { key: AppleShowAllExtensions, type: bool, value: true, description: "Show all filename extensions" }
   - { key: AppleShowScrollBars, type: string, value: "WhenScrolling", description: "Show scrollbars only when scrolling" }
+  - { key: AppleSpacesSwitchOnActivate, type: string, value: true, description: "When switching applications, switch to respective space" }
   - { key: NSAutomaticWindowAnimationsEnabled, type: bool, value: false, description: "Opening and closing windows and popovers" }
   - { key: NSDocumentSaveNewDocumentsToCloud, type: bool, value: false, description: "Save to disk (not to iCloud)" }
   - { key: NSNavPanelExpandedStateForSaveMode, type: bool, value: true, description: "Expand Save panel" }
+  - { key: NSNavPanelExpandedStateForSaveMode2, type: bool, value: true, description: "Expand Save panel" }
   - { key: PMPrintingExpandedStateForPrint, type: bool, value: true, description: "Expand Print panel" }
+  - { key: PMPrintingExpandedStateForPrint2, type: bool, value: true, description: "Expand Print panel" }
   - { key: com.apple.swipescrolldirection, type: bool, value: false, description: "Disable natural scrolling" }
   - { key: com.apple.keyboard.fnState, type: bool, value: true, description: "Use F1, F2, etc. keys, as standard function keys" }
     # AppleFirstWeekday = { gregorian = 1; }; Set First DoW to Sunday

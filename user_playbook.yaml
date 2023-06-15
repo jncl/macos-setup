@@ -1,13 +1,17 @@
 ---
 
-- hosts: all
+- name: User playbook
+  hosts: all
 
   vars_files:
-    - vars/osx-local-defaults.yaml
-    - vars/user_setup.yaml
+    - vars/global_vars.yaml
+    - vars/osx_local_defaults.yaml
+    - vars/user_global_vars.yaml
+    - vars/user_vars.yaml
 
   handlers:
-    - ansible.builtin.import_tasks: handlers/main.yaml
+    - name: Include Handlers
+      ansible.builtin.import_tasks: handlers/main.yaml
 
   roles:
     - role: geerlingguy.mac.homebrew
@@ -18,30 +22,42 @@
       tags: dock
 
   tasks:
-    - ansible.builtin.include_tasks: tasks/set-defaults.yaml
+    - name: Include set-defaults
+      ansible.builtin.include_tasks: tasks/set-defaults.yaml
       tags: defaults
-    - ansible.builtin.include_tasks: tasks/user-config.yaml
+    - name: Include user-config
+      ansible.builtin.include_tasks: tasks/user-config.yaml
       tags: config
-    - ansible.builtin.include_tasks: tasks/setup-developer-dirs.yaml
+    - name: Include setup-developer
+      ansible.builtin.include_tasks: tasks/setup-developer-dirs.yaml
       tags: develop
-    - ansible.builtin.include_tasks: tasks/create-dir-links.yaml
+    - name: Include create-dir-links
+      ansible.builtin.include_tasks: tasks/create-dir-links.yaml
       tags: dirlinks
-    - ansible.builtin.include_tasks: tasks/link-dotfiles.yaml
+    - name: Include link-dotfiles
+      ansible.builtin.include_tasks: tasks/link-dotfiles.yaml
       tags: dotfiles
-    - ansible.builtin.include_tasks: tasks/setup-apps.yaml
+    - name: Include setup-apps
+      ansible.builtin.include_tasks: tasks/setup-apps.yaml
       tags: apps
-    - ansible.builtin.include_tasks: tasks/setup-login-items.yaml
+    - name: Include setup-login-items
+      ansible.builtin.include_tasks: tasks/setup-login-items.yaml
       tags: login
-    - ansible.builtin.include_tasks: tasks/setup-launch-agent.yaml
+    - name: Include setup-launch-agent
+      ansible.builtin.include_tasks: tasks/setup-launch-agent.yaml
       tags: launch
-    - ansible.builtin.include_tasks: tasks/modify-finder.yaml
+    - name: Include modify-finder
+      ansible.builtin.include_tasks: tasks/modify-finder.yaml
       tags: finder
-    - ansible.builtin.include_tasks: tasks/modify-keyboard.yaml
-      when: ansible_model is search("iMac")
-      tags: keyboard
-    - ansible.builtin.include_tasks: tasks/setup-printer.yaml
-      when: ansible_model is search("iMac")
-      tags: printer
-    - ansible.builtin.include_tasks: tasks/setup-games.yaml
-      when: ansible_model is search("iMac")
-      tags: games
+    - name: Include iMac tasks
+      when: computer.model is "iMac"
+      block:
+        - name: Include modify-keyboard
+          ansible.builtin.include_tasks: tasks/modify-keyboard.yaml
+          tags: keyboard
+        - name: Include setup-printer
+          ansible.builtin.include_tasks: tasks/setup-printer.yaml
+          tags: printer
+        - name: Include setup-games
+          ansible.builtin.include_tasks: tasks/setup-games.yaml
+          tags: games

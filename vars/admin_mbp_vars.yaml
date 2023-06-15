@@ -1,0 +1,24 @@
+---
+
+# setup variables for MacBook Pro
+homebrew_taps_mbp: [ ]
+
+homebrew_installed_packages_mbp: [ ]
+
+homebrew_cask_apps_mbp: [ ]
+
+homebrew_cask_apps_sudo_mbp: [ ]
+
+homebrew_cask_apps_local_mbp: [ ]
+
+mas_installed_apps_mbp: [ ]
+
+pip_items_mbp: [ ]
+
+gem_items_mbp: [ ]
+
+npm_items_mbp: [ ]
+
+dockitems_remove_mbp: [ ]
+
+dockitems_persist_mbp: [ ]

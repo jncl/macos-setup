@@ -1,11 +1,11 @@
 ---
 
-- name: "Set Hostname to {{ computer_hostname }}"
+- name: "Set Hostname to {{ computer.hostname }}"
   become: true
-  ansible.builtin.command: "scutil --set {{ item }} {{ computer_hostname }}"
+  ansible.builtin.command: "scutil --set {{ item }} {{ computer.hostname }}"
   loop:
     ComputerName
     LocalHostName
     HostName
-  when: computer_hostname is defined
+  when: computer.hostname is defined
   tags: always

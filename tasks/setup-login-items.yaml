@@ -45,6 +45,3 @@
       ansible.builtin.debug:
         var: result
       tags: [ never, debug ]
-
-- name: Change login picture
-  ansible.builtin.script: files/user-picture.scpt "/Library/User Pictures/Sports/Target.png"

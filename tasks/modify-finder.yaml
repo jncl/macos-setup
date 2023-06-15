@@ -10,9 +10,9 @@
       with_items:
         - Applications
     - name: Append Finder Favourites
-      ansible.builtin.command: "mysides add {{ item }} file:///Users/{{ user_abbr }}/{{ item + '/' if item is not search(user_abbr) else '' }}"
+      ansible.builtin.command: "mysides add {{ item }} file:///Users/{{ user.abbr }}/{{ item + '/' if item is not search(user.abbr) else '' }}"
       with_items:
-        - "{{ user_abbr }}"
+        - "{{ user.abbr }}"
         - Desktop
         - Developer
         - Downloads

@@ -1,6 +1,4 @@
 ---
-# many settings from here: https://github.com/ricbra/dotfiles/blob/master/bin/setup_osx
-# & here: https://ss64.com/osx/syntax-defaults.html
 
 - name: Change default settings
   block:

@@ -1,29 +1,29 @@
 ---
 
-- hosts: all
+- name: Admin playbook
+  hosts: all
 
-  vars:
-    user_name: "Jon Hogg"
-    user_abbr: "jonhogg"
-    mas_email: "jonhogg@mac.com"
+  vars_files:
+    - vars/global_vars.yaml
+    - vars/osx_global_defaults.yaml
+    - vars/osx_local_defaults.yaml
+    - vars/admin_global_vars.yaml
+    - vars/{{ 'admin_" ~ computer.model ~ "_vars' }}.yaml
+    - vars/admin_vars.yaml
 
   vars_prompt:
     - name: mas_password
-      prompt: Enter password for Apple ID {{ mas_email }}
-      confirm: yes
-      private: yes
-    - name: user_pw
-      prompt: Enter password for user {{ user_name }}
-      confirm: yes
-      private: yes
-
-  vars_files:
-    - vars/osx-global-defaults.yaml
-    - vars/osx-local-defaults.yaml
-    - vars/{{ 'admin_setup_mbp' if ansible_model is search("MacBookPro") else 'admin_setup_imac' }}.yaml
+      prompt: Enter password for Apple ID {{ user.mas_email }}
+      confirm: true
+      private: true
+    - name: user.password
+      prompt: Enter password for User {{ user.name }}
+      confirm: true
+      private: true
 
   handlers:
-    - ansible.builtin.import_tasks: handlers/main.yaml
+    - name: Include Handlers
+      ansible.builtin.import_tasks: handlers/main.yaml
 
   roles:
     - role: geerlingguy.mac.homebrew
@@ -37,17 +37,24 @@
       tags: dock
 
   tasks:
-    - ansible.builtin.include_tasks: tasks/install-other-casks.yaml
+    - name: Include other-casks
+      ansible.builtin.include_tasks: tasks/install-other-casks.yaml
       tags: casks
-    - ansible.builtin.include_tasks: tasks/set-defaults.yaml
+    - name: Include set-defaults
+      ansible.builtin.include_tasks: tasks/set-defaults.yaml
       tags: defaults
-    - ansible.builtin.include_tasks: tasks/admin-config.yaml
+    - name: Include admin-config
+      ansible.builtin.include_tasks: tasks/admin-config.yaml
       tags: config
-    - ansible.builtin.include_tasks: tasks/hardware.yaml
+    - name: Include hardware
+      ansible.builtin.include_tasks: tasks/hardware.yaml
       tags: hardware
-    - ansible.builtin.include_tasks: tasks/set-hostname.yaml
+    - name: Include set-hostname
+      ansible.builtin.include_tasks: tasks/set-hostname.yaml
       tags: hostname
-    - ansible.builtin.include_tasks: tasks/setup-user.yaml
+    - name: Include create-user
+      ansible.builtin.include_tasks: tasks/create-user.yaml
       tags: user
-    - ansible.builtin.include_tasks: tasks/change-ownership.yaml
+    - name: Include change-ownership
+      ansible.builtin.include_tasks: tasks/change-ownership.yaml
       tags: owner

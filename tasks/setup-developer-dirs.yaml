@@ -6,7 +6,7 @@
     - name: Create Developer WoW dir
       ansible.builtin.file:
         path: $HOME/Developer/WoW
-        mode: 0755
+        mode: '0755'
         state: directory
     - name: Clone Developer repos
       ansible.builtin.git:
@@ -27,7 +27,7 @@
     - name: Create Developer App dirs
       ansible.builtin.file:
         path: $HOME/Developer/Apps
-        mode: 0755
+        mode: '0755'
         state: directory
     - name: Clone Developer repos
       ansible.builtin.git:

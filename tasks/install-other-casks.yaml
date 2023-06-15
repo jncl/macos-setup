@@ -1,33 +1,35 @@
 ---
 
-- name: Install cask apps
+- name: Install cask applications that require sudo
+  community.general.homebrew_cask:
+    name: "{{ item.name | default(item) }}"
+    state: present
+    install_options: "{{ item.install_options | default('appdir=' + homebrew_cask_appdir) }}"
+    accept_external_apps: "{{ homebrew_cask_accept_external_apps }}"
+    sudo_password: mac_admin_pw
+  loop:
+    - "{{ homebrew_cask_apps_sudo }}"
+  when: homebrew_cask_apps_sudo is defined
+  notify:
+    - Clear homebrew cache
+
+- name: Install local casks apps
+  when: homebrew_cask_apps_local is defined
   block:
-    - name: Install cask applications that require sudo
-      community.general.homebrew_cask:
-        name: "{{ item.name | default(item) }}"
-        state: present
-        install_options: "{{ item.install_options | default('appdir=' + homebrew_cask_appdir) }}"
-        accept_external_apps: "{{ homebrew_cask_accept_external_apps }}"
-        sudo_password: mac_admin_pw
-      loop: "{{ homebrew_cask_apps_sudo }}"
-      when: homebrew_cask_apps_sudo is defined
-      notify:
-        - Clear homebrew cache
     - name: Copy Cask files
       ansible.builtin.copy:
         src: "{{ item }}.rb"
-        dest: "{{ hb_prefix }}/Library/Taps/homebrew/homebrew-cask/Casks/"
-        mode: 0644
-      loop: "{{ homebrew_cask_apps_local }}"
-      when: homebrew_cask_apps_local is defined
-      register: copy_casks
+        dest: "{{ homebrew.dir }}/Library/Taps/homebrew/homebrew-cask/Casks/"
+        mode: '0644'
+      loop:
+        - "{{ homebrew_cask_apps_local }}"
     - name: Install local cask applications
       community.general.homebrew_cask:
         name: "{{ item.name | default(item) }}"
         state: present
         install_options: "{{ item.install_options | default('appdir=' + homebrew_cask_appdir) }}"
         accept_external_apps: "{{ homebrew_cask_accept_external_apps }}"
-      loop: "{{ homebrew_cask_apps_local }}"
-      when: homebrew_cask_apps_local is defined
+      loop:
+        - "{{ homebrew_cask_apps_local }}"
       notify:
         - Clear homebrew cache

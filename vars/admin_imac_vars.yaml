@@ -1,0 +1,44 @@
+---
+
+# setup variables for iMac
+homebrew_taps_imac: [ ]
+
+homebrew_installed_packages_imac:
+  - cdrdao
+  - p7zip
+  - rsync
+  - unar
+  - wallpaper
+  - wget
+  - xz
+
+homebrew_cask_apps_imac:
+  # - db-browser-for-sqlite
+  - discord
+  # - paragon-ntfs
+  - tiddly
+
+homebrew_cask_apps_sudo_imac: [ ]
+  # - boinc # N.B. not many BOINC apps run on M1 hardware atm
+  # - zoom
+
+homebrew_cask_apps_local_imac:
+  - cdpedia
+  - dvdpedia
+  # - mdrp@9.1.1
+
+mas_installed_apps_imac: [ ]
+  # - { id: 444425546, name: "BarTunes" }
+  # - { id: 1381004916, name: "Discovery - DNS-SD Browser" }
+  # - { id: 1014850245, name: "MONIT (2.0.2)" } # doesn't work on macOS 11.0 +
+  # - { id: 497799835, name: "Xcode" } # takes a long time to install, so install later
+
+pip_items_imac: [ ]
+
+gem_items_imac: [ ]
+
+npm_items_imac: [ ]
+
+dockitems_remove_imac: [ ]
+
+dockitems_persist_imac: [ ]

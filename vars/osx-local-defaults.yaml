@@ -12,7 +12,7 @@ osx_local_defaults:
   - { domain: com.apple.controlcenter, key: "NSStatusItem Visible WiFi", type: bool, value: false, description: "Don't Show WiFi on MenuBar" }
   - { domain: com.apple.controlcenter, host: currentHost, key: "WiFi", type: int, value: 8, description: "Don't Show WiFi on MenuBar" }
   - { domain: com.apple.dashboard, key: db-enabled-state, type: int, value: 1, description: "Set dashboard state disabled" }
-  - { domain: com.apple.dashboard, key: mcx-disabled, type: bool, value: true, description: "Disable dashboard" }
+  - { domain: com.apple.dashboard, key: mcx-disabled, type: bool, value: true, description: "Disable dashboard to save RAM" }
   - { domain: com.apple.desktopservices, key: DSDontWriteNetworkStores, type: bool, value: true, description: "Avoid creating .DS_Store files on network volumes" }
   - { domain: com.apple.desktopservices, key: DSDontWriteUSBStores, type: bool, value: true, description: "Avoid creating .DS_Store files on USB volumes" }
   - { domain: com.apple.NetworkBrowser, key: BrowseAllInterfaces, type: bool, value: true, description: "Enable AirDrop over Ethernet and on unsupported Macs running Lion" }
@@ -21,6 +21,7 @@ osx_local_defaults:
   - { domain: com.apple.dock, key: autohide, type: bool, value: true, description: "Autohide the Dock" }
   - { domain: com.apple.dock, key: autohide-delay, type: float, value: 0, description: "Remove autohide delay" }
   - { domain: com.apple.dock, key: tilesize, type: int, value: 50, description: "Set dock tile size" }
+  - { domain: com.apple.dock, key: showhidden, type: int, value: 50, description: "Make the Dock Icon of any 'Hidden' Applications Dim/Translucent" }
   # - { domain: com.apple.dock, key: largesize, type: float, value: 85, description: "Set dock tile large size" }
   - { domain: com.apple.dock, key: mineffect, type: string, value: "scale", description: "Minimize Dock effect Scale" }
   - { domain: com.apple.driver.AppleBluetoothMultitouch.mouse, key: MouseMomentumScroll, type: bool, value: true, description: "Enable momentum scrolling for Magic Mouse" }
@@ -43,5 +44,5 @@ osx_local_defaults:
   - { domain: com.apple.finder, key: SidebariCloudDriveSectionDisclosedState, type: bool, value: false, description: "Don't Show iCloud in Sidebar" }
   - { domain: com.apple.finder, key: QuitMenuItem, type: bool, value: false, description: "Hide 'Quit Finder' Menu Item" }
   - { domain: com.apple.finder, key: DisableAllAnimations, type: bool, value: true, description: "Window animations and Get Info animations" }
-  - { domain: com.apple.launchservices, key: LSQuarantine, type: bool, value: false, description: "Disable the “Are you sure you want to open this application?” dialog" }
+  - { domain: com.apple.launchservices, key: LSQuarantine, type: bool, value: false, description: "Disable the “Application Downloaded from Internet” dialog" }
   - { domain: com.apple.print.PrintingPrefs, key: "Quit When Finished", type: bool, value: true, description: "Quit Printer App After Print Jobs Complete" }

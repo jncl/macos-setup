@@ -1,0 +1,37 @@
+---
+# tasks for create-user
+# avatar task from here: https://apple.stackexchange.com/questions/117530/setting-account-picture-jpegphoto-with-dscl-in-terminal#367667
+
+- name: Create user, add to sudoers & add avatar
+  become: true
+  block:
+    - name: Create User
+      ansible.builtin.user:
+        name: "{{ user.abbr }}"
+        comment: "{{ user.name }}"
+        password: "{{ user.password }}"
+        shell: "/bin/zsh"
+        group: "{{ user.group }}"
+        append: true
+        state: present
+      register: result
+    - name: Add User to sudoers
+      ansible.builtin.lineinfile:
+        path: "/etc/sudoers.d/90_{{ user.abbr }}"
+        line: "{{ user.abbr }} ALL = (ALL) ALL"
+        create: true
+        mode: '0440'
+        state: present
+        validate: /usr/sbin/visudo -cf %s
+    - name: User avatar
+      ansible.builtin.shell:
+        cmd: |
+          tmp="$(mktemp)"
+          printf "0x0A 0x5C 0x3A 0x2C dsRecTypeStandard:Users 2 dsAttrTypeStandard:RecordName base64:dsAttrTypeStandard:JPEGPhoto\n%s:" "{{ user.abbr }}" > "$tmp"
+          cat >> "$tmp"
+          dscl . delete /Users/{{ user.abbr }} JPEGPhoto
+          dsimport "$tmp" /Local/Default M
+          rc=$?
+          rm "$tmp"
+          exit $rc
+        stdin: "{{ lookup('file', user.avatar) | b64encode }}"
