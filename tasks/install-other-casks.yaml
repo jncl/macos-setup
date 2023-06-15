@@ -1,6 +1,7 @@
 ---
 
 - name: Install cask applications that require sudo
+  when: homebrew_cask_apps_sudo is defined
   community.general.homebrew_cask:
     name: "{{ item.name | default(item) }}"
     state: present
@@ -9,7 +10,6 @@
     sudo_password: mac_admin_pw
   loop:
     - "{{ homebrew_cask_apps_sudo }}"
-  when: homebrew_cask_apps_sudo is defined
   notify:
     - Clear homebrew cache
 

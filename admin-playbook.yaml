@@ -12,10 +12,6 @@
     - vars/{{ 'admin_' ~ computer.model | lower ~ '_vars' }}.yaml
 
   vars_prompt:
-    - name: mas_password
-      prompt: Enter password for Apple ID {{ mas_email }}
-      confirm: true
-      private: true
     - name: user.password
       prompt: Enter password for User {{ user.name }}
       confirm: true

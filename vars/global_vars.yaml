@@ -22,9 +22,6 @@ dropbox_dir: "$HOME/Library/CloudStorage/Dropbox"
 # Disable sudden motion sensor (not useful on SSD/Flash drives)
 sudden_motion_sensor: false
 
-# App Store email
-mas_email: "jonhogg@mac.com"
-
 # Clear cache after software has been installed
 homebrew_clear_cache: false
 
