@@ -24,8 +24,6 @@ homebrew_installed_packages_user:
   - lua51
   - sshfs-mac
 
-homebrew_cask_apps_local_user: [ ]
-
 mas_installed_apps_user:
   - { id: 523620159, name: "CleanMyDrive 2" }
   - { id: 823766827, name: "OneDrive" }

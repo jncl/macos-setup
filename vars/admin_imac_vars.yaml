@@ -13,12 +13,12 @@ homebrew_installed_packages_imac:
   - xz
 
 homebrew_cask_apps_imac:
-  - { name: discord, install_options: "--no-quarantine" }
-  - { name: tiddly, install_options: "--no-quarantine" }
+  - { name: discord, install_options: "no-quarantine" }
+  - { name: tiddly, install_options: "-o-quarantine" }
 
 homebrew_cask_apps_local_admin:
-  - { name: cdpedia, install_options: "--no-quarantine" }
-  - { name: dvdpedia, install_options: "--no-quarantine" }
+  - { name: cdpedia, install_options: "no-quarantine" }
+  - { name: dvdpedia, install_options: "no-quarantine" }
   
 mas_installed_apps_imac: [ ]
 

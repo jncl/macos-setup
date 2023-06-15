@@ -2,7 +2,6 @@
 
 # setup global variables
 homebrew_taps_admin:
-  - homebrew/bundle
   - iloveitaly/tap
 
 homebrew_cask_apps_admin:
