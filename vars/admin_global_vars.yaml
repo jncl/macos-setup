@@ -23,6 +23,7 @@ homebrew_cask_apps_admin:
   - { name: textmate, install_options: "no-quarantine" }
   - { name: tor-browser, install_options: "no-quarantine" }
   - { name: vlc, install_options: "no-quarantine" }
+  - { name: 1password@7.9.10, install_options: "no-quarantine" }
 
 homebrew_installed_packages_admin:
   - ffmpeg
@@ -34,9 +35,6 @@ homebrew_installed_packages_admin:
   - reattach-to-user-namespace
   - ssh-copy-id
   - tmux
-
-homebrew_cask_apps_local_admin:
-  - '1password@7.9.10'
 
 mas_installed_apps_admin:
   - { id: 425424353, name: "The Unarchiver" }

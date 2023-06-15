@@ -34,9 +34,9 @@
       tags: dock
 
   tasks:
-    - name: Include other-casks
-      ansible.builtin.include_tasks: tasks/install-other-casks.yaml
-      tags: casks
+    # - name: Include other-casks
+    #   ansible.builtin.include_tasks: tasks/install-other-casks.yaml
+    #   tags: casks
     - name: Include set-defaults
       ansible.builtin.include_tasks: tasks/set-defaults.yaml
       tags: defaults
