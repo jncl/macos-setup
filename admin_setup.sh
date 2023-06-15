@@ -9,19 +9,13 @@
 git pull
 
 # Set Sudo timeout
-echo "Defaults timestamp_timeout=90" | sudo tee /etc/sudoers.d/admin
+echo "Defaults timestamp_timeout=90" | sudo tee /etc/sudoers.d/00-admin
 sleep 5
-sudo visudo -cf /etc/sudoers.d/admin
+sudo visudo -cf /etc/sudoers.d/00-admin
 
 # Run playbook without sleeping
 caffeinate ansible-playbook admin-playbook.yaml -i inventory -l localhost $@ | tee ./admin_setup.txt
 r=${?}
 
 # Remove sudo timeout
-[ ${r} == 0 ] && sudo rm /etc/sudoers.d/admin
-
-# remove path entries
-sudo rm /etc/paths.d/50-ansible
-
-# Apply path updates (homebrew & ansible)
-eval $(/usr/libexec/path_helper)
+[ ${r} == 0 ] && (sudo rm /etc/sudoers.d/00-admin; sudo rm /etc/paths.d/50-ansible; eval $(/usr/libexec/path_helper))

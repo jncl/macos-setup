@@ -13,9 +13,15 @@ homebrew_cask_apps_user:
   - { name: dropbox, install_options: "--no-quarantine" }
   - { name: google-drive, install_options: "--no-quarantine" }
   - { name: macfuse, install_options: "--no-quarantine" }
-  - { name: pibar, install_options: "--no-quarantine" }
-
-homebrew_cask_apps_sudo_user: [ ]
+  # quicklook
+  - { name: qlstephen, install_options: "no-quarantine" }
+  - { name: qlvideo, install_options: "no-quarantine" }
+  - { name: qlzipinfo, install_options: "no-quarantine" }
+  - { name: suspicious-package, install_options: "no-quarantine" }
+  - { name: syntax-highlight, install_options: "no-quarantine" }
+  # TODO: clone qlstephen repo and add entries to the LSItemContentTypes of the plist file to support .toc files
+  # use 'mdls  -name kMDItemContentType <filename>' to view file info and add the returned string, 'dyn.*' to the plist file
+  # more info here: https://github.com/whomwah/qlstephen/issues/23
 
 homebrew_cask_apps_local_user:
   - ImageOptim

@@ -7,8 +7,6 @@ homebrew_installed_packages_mbp: [ ]
 
 homebrew_cask_apps_mbp: [ ]
 
-homebrew_cask_apps_sudo_mbp: [ ]
-
 homebrew_cask_apps_local_mbp: [ ]
 
 mas_installed_apps_mbp: [ ]

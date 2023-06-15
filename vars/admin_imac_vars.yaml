@@ -18,10 +18,6 @@ homebrew_cask_apps_imac:
   # - paragon-ntfs
   - tiddly
 
-homebrew_cask_apps_sudo_imac: [ ]
-  # - boinc # N.B. not many BOINC apps run on M1 hardware atm
-  # - zoom
-
 homebrew_cask_apps_local_imac:
   - cdpedia
   - dvdpedia

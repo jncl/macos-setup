@@ -16,13 +16,7 @@ sudo visudo -cf /etc/sudoers.d/00-user
 
 # Run playbook without sleeping
 caffeinate ansible-playbook user-playbook.yaml -i inventory -l localhost $@ | tee ./user_setup.txt
+r=${?}
 
 # Remove sudo timeout
-sudo rm /etc/sudoers.d/00-user
-
-# remove path entries
-sudo rm /etc/paths.d/30-homebrew
-sudo rm /etc/paths.d/50-ansible
-
-# Apply path updates (homebrew & ansible)
-eval $(/usr/libexec/path_helper)
+[ ${r} == 0 ] && (sudo rm /etc/sudoers.d/00-user; sudo rm /etc/paths.d/30-homebrew /etc/paths.d/50-ansible; eval $(/usr/libexec/path_helper))
