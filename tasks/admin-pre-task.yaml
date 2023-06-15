@@ -10,6 +10,6 @@
     mas_installed_apps: "{{ mas_installed_apps_admin | union( vars['mas_installed_apps_' ~ computer.model] ) }}"
     pip_items: "{{ pip_items_admin | union( vars['pip_items_' ~ computer.model] ) }}"
     gem_items: "{{ gem_items_admin | union( vars['gem_items_' ~ computer.model] ) }}"
-    npm__items: "{{ npm__items_admin | union( vars['npm__items_' ~ computer.model] ) }}"
+    npm__items: "{{ npm__items_admin | union( vars['npm_items_' ~ computer.model] ) }}"
     dockitems_remove: "{{ dockitems_remove_gvars | union(dockitems_remove_admin) | union( vars['dockitems_remove_' ~ computer.model] ) }}"
     dockitems_persist: "{{ dockitems_persist_gvars | union(dockitems_persist_admin) | union( vars['dockitems_persist_' ~ computer.model] ) }}"
