@@ -8,8 +8,7 @@
     install_options: "{{ item.install_options | default('appdir=' ~ homebrew_cask_appdir) }}"
     accept_external_apps: "{{ homebrew_cask_accept_external_apps }}"
     sudo_password: mac_admin_pw
-  loop:
-    - "{{ homebrew_cask_apps_sudo }}"
+  loop: "{{ homebrew_cask_apps_sudo }}"
   notify:
     - Clear homebrew cache
 
@@ -21,15 +20,13 @@
         src: "{{ item.name | default(item) }}.rb"
         dest: "{{ homebrew_prefix }}/Homebrew/Library/Taps/homebrew/homebrew-cask/Casks/"
         mode: '0644'
-      loop:
-        - "{{ homebrew_cask_apps_local }}"
+      loop: "{{ homebrew_cask_apps_local }}"
     - name: Install local cask applications
       community.general.homebrew_cask:
         name: "{{ item.name | default(item) }}"
         state: present
         install_options: "{{ item.install_options | default('appdir=' ~ homebrew_cask_appdir) }}"
         accept_external_apps: "{{ homebrew_cask_accept_external_apps }}"
-      loop:
-        - "{{ homebrew_cask_apps_local }}"
+      loop: "{{ homebrew_cask_apps_local }}"
       notify:
         - Clear homebrew cache
