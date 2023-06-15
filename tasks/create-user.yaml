@@ -12,7 +12,7 @@
         password: "{{ user.password }}"
         shell: "/bin/zsh"
         group: "{{ user.group }}"
-        append: true
+        # append: true
         state: present
       register: result
     - name: Add User to sudoers

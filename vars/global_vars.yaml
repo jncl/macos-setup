@@ -10,7 +10,7 @@ user:
   name: "Jon Hogg"
   abbr: "jonhogg"
   password: "password"
-  avatar: "/Library/User Pictures/Sports/Target.png"
+  avatar: "/Library/User Pictures/Sports/Target.heic"
   group: "staff"
 
 # Set keyboard_id to internal or external keyboard
