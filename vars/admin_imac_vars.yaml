@@ -19,7 +19,7 @@ homebrew_cask_apps_imac:
 homebrew_cask_apps_local_admin:
   - { name: cdpedia, install_options: "no-quarantine" }
   - { name: dvdpedia, install_options: "no-quarantine" }
-  
+
 mas_installed_apps_imac: [ ]
 
 pip_items_imac: [ ]

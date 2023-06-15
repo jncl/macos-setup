@@ -37,7 +37,7 @@ homebrew_installed_packages_admin:
 
 homebrew_cask_apps_local_admin:
   - { name: 1password@7.9.10, install_options: "no-quarantine" }
-  
+
 mas_installed_apps_admin:
   - { id: 425424353, name: "The Unarchiver" }
 
