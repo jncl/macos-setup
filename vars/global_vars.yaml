@@ -25,6 +25,7 @@ sudden_motion_sensor: false
 # Clear cache after software has been installed
 homebrew_clear_cache: false
 
+# Specify where brewfiles are found
 homebrew_brewfile_dir: "{{ playbook_dir }}/files"
 
 dockitems_remove_gvars:
