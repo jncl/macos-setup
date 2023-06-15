@@ -8,12 +8,12 @@ homebrew_installed_packages_user:
   - sshfs-mac
 
 homebrew_cask_apps_user:
-  - apptrap
-  - battle-net
-  - dropbox
-  - google-drive
-  - macfuse
-  - pibar
+  - { name: apptrap, install_options: "--no-quarantine" }
+  - { name: battle-net, install_options: "--no-quarantine" }
+  - { name: dropbox, install_options: "--no-quarantine" }
+  - { name: google-drive, install_options: "--no-quarantine" }
+  - { name: macfuse, install_options: "--no-quarantine" }
+  - { name: pibar, install_options: "--no-quarantine" }
 
 homebrew_cask_apps_sudo_user: [ ]
 

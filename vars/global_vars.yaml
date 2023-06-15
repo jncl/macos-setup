@@ -26,8 +26,11 @@ sudden_motion_sensor: false
 
 # homebrew info
 homebrew:
-  prefix: "{{ '/opt/homebrew' if ansible_model is search('iMac21') else '/usr/local' }}"
+  prefix: "{{ (ansible_machine == 'arm64') | ternary('/opt/homebrew', '/usr/local') }}"
   dir: "{{ homebrew.prefix }}/Homebrew"
+
+# Clear cache after software has been installed
+homebrew_clear_cache: false
 
 dockitems_remove_gvars:
   - Launchpad

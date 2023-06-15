@@ -10,7 +10,6 @@
     - vars/osx_local_defaults.yaml
     - vars/admin_global_vars.yaml
     - vars/{{ 'admin_' ~ computer.model ~ '_vars' }}.yaml
-    # - vars/admin_vars.yaml
 
   vars_prompt:
     - name: mas_password

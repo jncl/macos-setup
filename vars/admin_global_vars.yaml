@@ -16,30 +16,30 @@ homebrew_installed_packages_admin:
   - tmux
 
 homebrew_cask_apps_admin:
-  - { item: appcleaner, install_options: "--no-quarantine" }
-  - { item: carbon-copy-cloner, install_options: "--no-quarantine" }
-  - { item: clipy, install_options: "--no-quarantine" }
-  - { item: curseforge, install_options: "--no-quarantine" }
-  - { item: google-analytics-opt-out, install_options: "--no-quarantine" }
-  - { item: hammerspoon, install_options: "--no-quarantine" }
-  - { item: handbrake, install_options: "--no-quarantine" }
-  - { item: iterm2, install_options: "--no-quarantine" }
-  - { item: karabiner-elements, install_options: "--no-quarantine" }
-  - { item: moom, install_options: "--no-quarantine" }
-  - { item: mysides, install_options: "--no-quarantine" }
-  - { item: name-mangler, install_options: "--no-quarantine" }
-  - { item: pibar, install_options: "--no-quarantine" }
-  - { item: sourcetree, install_options: "--no-quarantine" }
-  - { item: stats, install_options: "--no-quarantine" }
-  - { item: textmate, install_options: "--no-quarantine" }
-  - { item: tor-browser, install_options: "--no-quarantine" }
-  - { item: vlc, install_options: "--no-quarantine" }
+  - { name: appcleaner, install_options: "--no-quarantine" }
+  - { name: carbon-copy-cloner, install_options: "--no-quarantine" }
+  - { name: clipy, install_options: "--no-quarantine" }
+  - { name: curseforge, install_options: "--no-quarantine" }
+  - { name: google-analytics-opt-out, install_options: "--no-quarantine" }
+  - { name: hammerspoon, install_options: "--no-quarantine" }
+  - { name: handbrake, install_options: "--no-quarantine" }
+  - { name: iterm2, install_options: "--no-quarantine" }
+  - { name: karabiner-elements, install_options: "--no-quarantine" }
+  - { name: moom, install_options: "--no-quarantine" }
+  - { name: mysides, install_options: "--no-quarantine" }
+  - { name: name-mangler, install_options: "--no-quarantine" }
+  - { name: pibar, install_options: "--no-quarantine" }
+  - { name: sourcetree, install_options: "--no-quarantine" }
+  - { name: stats, install_options: "--no-quarantine" }
+  - { name: textmate, install_options: "--no-quarantine" }
+  - { name: tor-browser, install_options: "--no-quarantine" }
+  - { name: vlc, install_options: "--no-quarantine" }
   # quicklook
-  - { item: qlstephen, install_options: "--no-quarantine" }
-  - { item: qlvideo, install_options: "--no-quarantine" }
-  - { item: qlzipinfo, install_options: "--no-quarantine" }
-  - { item: suspicious-package, install_options: "--no-quarantine" }
-  - { item: syntax-highlight, install_options: "--no-quarantine" }
+  - { name: qlstephen, install_options: "--no-quarantine" }
+  - { name: qlvideo, install_options: "--no-quarantine" }
+  - { name: qlzipinfo, install_options: "--no-quarantine" }
+  - { name: suspicious-package, install_options: "--no-quarantine" }
+  - { name: syntax-highlight, install_options: "--no-quarantine" }
   # TODO: clone qlstephen repo and add entries to the LSItemContentTypes of the plist file to support .toc files
   # use 'mdls  -name kMDItemContentType <filename>' to view file info and add the returned string, 'dyn.*' to the plist file
   # more info here: https://github.com/whomwah/qlstephen/issues/23

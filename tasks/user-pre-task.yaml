@@ -1,0 +1,15 @@
+---
+
+- name: Setup variables to be used in the following roles and tasks
+  ansible.builtin.set_fact:
+    homebrew_taps: "{{ homebrew_taps_user }}"
+    homebrew_installed_packages: "{{ homebrew_installed_packages_user }}"
+    homebrew_cask_apps: "{{ homebrew_cask_apps_user }}"
+    homebrew_cask_apps_sudo: "{{ homebrew_cask_apps_sudo_user }}"
+    homebrew_cask_apps_local: "{{ homebrew_cask_apps_local_user }}"
+    mas_installed_apps: "{{ mas_installed_apps_user }}"
+    pip_items: "{{ pip_items_user }}"
+    gem_items: "{{ gem_items_user }}"
+    npm_items: "{{ npm_items_user }}"
+    dockitems_remove: "{{ dockitems_remove_gvars | union( dockitems_remove_user ) }}"
+    dockitems_persist: "{{ dockitems_persist_gvars | union( dockitems_persist_user ) }}"
