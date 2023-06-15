@@ -2,6 +2,7 @@
 
 # setup global variables
 homebrew_taps_admin:
+  - homebrew/bundle
   - iloveitaly/tap
 
 homebrew_cask_apps_admin:
@@ -23,7 +24,6 @@ homebrew_cask_apps_admin:
   - { name: textmate, install_options: "no-quarantine" }
   - { name: tor-browser, install_options: "no-quarantine" }
   - { name: vlc, install_options: "no-quarantine" }
-  - { name: 1password@7.9.10, install_options: "no-quarantine" }
 
 homebrew_installed_packages_admin:
   - ffmpeg
@@ -36,6 +36,9 @@ homebrew_installed_packages_admin:
   - ssh-copy-id
   - tmux
 
+homebrew_cask_apps_local_admin:
+  - { name: 1password@7.9.10, install_options: "no-quarantine" }
+  
 mas_installed_apps_admin:
   - { id: 425424353, name: "The Unarchiver" }
 

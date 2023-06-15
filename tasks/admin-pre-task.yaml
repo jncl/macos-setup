@@ -5,6 +5,7 @@
     homebrew_taps: "{{ homebrew_taps_admin | union( vars['homebrew_taps_' ~ computer.model | lower ] ) }}"
     homebrew_installed_packages: "{{ homebrew_installed_packages_admin | union( vars['homebrew_installed_packages_' ~ computer.model | lower ] ) }}"
     homebrew_cask_apps: "{{ homebrew_cask_apps_admin | union( vars['homebrew_cask_apps_' ~ computer.model | lower ] ) }}"
+    homebrew_cask_apps_local: "{{ homebrew_cask_apps_local_admin | union( vars['homebrew_cask_apps_local_' ~ computer.model | lower ] ) }}"
     mas_installed_apps: "{{ mas_installed_apps_admin | union( vars['mas_installed_apps_' ~ computer.model | lower ] ) }}"
     pip_items: "{{ pip_items_admin | union( vars['pip_items_' ~ computer.model | lower ] ) }}"
     gem_items: "{{ gem_items_admin | union( vars['gem_items_' ~ computer.model | lower ] ) }}"
