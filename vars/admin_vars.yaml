@@ -1,24 +1,24 @@
 ---
 
 # setup variables
-homebrew_taps: "{{ homebrew_taps_admin | union( ('homebrew_taps_' ~ computer.model) ) }}"
+homebrew_taps: "{{ homebrew_taps_admin | union( hostvars['homebrew_taps_' ~ computer.model] ) }}"
 
-homebrew_installed_packages: "{{ homebrew_installed_packages_admin | union( ('homebrew_installed_packages_' ~ computer.model) ) }}"
+homebrew_installed_packages: "{{ homebrew_installed_packages_admin | union( hostvars['homebrew_installed_packages_' ~ computer.model] ) }}"
 
-homebrew_cask_apps: "{{ homebrew_cask_apps_admin | union( ('homebrew_cask_apps_' ~ computer.model )) }}"
+homebrew_cask_apps: "{{ homebrew_cask_apps_admin | union( hostvars['homebrew_cask_apps_' ~ computer.model] ) }}"
 
-homebrew_cask_apps_sudo: "{{ homebrew_cask_apps_sudo_admin | union( ('homebrew_cask_apps_sudo_' ~ computer.model) ) }}"
+homebrew_cask_apps_sudo: "{{ homebrew_cask_apps_sudo_admin | union( hostvars['homebrew_cask_apps_sudo_' ~ computer.model] ) }}"
 
-homebrew_cask_apps_local: "{{ homebrew_cask_apps_local_admin | union( ('homebrew_cask_apps_local_' ~ computer.model) ) }}"
+homebrew_cask_apps_local: "{{ homebrew_cask_apps_local_admin | union( hostvars['homebrew_cask_apps_local_' ~ computer.model] ) }}"
 
-mas_installed_apps: "{{ mas_installed_apps_admin | union( ('mas_installed_apps_' ~ computer.model) ) }}"
+mas_installed_apps: "{{ mas_installed_apps_admin | union( hostvars['mas_installed_apps_' ~ computer.model] ) }}"
 
-pip_items: "{{ pip_items_admin | union( ('pip_items_' ~ computer.model) ) }}"
+pip_items: "{{ pip_items_admin | union( hostvars['pip_items_' ~ computer.model] ) }}"
 
-gem_items: "{{ gem_items_admin | union( ('gem_items_' ~ computer.model) ) }}"
+gem_items: "{{ gem_items_admin | union( hostvars['gem_items_' ~ computer.model] ) }}"
 
-npm__items: "{{ npm__items_admin | union( ('npm__items_' ~ computer.model) ) }}"
+npm__items: "{{ npm__items_admin | union( hostvars['npm__items_' ~ computer.model] ) }}"
 
-dockitems_remove: "{{ dockitems_remove_gvars | union(dockitems_remove_admin) | union( ('dockitems_remove_' ~ computer.model) ) }}"
+dockitems_remove: "{{ dockitems_remove_gvars | union(dockitems_remove_admin) | union( hostvars['dockitems_remove_' ~ computer.model] ) }}"
 
-dockitems_persist: "{{ dockitems_persist_gvars | union(dockitems_persist_admin) | union( ('dockitems_persist_' ~ computer.model) ) }}"
+dockitems_persist: "{{ dockitems_persist_gvars | union(dockitems_persist_admin) | union( hostvars['dockitems_persist_' ~ computer.model] ) }}"
