@@ -2,6 +2,7 @@
 
 - name: Sign out from the App Store
   ansible.builtin.command: mas signout
+  when: mas_installed_apps is defined
 
 - name: Quit Zoom
   ansible.builtin.command: osascript -e 'if application "zoom.us" is running then quit app "zoom.us"'

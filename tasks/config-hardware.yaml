@@ -1,5 +1,5 @@
 ---
-# tasks for hardware
+# tasks for config-hardware
 
 - name: Set sudden motion sensor mode to {{ sudden_motion_sensor }}
   become: true

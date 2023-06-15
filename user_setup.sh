@@ -15,7 +15,7 @@ sleep 2
 sudo visudo -cf /etc/sudoers.d/00-user
 
 # Run playbook without sleeping
-caffeinate ansible-playbook user_playbook.yaml -i inventory -l localhost $@ | tee ./user_setup.txt
+caffeinate ansible-playbook user-playbook.yaml -i inventory -l localhost $@ | tee ./user_setup.txt
 
 # Remove sudo timeout
 sudo rm /etc/sudoers.d/00-user
