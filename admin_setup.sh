@@ -17,5 +17,5 @@ sudo visudo -cf /etc/sudoers.d/00-admin
 caffeinate -i ansible-playbook admin-playbook.yaml -i inventory -l localhost $@ | tee ./admin_setup.txt
 r=${?}
 
-# Remove sudo timeout
-[ ${r} == 0 ] && (sudo rm /etc/sudoers.d/00-admin; sudo rm /etc/paths.d/50-ansible; eval $(/usr/libexec/path_helper))
+# Remove sudo timeout & path files
+[ ${r} == 0 ] && (sudo rm /etc/sudoers.d/00-admin; sudo rm /etc/paths.d/50-ansible 2>/dev/null)
