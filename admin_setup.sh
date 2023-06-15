@@ -19,3 +19,9 @@ r=${?}
 
 # Remove sudo timeout
 [ ${r} == 0 ] && sudo rm /etc/sudoers.d/admin
+
+# remove path entries
+sudo rm /etc/paths.d/50-ansible
+
+# Apply path updates (homebrew & ansible)
+eval $(/usr/libexec/path_helper)

@@ -2,7 +2,7 @@
 
 - name: Admin playbook
   hosts: all
-  gather_facts: false
+  gather_facts: true
 
   vars_files:
     - vars/global_vars.yaml
