@@ -19,7 +19,7 @@
     - name: Copy Cask files
       ansible.builtin.copy:
         src: "{{ item }}.rb"
-        dest: "{{ homebrew.dir }}/Library/Taps/homebrew/homebrew-cask/Casks/"
+        dest: "{{ homebrew_prefix }}/Homebrew/Library/Taps/homebrew/homebrew-cask/Casks/"
         mode: '0644'
       loop:
         - "{{ homebrew_cask_apps_local }}"

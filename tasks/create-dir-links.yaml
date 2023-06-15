@@ -20,7 +20,7 @@
         - "OneDrive"
 
 - name: Create external drive links
-  when: ansible_model is search("iMac")
+  when: computer.model is "iMac"
   block:
     - name: Create media directory links
       ansible.builtin.file:

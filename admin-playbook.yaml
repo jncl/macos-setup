@@ -13,7 +13,7 @@
 
   vars_prompt:
     - name: mas_password
-      prompt: Enter password for Apple ID {{ user.mas_email }}
+      prompt: Enter password for Apple ID {{ mas_email }}
       confirm: true
       private: true
     - name: user.password
@@ -31,13 +31,10 @@
 
   roles:
     - role: geerlingguy.mac.homebrew
-      when: homebrew_cask_apps is defined or homebrew_installed_packages is defined
       tags: homebrew
     - role: geerlingguy.mac.mas
-      when: mas_installed_apps is defined
       tags: mas
     - role: geerlingguy.mac.dock
-      when: dockitems_remove is defined or dockitems_persist is defined
       tags: dock
 
   tasks:
@@ -59,6 +56,6 @@
     - name: Include create-user
       ansible.builtin.include_tasks: tasks/create-user.yaml
       tags: user
-    - name: Include change-ownership
-      ansible.builtin.include_tasks: tasks/change-ownership.yaml
-      tags: owner
+    # - name: Include change-ownership
+    #   ansible.builtin.include_tasks: tasks/change-ownership.yaml
+    #   tags: owner

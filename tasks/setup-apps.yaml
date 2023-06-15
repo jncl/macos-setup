@@ -5,7 +5,7 @@
   block:
     - name: Make links for Preference files
       ansible.builtin.file:
-        src: "{{ dropbox.dir }}/OSX/Preferences/{{ item }}"
+        src: "{{ dropbox_dir }}/OSX/Preferences/{{ item }}"
         path: "$HOME/Library/Preferences/{{ item }}"
         state: link
         force: true
@@ -37,7 +37,7 @@
             mode: '0755'
         - name: Create link to iTerm Scripts directory
           ansible.builtin.file:
-            src: "{{ dropbox.dir }}/OSX/Library Links/Application Support/iTerm2/Scripts"
+            src: "{{ dropbox_dir }}/OSX/Library Links/Application Support/iTerm2/Scripts"
             path: "$HOME/Library/Application Support/iTerm2/Scripts"
             state: link
             force: true
@@ -51,17 +51,17 @@
             mode: '0755'
         - name: Create link for TextMate bundle directory
           ansible.builtin.file:
-            src: "{{ dropbox.dir }}/OSX/Library Links/Application Support/TextMate/Pristine Copy"
+            src: "{{ dropbox_dir }}/OSX/Library Links/Application Support/TextMate/Pristine Copy"
             dest: "$HOME/Library/Application Support/TextMate/Pristine Copy"
             state: link
             mode: '0755'
 
 - name: Create links for Apps & Preferences (iMac only)
-  when: ansible_model is search("iMac")
+  when: computer.model is "iMac"
   block:
     - name: Make links for Preference files (iMac)
       ansible.builtin.file:
-        src: "{{ dropbox.dir }}/OSX/Preferences/{{ item }}"
+        src: "{{ dropbox_dir }}/OSX/Preferences/{{ item }}"
         path: "$HOME/Library/Preferences/{{ item }}"
         state: link
       loop:
@@ -69,7 +69,7 @@
         - com.bruji.dvdpedia.plist
     - name: Create links for Library Application Support directories (iMac)
       ansible.builtin.file:
-        src: "{{ dropbox.dir }}/OSX/Library Links/Application Support/{{ item }}"
+        src: "{{ dropbox_dir }}/OSX/Library Links/Application Support/{{ item }}"
         path: "$HOME/Library/Application Support/{{ item }}"
         state: link
       loop:

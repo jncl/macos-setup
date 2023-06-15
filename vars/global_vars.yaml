@@ -2,8 +2,8 @@
 
 # Computer info
 computer:
-  hostname: "{{ 'Hedgehog2' if ansible_model is search('MacBookPro6,1') else 'Hedgehog3' if ansible_model is search('iMac18,3') else 'Hedgehog4' if ansible_model is search('iMac') else 'Hedgehog5' }}"
-  model: "{{ 'iMac' if ansible_model is search('iMac') else 'mbp' }}"
+  hostname: "{{ (ansible_machine == 'arm64') | ternary('Hedgehog4', 'Hedgehog5') }}"
+  model: "{{ (ansible_machine == 'arm64') | ternary('iMac', 'MBP') }}"
 
 # User info
 user:
@@ -11,23 +11,19 @@ user:
   abbr: "jonhogg"
   password: "password"
   avatar: "/Library/User Pictures/Sports/Target.png"
-  mas_email: "jonhogg@mac.com"
   group: "staff"
 
 # Set keyboard_id to internal or external keyboard
-keyboard_id: "{{ '1452-567-0' if ansible_model is search('MacBookPro') else '1452-592-0' if ansible_model is search('iMac18,3') else 'alt_handler_id-95' }}"
+keyboard_id: "{{ (ansible_machine == 'arm64') | ternary('alt_handler_id-95', '1452-567-0') }}"
 
 # Dropbox info
-dropbox:
-  dir: "$HOME/Library/CloudStorage/Dropbox"
+dropbox_dir: "$HOME/Library/CloudStorage/Dropbox"
 
 # Disable sudden motion sensor (not useful on SSD/Flash drives)
 sudden_motion_sensor: false
 
-# homebrew info
-homebrew:
-  prefix: "{{ (ansible_machine == 'arm64') | ternary('/opt/homebrew', '/usr/local') }}"
-  dir: "{{ homebrew.prefix }}/Homebrew"
+# App Store email
+mas_email: "jonhogg@mac.com"
 
 # Clear cache after software has been installed
 homebrew_clear_cache: false

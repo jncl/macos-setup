@@ -7,10 +7,10 @@
       ansible.builtin.pause:
         prompt: "Attach Games SSD"
     - name: Run Battle.net Setup
-      ansible.builtin.command: "{{ homebrew.dir }}/Caskroom/battle-net/latest/Battle.net-Setup.app/Contents/MacOS/Battle.net-Setup"
+      ansible.builtin.command: "{{ homebrew_prefix }}/Homebrew/Caskroom/battle-net/latest/Battle.net-Setup.app/Contents/MacOS/Battle.net-Setup"
     - name: Create link for Games directory dot file
       ansible.builtin.file:
-        src: "{{ dropbox.dir }}/config/Games/dot.tm_properties"
+        src: "{{ dropbox_dir }}/config/Games/dot.tm_properties"
         path: "$HOME/Games/.tm_properties"
         state: link
         force: true

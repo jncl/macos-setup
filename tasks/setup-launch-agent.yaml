@@ -5,7 +5,7 @@
   block:
     - name: Create link for Library LaunchAgents file
       ansible.builtin.file:
-        src: "{{ dropbox.dir }}/OSX/Library Links/LaunchAgents/net.strangled.{{ computer.hostname | lower }}.fswatch-SharedFuncs-lua.plist"
+        src: "{{ dropbox_dir }}/OSX/Library Links/LaunchAgents/net.strangled.{{ computer.hostname | lower }}.fswatch-SharedFuncs-lua.plist"
         path: "$HOME/Library/LaunchAgents/net.strangled.{{ computer.hostname | lower }}.fswatch-SharedFuncs-lua.plist"
         state: link
         force: true

@@ -4,17 +4,6 @@
 homebrew_taps_admin:
   - iloveitaly/tap
 
-homebrew_installed_packages_admin:
-  - ffmpeg
-  - fswatch
-  - git
-  - luarocks
-  - minicom
-  - nmap
-  - reattach-to-user-namespace
-  - ssh-copy-id
-  - tmux
-
 homebrew_cask_apps_admin:
   - { name: appcleaner, install_options: "no-quarantine" }
   - { name: carbon-copy-cloner, install_options: "no-quarantine" }
@@ -35,15 +24,24 @@ homebrew_cask_apps_admin:
   - { name: tor-browser, install_options: "no-quarantine" }
   - { name: vlc, install_options: "no-quarantine" }
 
+homebrew_installed_packages_admin:
+  - ffmpeg
+  - fswatch
+  - git
+  - luarocks
+  - minicom
+  - nmap
+  - reattach-to-user-namespace
+  - ssh-copy-id
+  - tmux
+
 homebrew_cask_apps_local_admin:
   - 1password@7.9.10
 
 mas_installed_apps_admin:
   - { id: 425424353, name: "The Unarchiver" }
 
-pip_items_admin:
-  - pexpect
-  - ansible-lint
+pip_items_admin: [ ]
 
 gem_items_admin: [ ]
 

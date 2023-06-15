@@ -14,10 +14,8 @@
 
   roles:
     - role: geerlingguy.mac.homebrew
-      when: homebrew_cask_apps is defined or homebrew_installed_packages is defined
       tags: homebrew
     - role: geerlingguy.mac.dock
-      when: dockitems_remove is defined or dockitems_persist is defined
       tags: dock
 
   pre_tasks:

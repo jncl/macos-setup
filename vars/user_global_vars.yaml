@@ -3,16 +3,13 @@
 homebrew_taps_user:
   - gromgit/fuse
 
-homebrew_installed_packages_user:
-  - lua51
-  - sshfs-mac
-
 homebrew_cask_apps_user:
   - { name: apptrap, install_options: "--no-quarantine" }
   - { name: battle-net, install_options: "--no-quarantine" }
   - { name: dropbox, install_options: "--no-quarantine" }
   - { name: google-drive, install_options: "--no-quarantine" }
   - { name: macfuse, install_options: "--no-quarantine" }
+  - { name: imageoptim, install_options: "--no-quarantine" }
   # quicklook
   - { name: qlstephen, install_options: "no-quarantine" }
   - { name: qlvideo, install_options: "no-quarantine" }
@@ -23,14 +20,19 @@ homebrew_cask_apps_user:
   # use 'mdls  -name kMDItemContentType <filename>' to view file info and add the returned string, 'dyn.*' to the plist file
   # more info here: https://github.com/whomwah/qlstephen/issues/23
 
-homebrew_cask_apps_local_user:
-  - ImageOptim
+homebrew_installed_packages_user:
+  - lua51
+  - sshfs-mac
+
+homebrew_cask_apps_local_user: [ ]
 
 mas_installed_apps_user:
   - { id: 523620159, name: "CleanMyDrive 2" }
   - { id: 823766827, name: "OneDrive" }
 
-pip_items_user: [ ]
+pip_items_user:
+  - pexpect
+  - ansible-lint
 
 gem_items_user: [ ]
 
