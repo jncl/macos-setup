@@ -4,8 +4,8 @@
   become: true
   ansible.builtin.command: "scutil --set {{ item }} {{ computer.hostname }}"
   loop:
-    ComputerName
-    LocalHostName
-    HostName
+    - ComputerName
+    - LocalHostName
+    - HostName
   when: computer.hostname is defined
   tags: always
