@@ -21,7 +21,7 @@ homebrew_cask_apps_user:
   # more info here: https://github.com/whomwah/qlstephen/issues/23
 
 homebrew_installed_packages_user:
-  - lua51
+  - lua@5.1
   - sshfs-mac
 
 mas_installed_apps_user:
