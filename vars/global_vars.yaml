@@ -22,6 +22,9 @@ dropbox_dir: "$HOME/Library/CloudStorage/Dropbox"
 # Disable sudden motion sensor (not useful on SSD/Flash drives)
 sudden_motion_sensor: false
 
+# Copied from Ansible Role: Homebrew
+homebrew_prefix: "{{ (ansible_machine == 'arm64') | ternary('/opt/homebrew', '/usr/local') }}"
+
 # Clear cache after software has been installed
 homebrew_clear_cache: false
 
