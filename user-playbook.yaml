@@ -23,7 +23,7 @@
     - name: Create variables to be used in the following Roles & Tasks
       ansible.builtin.include_tasks: tasks/user-pre-task.yaml
       tags: vars
-    - name: Change ownership of macos-setup directory & Homebrew directories
+    - name: Change ownership of Homebrew directories
       ansible.builtin.include_tasks: tasks/change-ownership.yaml
       tags: owner
 

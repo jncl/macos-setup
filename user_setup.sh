@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+# Change ownership of macos-setup directory
+sudo chown -R $(id -u):$(id -g) /Users/Shared/macos-setup
+
 # update repo
 git pull
 

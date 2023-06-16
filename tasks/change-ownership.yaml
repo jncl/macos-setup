@@ -3,14 +3,14 @@
 
 - name: Change ownership to {{ user.abbr }}
   block:
-    - name: Recursively change ownership of macos-setup repo
-      become: true
-      ansible.builtin.file:
-        path: /Users/Shared/macos-setup
-        state: directory
-        recurse: true
-        owner: "{{ user.abbr }}"
-        group: "{{ user.group }}"
+    # - name: Recursively change ownership of macos-setup repo
+    #   become: true
+    #   ansible.builtin.file:
+    #     path: /Users/Shared/macos-setup
+    #     state: directory
+    #     recurse: true
+    #     owner: "{{ user.abbr }}"
+    #     group: "{{ user.group }}"
     - name: Recursively change ownership of Homebrew directories
       become: true
       ansible.builtin.file:
