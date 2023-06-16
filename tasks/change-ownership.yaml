@@ -14,7 +14,7 @@
     - name: Recursively change ownership of Homebrew directories
       become: true
       ansible.builtin.file:
-        path: "{{ homebrew_prefix }}"
+        path: "{{ homebrew_prefix }}/*"
         state: directory
         recurse: true
         owner: "{{ user.abbr }}"
