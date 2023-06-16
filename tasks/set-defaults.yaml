@@ -4,6 +4,7 @@
   block:
     - name: Set Global defaults that require sudo
       become: true
+      when: osx_global_defaults_sudo is defined
       community.general.osx_defaults:
         domain: "{{ item.domain | default(omit) }}"
         host: "{{ item.host | default(omit) }}"
@@ -13,8 +14,8 @@
         array_add: "{{ item.array | default(omit) }}"
         state: present
       loop: "{{ osx_global_defaults_sudo }}"
-      when: osx_global_defaults_sudo is defined
     - name: Set Global defaults
+      when: osx_global_defaults is defined
       community.general.osx_defaults:
         domain: "{{ item.domain | default(omit) }}"
         host: "{{ item.host | default(omit) }}"
@@ -24,8 +25,8 @@
         array_add: "{{ item.array | default(omit) }}"
         state: present
       loop: "{{ osx_global_defaults }}"
-      when: osx_global_defaults is defined
     - name: Set Local defaults
+      when: osx_local_defaults is defined
       community.general.osx_defaults:
         domain: "{{ item.domain | default(omit) }}"
         host: "{{ item.host | default(omit) }}"
@@ -35,10 +36,10 @@
         array_add: "{{ item.array | default(omit) }}"
         state: present
       loop: "{{ osx_local_defaults }}"
-      when: osx_local_defaults is defined
       notify:
         [ "restart controlcenter", "restart dock", "restart finder", "restart systemuiserver" ]
     - name: Set User defaults
+      when: osx_user_defaults is defined
       community.general.osx_defaults:
         domain: "{{ item.domain | default(omit) }}"
         host: "{{ item.host | default(omit) }}"
@@ -48,4 +49,5 @@
         array_add: "{{ item.array | default(omit) }}"
         state: present
       loop: "{{ osx_user_defaults }}"
-      when: osx_user_defaults is defined
+    - name: Flush handlers
+      ansible.builtin.meta: flush_handlers
