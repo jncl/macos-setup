@@ -52,3 +52,6 @@
     - name: Include create-user
       ansible.builtin.include_tasks: tasks/create-user.yaml
       tags: user
+    - name: Change ownership of macos-setup directories
+      ansible.builtin.include_tasks: tasks/change-ownership.yaml
+      tags: owner
