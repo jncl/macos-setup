@@ -52,6 +52,3 @@
     - name: Include create-user
       ansible.builtin.include_tasks: tasks/create-user.yaml
       tags: user
-    # - name: Include change-ownership
-    #   ansible.builtin.include_tasks: tasks/change-ownership.yaml
-    #   tags: owner

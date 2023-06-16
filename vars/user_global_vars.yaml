@@ -4,12 +4,12 @@ homebrew_taps_user:
   - gromgit/fuse
 
 homebrew_cask_apps_user:
-  - { name: apptrap, install_options: "--no-quarantine" }
-  - { name: battle-net, install_options: "--no-quarantine" }
-  - { name: dropbox, install_options: "--no-quarantine" }
-  - { name: google-drive, install_options: "--no-quarantine" }
-  - { name: macfuse, install_options: "--no-quarantine" }
-  - { name: imageoptim, install_options: "--no-quarantine" }
+  - { name: apptrap, install_options: "-o-quarantine" }
+  - { name: battle-net, install_options: "no-quarantine" }
+  - { name: dropbox, install_options: "no-quarantine" }
+  - { name: google-drive, install_options: "no-quarantine" }
+  - { name: macfuse, install_options: "no-quarantine" }
+  - { name: imageoptim, install_options: "no-quarantine" }
   # quicklook
   - { name: qlstephen, install_options: "no-quarantine" }
   - { name: qlvideo, install_options: "no-quarantine" }
