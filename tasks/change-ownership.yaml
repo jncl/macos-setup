@@ -16,7 +16,7 @@
       when: "homebrew_cask_apps_user is defined"
       become: true
       ansible.builtin.file:
-        path: "{{ homebrew_prefix }}/*"
+        path: "{{ homebrew_prefix }}"
         state: directory
         recurse: true
         owner: "{{ user_abbr }}"
