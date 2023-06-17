@@ -40,6 +40,8 @@ homebrew_cask_apps_local_admin:
 
 mas_installed_apps_admin:
   - { id: 425424353, name: "The Unarchiver" }
+  - { id: 523620159, name: "CleanMyDrive 2" }
+  - { id: 823766827, name: "OneDrive" }
 
 pip_items_admin: [ ]
 
