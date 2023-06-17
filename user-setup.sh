@@ -7,7 +7,7 @@ sudo chown -R $(id -u):$(id -g) /Users/Shared/macos-setup
 git pull
 
 # Install ansible for user
-./install_ansible.sh
+./install-ansible.sh
 
 # Apply path updates (homebrew & ansible)
 eval $(/usr/libexec/path_helper)
@@ -18,7 +18,7 @@ sleep 2
 sudo visudo -cf /etc/sudoers.d/00-user
 
 # Run playbook without sleeping
-caffeinate -i ansible-playbook user-playbook.yaml -i inventory -l localhost $@ | tee ./user_setup.txt
+caffeinate -i ansible-playbook user-playbook.yaml -i inventory -l localhost $@ | tee ./user-setup.txt
 r=${?}
 
 # Remove sudo timeout & path files

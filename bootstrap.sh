@@ -31,7 +31,7 @@ fi
 echo "$hb_path" | sudo tee "/etc/paths.d/30-homebrew"
 
 # Install ansible for user
-./install_ansible.sh
+./install-ansible.sh
 
 # Apply path updates (homebrew & ansible)
 eval $(/usr/libexec/path_helper)
@@ -42,4 +42,4 @@ ansible-galaxy collection install geerlingguy.mac -p ./collections
 ansible-galaxy collection install ansible.posix -p ./collections
 
 # Run admin setup script
-./admin_setup.sh
+./admin-setup.sh
