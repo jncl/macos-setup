@@ -5,9 +5,9 @@
   gather_facts: true
 
   vars_files:
-    - vars/global_vars.yaml
-    - vars/osx_local_defaults.yaml
-    - vars/user_global_vars.yaml
+    - vars/global-vars.yaml
+    - vars/osx-local-defaults.yaml
+    - vars/user-global-vars.yaml
 
   handlers:
     - name: Include Handlers

@@ -5,11 +5,11 @@
   gather_facts: true
 
   vars_files:
-    - vars/global_vars.yaml
-    - vars/osx_global_defaults.yaml
-    - vars/osx_local_defaults.yaml
-    - vars/admin_global_vars.yaml
-    - vars/{{ 'admin_' ~ computer.model | lower ~ '_vars' }}.yaml
+    - vars/global-vars.yaml
+    - vars/osx-global-defaults.yaml
+    - vars/osx-local-defaults.yaml
+    - vars/admin-global-vars.yaml
+    - vars/{{ 'admin-' ~ computer.model | lower ~ '-vars' }}.yaml
 
   vars_prompt:
     - name: user.password
