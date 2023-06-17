@@ -3,7 +3,7 @@
 - name: Setup Cloud Storage Apps
   block:
     - name: 1Password
-      anuser_.builtin.pause:
+      ansible.builtin.pause:
         prompt: "Run 1Password app, sign in & sync files"
     - name: Dropbox
       ansible.builtin.pause:

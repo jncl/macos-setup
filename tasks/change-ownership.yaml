@@ -20,11 +20,6 @@
         recurse: false
         file_type: directory
       register: hb_dirs
-    - name: Display output
-      ansible.builtin.debug:
-        var: item.path
-      loop:
-        "{{ hb_dirs.files }}"
     - name: Recursively change ownership of Homebrew directories
       become: true
       ansible.builtin.file:
