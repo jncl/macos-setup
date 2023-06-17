@@ -6,12 +6,11 @@ computer:
   model: "{{ (ansible_machine == 'arm64') | ternary('iMac', 'MBP') }}"
 
 # User info
-user:
-  name: "Jon Hogg"
-  abbr: "jonhogg"
-  password: "password"
-  avatar: "/Library/User Pictures/Sports/Target.heic"
-  group: "staff"
+user_name: "Jon Hogg"
+user_abbr: "jonhogg"
+user_password: "password"
+user_avatar: "/Library/User Pictures/Sports/Target.heic"
+user_group: "staff"
 
 # Set keyboard_id to internal or external keyboard
 keyboard_id: "{{ (ansible_machine == 'arm64') | ternary('alt_handler_id-95', '1452-567-0') }}"

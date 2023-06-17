@@ -2,13 +2,8 @@
 
 - name: Setup Cloud Storage Apps
   block:
-    # - name: Remove the key 'user.foo'
-    #   community.general.xattr:
-    #     path: /Applications/1Password.app
-    #     key:
-    #     state: absent
     - name: 1Password
-      ansible.builtin.pause:
+      anuser_.builtin.pause:
         prompt: "Run 1Password app, sign in & sync files"
     - name: Dropbox
       ansible.builtin.pause:

@@ -1,7 +1,7 @@
 ---
 # tasks for change-ownership
 
-- name: Change ownership to {{ user.abbr }}
+- name: Change ownership to {{ user_abbr }}
   block:
     - name: Recursively change ownership of macos-setup repo
       when: "homebrew_cask_apps_admin is defined"
@@ -10,8 +10,8 @@
         path: /Users/Shared/macos-setup
         state: directory
         recurse: true
-        owner: "{{ user.abbr }}"
-        group: "{{ user.group }}"
+        owner: "{{ user_abbr }}"
+        group: "{{ user_group }}"
     - name: Recursively change ownership of Homebrew directories
       when: "homebrew_cask_apps_user is defined"
       become: true
@@ -19,5 +19,5 @@
         path: "{{ homebrew_prefix }}/*"
         state: directory
         recurse: true
-        owner: "{{ user.abbr }}"
-        group: "{{ user.group }}"
+        owner: "{{ user_abbr }}"
+        group: "{{ user_group }}"

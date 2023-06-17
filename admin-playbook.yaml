@@ -12,8 +12,8 @@
     - vars/{{ 'admin-' ~ computer.model | lower ~ '-vars' }}.yaml
 
   vars_prompt:
-    - name: user.password
-      prompt: Enter password for User {{ user.name }}
+    - name: user_password
+      prompt: Enter password for User {{ user_name }}
       confirm: true
       private: true
 
