@@ -1,23 +1,32 @@
 ---
 # tasks for change-ownership
 
-- name: Change ownership to {{ user_abbr }}
+- name: Recursively change ownership of macos-setup repo
+  when: "homebrew_cask_apps_admin is defined"
+  become: true
+  ansible.builtin.file:
+    path: /Users/Shared/macos-setup
+    state: directory
+    recurse: true
+    owner: "{{ user_abbr }}"
+    group: "{{ user_group }}"
+
+- name: Change ownership of Homebrew directories to {{ user_abbr }}
+  when: "homebrew_cask_apps_user is defined"
   block:
-    - name: Recursively change ownership of macos-setup repo
-      when: "homebrew_cask_apps_admin is defined"
-      become: true
-      ansible.builtin.file:
-        path: /Users/Shared/macos-setup
-        state: directory
-        recurse: true
-        owner: "{{ user_abbr }}"
-        group: "{{ user_group }}"
+    - name: Find all sub directories
+      ansible.builtin.find:
+        paths: "{{ homebrew_prefix }}"
+        recurse: false
+        file_type: directory
+      register: hb_dirs
     - name: Recursively change ownership of Homebrew directories
-      when: "homebrew_cask_apps_user is defined"
       become: true
       ansible.builtin.file:
-        path: "{{ homebrew_prefix }}"
+        path: "{{ homebrew_prefix }}/{{ item }}"
         state: directory
         recurse: true
         owner: "{{ user_abbr }}"
         group: "{{ user_group }}"
+      loop:
+        "{{ hb_dirs.files | map( attribute='path' ) | list }}"
