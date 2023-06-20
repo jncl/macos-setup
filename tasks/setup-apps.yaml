@@ -57,7 +57,7 @@
             mode: '0755'
 
 - name: Create links for Apps & Preferences (iMac only)
-  when: computer_model is "iMac"
+  when: computer_model == "iMac"
   block:
     - name: Make links for Preference files (iMac)
       ansible.builtin.file:
