@@ -2,13 +2,13 @@
 
 - name: Setup variables to be used in the following roles and tasks
   ansible.builtin.set_fact:
-    homebrew_taps: "{{ homebrew_taps_admin | union( vars['homebrew_taps_' ~ computer.model | lower ] ) }}"
-    homebrew_installed_packages: "{{ homebrew_installed_packages_admin | union( vars['homebrew_installed_packages_' ~ computer.model | lower ] ) }}"
-    homebrew_cask_apps: "{{ homebrew_cask_apps_admin | union( vars['homebrew_cask_apps_' ~ computer.model | lower ] ) }}"
-    homebrew_cask_apps_local: "{{ homebrew_cask_apps_local_admin | union( vars['homebrew_cask_apps_local_' ~ computer.model | lower ] ) }}"
-    mas_installed_apps: "{{ mas_installed_apps_admin | union( vars['mas_installed_apps_' ~ computer.model | lower ] ) }}"
-    pip_items: "{{ pip_items_admin | union( vars['pip_items_' ~ computer.model | lower ] ) }}"
-    gem_items: "{{ gem_items_admin | union( vars['gem_items_' ~ computer.model | lower ] ) }}"
-    npm_items: "{{ npm_items_admin | union( vars['npm_items_' ~ computer.model | lower ] ) }}"
-    dockitems_remove: "{{ dockitems_remove_gvars | union( dockitems_remove_admin ) | union( vars['dockitems_remove_' ~ computer.model | lower ] ) }}"
-    dockitems_persist: "{{ dockitems_persist_gvars | union( dockitems_persist_admin ) | union( vars['dockitems_persist_' ~ computer.model | lower ] ) }}"
+    homebrew_taps: "{{ homebrew_taps_admin | union( vars['homebrew_taps_' ~ computer_model | lower ] ) }}"
+    homebrew_installed_packages: "{{ homebrew_installed_packages_admin | union( vars['homebrew_installed_packages_' ~ computer_model | lower ] ) }}"
+    homebrew_cask_apps: "{{ homebrew_cask_apps_admin | union( vars['homebrew_cask_apps_' ~ computer_model | lower ] ) }}"
+    homebrew_cask_apps_local: "{{ homebrew_cask_apps_local_admin | union( vars['homebrew_cask_apps_local_' ~ computer_model | lower ] ) }}"
+    mas_installed_apps: "{{ mas_installed_apps_admin | union( vars['mas_installed_apps_' ~ computer_model | lower ] ) }}"
+    pip_items: "{{ pip_items_admin | union( vars['pip_items_' ~ computer_model | lower ] ) }}"
+    gem_items: "{{ gem_items_admin | union( vars['gem_items_' ~ computer_model | lower ] ) }}"
+    npm_items: "{{ npm_items_admin | union( vars['npm_items_' ~ computer_model | lower ] ) }}"
+    dockitems_remove: "{{ dockitems_remove_gvars | union( dockitems_remove_admin ) | union( vars['dockitems_remove_' ~ computer_model | lower ] ) }}"
+    dockitems_persist: "{{ dockitems_persist_gvars | union( dockitems_persist_admin ) | union( vars['dockitems_persist_' ~ computer_model | lower ] ) }}"

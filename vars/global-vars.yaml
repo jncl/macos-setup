@@ -1,9 +1,8 @@
 ---
 
 # Computer info
-computer:
-  hostname: "{{ (ansible_machine == 'arm64') | ternary('Hedgehog4', 'Hedgehog5') }}"
-  model: "{{ (ansible_machine == 'arm64') | ternary('iMac', 'MBP') }}"
+computer_hostname: "{{ (ansible_machine == 'arm64') | ternary('Hedgehog4', 'Hedgehog5') }}"
+computer_model: "{{ (ansible_machine == 'arm64') | ternary('iMac', 'MBP') }}"
 
 # User info
 user_name: "Jon Hogg"

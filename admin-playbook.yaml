@@ -9,7 +9,7 @@
     - vars/osx-global-defaults.yaml
     - vars/osx-local-defaults.yaml
     - vars/admin-global-vars.yaml
-    - vars/{{ 'admin-' ~ computer.model | lower ~ '-vars' }}.yaml
+    - vars/{{ 'admin-' ~ computer_model | lower ~ '-vars' }}.yaml
 
   vars_prompt:
     - name: user_password

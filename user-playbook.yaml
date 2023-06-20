@@ -58,7 +58,7 @@
       ansible.builtin.include_tasks: tasks/modify-finder.yaml
       tags: finder
     - name: Include iMac tasks
-      when: computer.model is "iMac"
+      when: computer_model is "iMac"
       block:
         - name: Include modify-keyboard
           ansible.builtin.include_tasks: tasks/modify-keyboard.yaml
