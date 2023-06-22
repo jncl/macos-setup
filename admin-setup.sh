@@ -18,4 +18,4 @@ caffeinate -i ansible-playbook admin-playbook.yaml -i inventory -l localhost $@ 
 r=${?}
 
 # Remove sudo timeout & path files
-[ ${r} == 0 ] && (sudo rm /etc/sudoers.d/00-admin; sudo rm /etc/paths.d/50-ansible 2>/dev/null)
+[[ ${r} -eq 0 ]] && (sudo rm /etc/sudoers.d/00-admin /etc/paths.d/50-ansible 2>/dev/null)
