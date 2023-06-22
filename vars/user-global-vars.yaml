@@ -10,6 +10,7 @@ homebrew_cask_apps_user:
   - { name: google-drive, install_options: "no-quarantine" }
   - { name: macfuse, install_options: "no-quarantine" }
   - { name: imageoptim, install_options: "no-quarantine" }
+  - { name: raspberry-pi-imager, install_options: "no-quarantine" }
   # quicklook
   - { name: qlstephen, install_options: "no-quarantine" }
   - { name: qlvideo, install_options: "no-quarantine" }
@@ -22,7 +23,6 @@ homebrew_cask_apps_user:
 
 homebrew_installed_packages_user:
   - lua@5.1
-  - raspberry-pi-imager
   - sshfs-mac
 
 mas_installed_apps_user: [ ]
