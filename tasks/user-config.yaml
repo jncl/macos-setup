@@ -1,6 +1,7 @@
 ---
 
 - name: Setup Cloud Storage Apps
+  tags: [ config, cloud ]
   block:
     - name: 1Password
       ansible.builtin.pause:
@@ -14,3 +15,15 @@
     - name: GoogleDrive
       ansible.builtin.pause:
         prompt: "Run GoogleDrive app, sign in & sync files"
+
+- name: Install Battle.net
+  tags: [ config, wow ]
+  block:
+    - name: Get battle-net directory
+      ansible.builtin.command: find "{{ homebrew_prefix }}/Caskroom/battle-net" -name Battle.net-Setup.app
+      register: bn_app
+    - name: Display output
+      ansible.builtin.debug:
+        var: bn_app
+    # - name: Run Setup app
+    #   ansible.builtin.command: bn_app.path

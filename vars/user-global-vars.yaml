@@ -22,11 +22,13 @@ homebrew_cask_apps_user:
 
 homebrew_installed_packages_user:
   - lua@5.1
+  - raspberry-pi-imager
   - sshfs-mac
 
 mas_installed_apps_user: [ ]
 
 pip_items_user:
+  - passlib
   - pexpect
   - ansible-lint
 
