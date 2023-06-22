@@ -26,6 +26,7 @@
         path: "{{ item }}"
         state: directory
         recurse: true
+        follow: false
         owner: "{{ user_abbr }}"
         group: "{{ user_group }}"
       loop:
