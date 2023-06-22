@@ -13,7 +13,7 @@ ITEMS=($($plb -c "Print ':NSToolbar Configuration Browser:TB Item Plists'" $PLIS
 [[ ${1} == "-t" ]] && echo "[${#ITEMIDS[@]}], [${#ITEMS[@]}]"
 
 if [[ ${#ITEMIDS[@]} -gt 0 ]]; then
-	$plb -c "Delete ':NSToolbar Configuration Browser:TB Item Identifiers'" $PLIST
+	$plb -c "Delete ':NSToolbar Configuration Browser:TB Item Identifiers'" $PLIST 2>/dev/null
 else
 	ITEMIDS=(
 	    "com.apple.finder.BACK"
@@ -31,7 +31,7 @@ fi
 [[ ${1} == "-t" ]] && echo "#2 [${#ITEMIDS[@]}], [${#ITEMS[@]}]"
 
 if [[ ${#ITEMS[@]} -gt 0 ]]; then
-	$plb -c "Delete 'NSToolbar Configuration Browser:TB Item Plists'" $PLIST
+	$plb -c "Delete ':NSToolbar Configuration Browser:TB Item Plists'" $PLIST
 fi
 
 $plb -c "Add ':NSToolbar Configuration Browser:TB Item Identifiers' array" $PLIST
