@@ -10,18 +10,18 @@ ITEMIDS=($($plb -c "Print 'NSToolbar Configuration Browser:TB Default Item Ident
 ITEMS=($($plb -c "Print 'NSToolbar Configuration Browser:TB Item Plists'" $PLIST | sed '1d; $d'))
 
 $plb -c "Delete 'NSToolbar Configuration Browser:TB Item Identifiers'" $PLIST
-if [ ${#ITEMS[@]} > 0 ]; then
-	$plb -c "Delete 'NSToolbar Configuration Browser:TB Item Plists'" $PLIST
-fi
+$plb -c "Delete 'NSToolbar Configuration Browser:TB Item Plists'" $PLIST
+# if [ ${#ITEMS[@]} > 0 ]; then
+# 	$plb -c "Delete 'NSToolbar Configuration Browser:TB Item Plists'" $PLIST
+# fi
 
 $plb -c "Add 'NSToolbar Configuration Browser:TB Item Identifiers' array" $PLIST
-i=0
+i=1
 for ITEM in $ITEMIDS
 do
-	if [[ $i -eq $POSITION ]]; then
-		((i++))
-	fi
-	$plb -c "Add 'NSToolbar Configuration Browser:TB Item Identifiers:$i' string $ITEM" $PLIST
+    if [ $i -ne $POSITION ]; then
+		$plb -c "Add 'NSToolbar Configuration Browser:TB Item Identifiers:$i' string $ITEM" $PLIST
+ 	fi
 	((i++))
 done
 
