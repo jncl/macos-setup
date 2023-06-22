@@ -1,7 +1,7 @@
 ---
 # tasks for setting up Applications
 
-- name: Create links for App preferences, iTerm & TextMAte
+- name: Create links for App preferences, iTerm & TextMate
   block:
     - name: Make links for Preference files
       ansible.builtin.file:
@@ -14,7 +14,7 @@
         - com.bombich.ccc.plist
         - com.bombich.cccdashboard.plist
         - com.clipy-app.Clipy.plist
-        - com.googlecode.iterm2.plist
+        # - com.googlecode.iterm2.plist
         - com.macromates.TextMate.plist
         - com.manytricks.Moom.plist
         - com.manytricks.NameMangler.plist

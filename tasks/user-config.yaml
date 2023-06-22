@@ -25,5 +25,5 @@
     - name: Display output
       ansible.builtin.debug:
         var: bn_app
-    # - name: Run Setup app
-    #   ansible.builtin.command: bn_app.path
+    - name: Run Setup app
+      ansible.builtin.command: "{{ bn_app.stdout }}"
