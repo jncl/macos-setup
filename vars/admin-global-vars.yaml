@@ -1,47 +1,66 @@
 ---
 
-# setup global variables
 homebrew_taps_admin:
-  - iloveitaly/tap
+  - iloveitaly/tap # used for qlzipinfo
+  - macos-fuse-t/homebrew-cask # used for fuse-t & fuse-t-sshfs
 
 homebrew_cask_apps_admin:
   - { name: appcleaner, install_options: "no-quarantine" }
-  - { name: carbon-copy-cloner, install_options: "no-quarantine" }
-  - { name: clipy, install_options: "no-quarantine" }
+  - { name: battle-net, install_options: "no-quarantine" } # N.B. requires Rosetta 2
+  - { name: carbon-copy-cloner@6, install_options: "no-quarantine" }
+  - { name: clipy@1.2.12, install_options: "no-quarantine" }
   - { name: curseforge, install_options: "no-quarantine" }
-  - { name: google-analytics-opt-out, install_options: "no-quarantine" }
+  - { name: dropbox, install_options: "no-quarantine" }
+  - { name: fuse-t, install_options: "no-quarantine" }
+  - { name: fuse-t-sshfs, install_options: "no-quarantine" }
+  - { name: google-analytics-opt-out, install_options: "no-quarantine" } # N.B. requires Rosetta 2
+  - { name: google-drive, install_options: "no-quarantine" }
   - { name: hammerspoon, install_options: "no-quarantine" }
-  - { name: handbrake, install_options: "no-quarantine" }
+  - { name: hiddenbar, install_options: "no-quarantine" }
   - { name: iterm2, install_options: "no-quarantine" }
   - { name: karabiner-elements, install_options: "no-quarantine" }
-  - { name: moom, install_options: "no-quarantine" }
+  - { name: launchcontrol, install_options: "no-quarantine" }
+  # - { name: moom, install_options: "no-quarantine" } # licence for v2
   - { name: mysides, install_options: "no-quarantine" }
   - { name: name-mangler, install_options: "no-quarantine" }
+  - { name: onedrive, install_options: "no-quarantine" }
   - { name: pibar, install_options: "no-quarantine" }
-  - { name: sourcetree, install_options: "no-quarantine" }
+  # - { name: rsync, install_options: "no-quarantine" } # what is this used for ?
+  - { name: sublime-text, install_options: "no-quarantine" }
+  - { name: sublime-merge, install_options: "no-quarantine" }
   - { name: stats, install_options: "no-quarantine" }
-  - { name: textmate, install_options: "no-quarantine" }
   - { name: tor-browser, install_options: "no-quarantine" }
   - { name: vlc, install_options: "no-quarantine" }
+  # quicklook plugins
+  - { name: qlvideo, install_options: "no-quarantine" }
+  - { name: qlzipinfo, install_options: "no-quarantine" }
+  - { name: suspicious-package, install_options: "no-quarantine" }
+  - { name: syntax-highlight, install_options: "no-quarantine" }
 
 homebrew_installed_packages_admin:
-  - ffmpeg
   - fswatch
   - git
+  - lua@5.1
   - luarocks
   - minicom
   - nmap
+  - p7zip
   - reattach-to-user-namespace
-  - ssh-copy-id
   - tmux
+  - unar
+  - wallpaper
+  - wget
+  - xz
 
-homebrew_cask_apps_local_admin:
-  - { name: 1password@7.9.10, install_options: "no-quarantine" }
+homebrew_cask_apps_local_admin: [ ]
+  # - { name: 1password@7.9.10, install_options: "no-quarantine" }
 
 mas_installed_apps_admin:
-  - { id: 425424353, name: "The Unarchiver" }
-  - { id: 523620159, name: "CleanMyDrive 2" }
-  - { id: 823766827, name: "OneDrive" }
+  # - { id: 425424353, name: "The Unarchiver" }
+  # - { id: 523620159, name: "CleanMyDrive 2" }
+  # - { id: 823766827, name: "OneDrive" }
+  - { id: 1606897889, name: "Consent-O-Matic" }
+  - { id: -2139517307, name: "The Donation Reminder" }
 
 pip_items_admin: [ ]
 
@@ -53,4 +72,4 @@ dockitems_remove_admin: [ ]
 
 dockitems_persist_admin:
   - name: Terminal
-    path: /System/Applications/Utilities/Terminal.app/
+    path: /System/Applications/Utilities/Terminal.app

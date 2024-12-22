@@ -1,0 +1,44 @@
+
+PLAY [User playbook] ***********************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Create variables to be used in the following Roles & Tasks] **************
+included: /Users/Shared/macos-setup/tasks/user-pre-task.yaml for localhost
+
+TASK [Setup variables to be used in the following roles and tasks] *************
+ok: [localhost]
+
+TASK [Include modify-finder] ***************************************************
+included: /Users/Shared/macos-setup/tasks/modify-finder.yaml for localhost
+
+TASK [Remove All Finder Favourites] ********************************************
+changed: [localhost]
+
+TASK [Add items to Finder Favourites] ******************************************
+changed: [localhost] => (item=Applications)
+
+TASK [Append Finder Favourites] ************************************************
+changed: [localhost] => (item=jonhogg)
+changed: [localhost] => (item=Desktop)
+changed: [localhost] => (item=Developer)
+changed: [localhost] => (item=Downloads)
+changed: [localhost] => (item=My-Documents)
+changed: [localhost] => (item=Developer/ansible)
+
+TASK [Add Textmate to Finder Toolbar] ******************************************
+changed: [localhost]
+
+TASK [Include modify-keyboard] *************************************************
+skipping: [localhost]
+
+TASK [Include setup-printer] ***************************************************
+skipping: [localhost]
+
+TASK [Include setup-games] *****************************************************
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=8    changed=4    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+

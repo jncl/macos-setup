@@ -1,12 +1,14 @@
-#!/usr/bin/env bash
-
-# cd /Users/Shared
-# git clone https://github.com/jncl/macos-setup
-# cd macos-setup
-#
+#!/usr/bin/env zsh
+set -e
 
 # update repo
 git pull
+
+# Apply homebrew path update
+eval $(/usr/libexec/path_helper)
+
+# load ansible virtual environment
+source ./venv/bin/activate
 
 # Set Sudo timeout
 echo "Defaults timestamp_timeout=90" | sudo tee /etc/sudoers.d/00-admin
@@ -18,4 +20,7 @@ caffeinate -i ansible-playbook admin-playbook.yaml -i inventory -l localhost $@ 
 r=${?}
 
 # Remove sudo timeout & path files
-[ ${r} == 0 ] && (sudo rm /etc/sudoers.d/00-admin; sudo rm /etc/paths.d/50-ansible 2>/dev/null)
+if [ ${r} == 0 ]
+then
+	rm /etc/sudoers.d/00-admin
+fi

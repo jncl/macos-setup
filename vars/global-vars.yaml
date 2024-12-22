@@ -1,8 +1,8 @@
 ---
 
 # Computer info
-computer_hostname: "{{ (ansible_machine == 'arm64') | ternary('Hedgehog4', 'Hedgehog5') }}"
-computer_model: "{{ (ansible_machine == 'arm64') | ternary('iMac', 'MBP') }}"
+# computer_hostname: "{{ (ansible_machine == 'arm64') | ternary('Hedgehog4', 'Hedgehog5') }}"
+# computer_model: "{{ (ansible_machine == 'arm64') | ternary('iMac', 'MBP') }}"
 
 # User info
 user_name: "Jon Hogg"
@@ -10,9 +10,6 @@ user_abbr: "jonhogg"
 user_password: "password"
 user_avatar: "/Library/User Pictures/Sports/Target.heic"
 user_group: "staff"
-
-# Set keyboard_id to internal or external keyboard
-keyboard_id: "{{ (ansible_machine == 'arm64') | ternary('alt_handler_id-95', '1452-567-0') }}"
 
 # Dropbox info
 dropbox_dir: "$HOME/Library/CloudStorage/Dropbox"

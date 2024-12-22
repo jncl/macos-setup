@@ -12,7 +12,8 @@ fi
 cd ../Shared
 
 # Clone macos-setup repo if required
-if [[ ! -d ./macos-setup ]]; then
+if [[ ! -d ./macos-setup ]]
+then
 	git clone https://github.com/jncl/macos-setup
 fi
 
@@ -23,23 +24,17 @@ cd macos-setup
 git pull
 
 # Add homebrew path
-if [[ ${$(sysctl machdep.cpu.brand_string):l} == *apple* ]]; then
+if [[ ${$(sysctl machdep.cpu.brand_string):l} == *apple* ]]
+then
 	hb_path="/opt/homebrew/bin"
 else
 	hb_path="/usr/local/bin"
 fi
 echo "$hb_path" | sudo tee "/etc/paths.d/30-homebrew"
 
-# Install ansible for user
-./install-ansible.sh
-
-# Apply path updates (homebrew & ansible)
-eval $(/usr/libexec/path_helper)
-
-# Install playbook pre-requisites
-ansible-galaxy collection install geerlingguy.mac -p ./collections
-# Install collection for ansible roles
-ansible-galaxy collection install ansible.posix -p ./collections
-
-# Run admin setup script
-./admin-setup.sh
+# Install ansible if required
+if [[ ! -d ./venv ]]
+then
+	read -sk $'?Press any key to run install-ansible script.\n'
+	./install-ansible.sh
+fi

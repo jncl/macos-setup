@@ -1,6 +1,14 @@
 ---
 
 # setup variables for MacBook Pro
+
+# Computer info
+computer_hostname: "Hedgehog6"
+computer_model: "MBP"
+
+# Set keyboard_id to internal keyboard
+keyboard_id: "alt_handler_id-95"
+
 homebrew_taps_mbp: [ ]
 
 homebrew_installed_packages_mbp: [ ]

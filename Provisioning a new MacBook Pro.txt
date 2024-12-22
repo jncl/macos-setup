@@ -1,0 +1,68 @@
+Provisioning a new MacBook Pro
+
+1. Setup Administrator User
+
+2. Signing as Administrator
+
+3. Setup Standard User
+
+4.	Add Standard user to admin group to allow sudo access:
+	- sudo dseditgroup -o edit -a <<std_user>> -t user admin
+
+5.	Allow sudo authentication using TouchID on Sonoma:
+	- https://nobbs.dev/posts/sudo-touch-id-mac-sonoma/
+
+6.	Signin as Standard User
+
+7.	Install Homebrew using package file from:
+	- https://github.com/Homebrew/brew/releases
+
+8.	Use Homebrew to install Apps:
+	- brew install --cask ...
+
+9.	Use Homebrew to install packages:
+	- brew install ...
+
+10.	To install lua@5.1 formula, it is disabled, do this:
+	- brew tap homebrew/core --force
+	- brew edit lua@5.1 & comment the line beginning disable!
+	- HOMEBREW_NO_INSTALL_FROM_API=1 brew install lua@5.1
+
+11.	To install Apple Silicon version of Clipy, do this:
+	- brew tap homebrew/core --force
+	- copy clipy@1.2.1 formula to clipy@1.2.12
+	- brew edit clipy@1.2.12 and change url to point to https://github.com/ian4hu/Clipy/
+	- HOMEBREW_NO_INSTALL_FROM_API=1 brew install clipy@1.2.12
+	- brew untap homebrew/core
+
+12.	Setup virtual environment for ansible & install ansible & related files
+	- mkdir -p ~/Developer/ansible
+	- cd ~/Developer/ansible
+	- python3 -m venv .venv
+	- chmod +x .venv/bin/activate
+	- source .venv/bin/activate
+	- pip install ansible passlib pexpect ansible-lint
+
+13. Create Games directory
+	- Download Battle-Net Setup app and install it
+	- Install WoW versions
+
+14.	Download Cloud Storage Apps
+	- For each one
+		- signin
+		- sync files
+
+15.	Open & Close Sublime Text/Merge apps to create directories
+
+16.	Run ./Library/CloudStorage/Dropbox/OSX/bin/sync_config.sh to setup links
+
+17. Add Safari, Mail, Start CloudApps & Start Utility Apps to Login Items & Extensions
+
+18. Log off & Log back in to activate Login scripts
+
+19.	Add ssh key passphrase to keyring:
+	- ssh-add .ssh/id_ed25519
+
+20.	Add ansible vault password to keyring:
+	- ./venv/bin/vault-keyring-client --set --vault-id default
+
