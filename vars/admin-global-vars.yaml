@@ -1,6 +1,7 @@
 ---
 
 homebrew_taps_admin:
+  - espanso/espanso
   - iloveitaly/tap # used for qlzipinfo
   - macos-fuse-t/homebrew-cask # used for fuse-t & fuse-t-sshfs
 
@@ -11,6 +12,7 @@ homebrew_cask_apps_admin:
   - { name: clipy@1.2.12, install_options: "no-quarantine" }
   - { name: curseforge, install_options: "no-quarantine" }
   - { name: dropbox, install_options: "no-quarantine" }
+  - { name: espanso, install_options: "no-quarantine" }
   - { name: fuse-t, install_options: "no-quarantine" }
   - { name: fuse-t-sshfs, install_options: "no-quarantine" }
   - { name: google-analytics-opt-out, install_options: "no-quarantine" } # N.B. requires Rosetta 2
