@@ -1,12 +1,12 @@
 Provisioning a new MacBook Pro
 
-1. Setup Administrator User
+1. 	Setup Administrator User
 
-2. Signin as Administrator
+2. 	Signin as Administrator
 
-3. Setup Standard User
+3. 	Setup Standard User
 
-4.	Add Standard user to admin group to allow sudo access:
+4. 	Add Standard user to admin group to allow sudo access:
 	- sudo dseditgroup -o edit -a <<std_user>> -t user admin
 
 5.	Allow sudo authentication using TouchID on Sonoma:
@@ -43,7 +43,7 @@ Provisioning a new MacBook Pro
 	- source .venv/bin/activate
 	- pip install ansible passlib pexpect ansible-lint
 
-13. Create Games directory
+13. 	Create Games directory
 	- Download Battle-Net Setup app and install it
 	- Install WoW versions
 
@@ -56,9 +56,9 @@ Provisioning a new MacBook Pro
 
 16.	Run ./Library/CloudStorage/Dropbox/OSX/bin/sync_config.sh to setup links
 
-17. Add Safari, Mail, Start CloudApps & Start Utility Apps to Login Items & Extensions
+17. 	Add Safari, Mail, Start CloudApps & Start Utility Apps to Login Items & Extensions
 
-18. Log off & Log back in to activate Login scripts
+18. 	Log off & Log back in to activate Login scripts
 
 19.	Add ssh key passphrase to keyring:
 	- ssh-add --apple-use-keychain .ssh/id_ed25519
