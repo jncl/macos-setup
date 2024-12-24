@@ -2,7 +2,7 @@ Provisioning a new MacBook Pro
 
 1. Setup Administrator User
 
-2. Signing as Administrator
+2. Signin as Administrator
 
 3. Setup Standard User
 
@@ -61,7 +61,7 @@ Provisioning a new MacBook Pro
 18. Log off & Log back in to activate Login scripts
 
 19.	Add ssh key passphrase to keyring:
-	- ssh-add .ssh/id_ed25519
+	- ssh-add --apple-use-keychain .ssh/id_ed25519
 
 20.	Add ansible vault password to keyring:
 	- ./venv/bin/vault-keyring-client --set --vault-id default
