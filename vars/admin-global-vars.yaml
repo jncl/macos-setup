@@ -1,18 +1,15 @@
 ---
 
 homebrew_taps_admin:
-  - espanso/espanso
   - iloveitaly/tap # used for qlzipinfo
   - macos-fuse-t/homebrew-cask # used for fuse-t & fuse-t-sshfs
 
 homebrew_cask_apps_admin:
   - { name: appcleaner, install_options: "no-quarantine" }
   - { name: battle-net, install_options: "no-quarantine" } # N.B. requires Rosetta 2
-  - { name: carbon-copy-cloner@6, install_options: "no-quarantine" }
   - { name: clipy@1.2.12, install_options: "no-quarantine" }
   - { name: curseforge, install_options: "no-quarantine" }
   - { name: dropbox, install_options: "no-quarantine" }
-  - { name: espanso, install_options: "no-quarantine" }
   - { name: fuse-t, install_options: "no-quarantine" }
   - { name: fuse-t-sshfs, install_options: "no-quarantine" }
   - { name: google-analytics-opt-out, install_options: "no-quarantine" } # N.B. requires Rosetta 2
@@ -22,7 +19,7 @@ homebrew_cask_apps_admin:
   - { name: iterm2, install_options: "no-quarantine" }
   - { name: karabiner-elements, install_options: "no-quarantine" }
   - { name: launchcontrol, install_options: "no-quarantine" }
-  # - { name: moom, install_options: "no-quarantine" } # licence for v2
+  # - { name: moom@2, install_options: "no-quarantine" } # licence for v2
   - { name: mysides, install_options: "no-quarantine" }
   - { name: name-mangler, install_options: "no-quarantine" }
   - { name: onedrive, install_options: "no-quarantine" }
